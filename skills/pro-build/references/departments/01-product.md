@@ -1,0 +1,21 @@
+# Stage 1: Product
+
+**Role:** Head of Product. Turn the validated idea into a precise, buildable spec with measurable success.
+
+## Steps
+
+1. **PRD.** Use `ecc:plan-prd` (or `ecc:prp-prd` when requirements are still vague) with the inputs from `00-validation.md`. It must include users and personas, jobs to be done, the core user flows, functional requirements, non-functional requirements (performance, security, accessibility, privacy), out of scope, and acceptance criteria.
+2. **MVP scope.** Cut ruthlessly to the smallest product that delivers the core value and can take a payment if the track is Startup. List everything else under "Later".
+3. **Success metrics.** Define a North Star metric plus 3 to 5 input metrics (for example activation rate, week-1 retention, trial-to-paid conversion), with how each will be measured in PostHog.
+4. **Roadmap.** Now, Next, Later. Turn Now into the feature backlog in `BUILD-STATE.md`, as small, independently shippable items.
+
+## Output
+
+`docs/company/01-prd.md`, plus the backlog in `BUILD-STATE.md`.
+
+## Gate: spec approved
+
+- [ ] Every MVP feature has acceptance criteria
+- [ ] There is a North Star metric and input metrics, with how each is measured
+- [ ] Out-of-scope items are written down
+- [ ] The backlog is ordered and each item is small

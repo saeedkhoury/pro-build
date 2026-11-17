@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" role="img" aria-labelledby="t d">
+  <title id="t">pro-build</title>
+  <desc id="d">Your AI software company for Claude Code: validate, plan, design, build, ship and grow</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#1a1440"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="1" stop-color="#c4b5fd"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="380" rx="24" fill="url(#bg)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.05">
+    <path d="M0 95H1200M0 190H1200M0 285H1200M200 0V380M400 0V380M600 0V380M800 0V380M1000 0V380"/>
+  </g>
+  <text x="600" y="122" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="80" font-weight="800" fill="url(#accent)" letter-spacing="-2">pro-build</text>
+  <text x="600" y="172" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#cbd5e1">Your AI software company. From idea to paying users.</text>
+  <text x="600" y="206" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="17" fill="#94a3b8">10 departments · approval gates · CI/CD · deploys · payments · analytics · growth</text>
+  <g font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" text-anchor="middle">
+    <rect x="90" y="262" width="150" height="48" rx="24" fill="#ffffff" fill-opacity="0.08" stroke="#7dd3fc" stroke-opacity="0.6"/>
+    <text x="165" y="292" fill="#e2e8f0">Validate</text>
+    <path d="M246 286H272" stroke="#64748b" stroke-width="2"/>
+    <rect x="278" y="262" width="150" height="48" rx="24" fill="#ffffff" fill-opacity="0.08" stroke="#8cc8fc" stroke-opacity="0.6"/>
+    <text x="353" y="292" fill="#e2e8f0">Plan</text>
+    <path d="M434 286H460" stroke="#64748b" stroke-width="2"/>
+    <rect x="466" y="262" width="150" height="48" rx="24" fill="#ffffff" fill-opacity="0.08" stroke="#9bbcfc" stroke-opacity="0.6"/>
+    <text x="541" y="292" fill="#e2e8f0">Design</text>
+    <path d="M622 286H648" stroke="#64748b" stroke-width="2"/>
+    <rect x="654" y="262" width="150" height="48" rx="24" fill="#ffffff" fill-opacity="0.08" stroke="#aab4fc" stroke-opacity="0.6"/>
+    <text x="729" y="292" fill="#e2e8f0">Build</text>
+    <path d="M810 286H836" stroke="#64748b" stroke-width="2"/>
+    <rect x="842" y="262" width="130" height="48" rx="24" fill="#ffffff" fill-opacity="0.08" stroke="#b8b0fd" stroke-opacity="0.6"/>
+    <text x="907" y="292" fill="#e2e8f0">Ship</text>
+    <path d="M978 286H1004" stroke="#64748b" stroke-width="2"/>
+    <rect x="1010" y="262" width="110" height="48" rx="24" fill="#ffffff" fill-opacity="0.08" stroke="#c4b5fd" stroke-opacity="0.6"/>
+    <text x="1065" y="292" fill="#e2e8f0">Grow</text>
+  </g>
+</svg>

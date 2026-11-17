@@ -1,0 +1,16 @@
+{
+  "name": "pro-build",
+  "description": "pro-build: Your AI software company for Claude Code: ten departments, from idea validation to deploys, payments, launch and growth, with your approval at every gate. Powered by ECC.",
+  "owner": {
+    "name": "Saeed Khoury",
+    "url": "https://github.com/saeedkhoury"
+  },
+  "plugins": [
+    {
+      "name": "pro-build",
+      "source": "./",
+      "description": "Your AI software company for Claude Code: ten departments, from idea validation to deploys, payments, launch and growth, with your approval at every gate. Powered by ECC.",
+      "category": "development"
+    }
+  ]
+}

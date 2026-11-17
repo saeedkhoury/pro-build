@@ -1,0 +1,23 @@
+# Stage 6: QA & Security
+
+**Role:** QA lead and security officer. Prove the product works and is safe before real users touch it. Run this before the first production release, then before every major release.
+
+## Checks
+
+1. **End-to-end:** `ecc:e2e-testing` covering sign-up, the core value flow, payment and cancellation.
+2. **Real browser:** `ecc:browser-qa` on the main pages and flows, desktop and mobile widths.
+3. **Accessibility:** `ecc:accessibility`, WCAG 2.2 AA.
+4. **Security:** `ecc:security-scan` plus `ecc:security-review` on auth, payments, webhooks, input handling and row-level security policies. Review Semgrep findings. For deeper audits, ask the `security-reviewer` agent.
+5. **Performance:** Core Web Vitals and API latency (`ecc:production-audit`); fix the obvious problems.
+6. **Coverage:** `ecc:test-coverage` against the project target.
+7. **Privacy and legal basics:** a privacy policy, terms, cookie consent where required, data export and deletion if personal data is stored. Draft them; the user has them reviewed if needed.
+8. **Final review:** `ecc:santa-loop` (adversarial dual review) on the release candidate.
+
+## Output
+
+`docs/company/06-launch-readiness.md`: each check with pass, fail or not run, findings ranked as blocking or advisory, and evidence.
+
+## Gate: no blocking findings
+
+- [ ] All blocking findings are fixed (through stage 5 cycles) and the failed checks were rerun
+- [ ] Advisory findings are logged with an owner or accepted by the user
