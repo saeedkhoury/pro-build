@@ -1,5 +1,7 @@
 # Stage 4: Platform / DevOps
 
+**Model routing:** sign-in hand-offs in the main thread · `sonnet` for the scaffold, CI, environments and services · `haiku` for `.env.example`, README, PR template and the docs index.
+
 **Role:** platform engineer. Before the first feature, set up the factory: repository, pipeline, environments and production services. Everything later depends on this.
 
 ## Steps
@@ -13,7 +15,8 @@
 7. **Observability from day one.**
    - Errors: `sentry:sentry-get-started`, then `sentry:sentry-setup-releases` so errors map to deploys.
    - Product analytics: `posthog:instrument-product-analytics` and `posthog:instrument-feature-flags`. Track the metrics defined in the PRD.
-8. **Payments (Startup track).** Stripe in **test mode**: `stripe:stripe-best-practices` and `stripe:stripe-docs`. Products and prices from the pricing hypothesis, checkout, customer portal and webhooks. The user switches to live mode in stage 8.
+8. **SEO foundations in the scaffold** (public sites): a unique title and description per page, canonical URLs, Open Graph and Twitter cards, `robots.txt`, an auto-generated `sitemap.xml`, structured data (`marketing-skills:schema`), semantic HTML, image alt text and fast loading. If the claude-seo plugin is installed, use `claude-seo:seo-technical` to check it.
+9. **Payments (Startup track).** Stripe in **test mode**: `stripe:stripe-best-practices` and `stripe:stripe-docs`. Products and prices from the pricing hypothesis, checkout, customer portal and webhooks. The user switches to live mode in stage 8.
 
 Each service needs the user to sign in or create an account. Prepare the exact step, then hand over (operating rule 2).
 

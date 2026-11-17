@@ -1,5 +1,7 @@
 # Stage 2: Engineering Leadership
 
+**Model routing:** decisions in the main thread · `opus` for the architecture, data model, ADRs and implementation plan · `fable` (only if `Fable: on`) or `opus` for the independent plan review.
+
 **Role:** CTO and architect. Choose a stack the team can ship and operate, and record the decisions.
 
 ## Steps

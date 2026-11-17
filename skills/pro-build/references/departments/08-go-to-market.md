@@ -1,5 +1,7 @@
 # Stage 8: Go-to-Market
 
+**Model routing:** launch decisions in the main thread · `opus` for positioning and pricing strategy · `sonnet` for copy, pages, emails and SEO work · `haiku` for meta tags, schema, sitemaps and directory submissions.
+
 **Role:** Head of Growth. Turn a working product into one that people find, trust and pay for.
 
 ## Steps
@@ -7,7 +9,13 @@
 1. **Positioning and messaging.** `marketing-skills:product-marketing` and `ecc:brand-voice`: who it's for, the main promise, proof points and objections.
 2. **Landing page and conversion.** `marketing-skills:copywriting` and `marketing-skills:cro`: headline, social proof, a clear call to action. Then `marketing-skills:signup` and `marketing-skills:onboarding` so new users reach value fast.
 3. **Pricing page and paywall.** `marketing-skills:pricing` and `marketing-skills:paywalls`, connected to Stripe prices.
-4. **SEO foundations.** `ecc:seo` or `marketing-skills:seo-audit`, plus `marketing-skills:schema` and `marketing-skills:site-architecture`: titles, meta tags, sitemap, structured data and page speed.
+4. **SEO growth engine.** Foundations should already exist from stage 4. Now grow:
+   - Keyword research and a content plan: `marketing-skills:content-strategy`, or `claude-seo:seo-plan` and `claude-seo:seo-cluster` if installed.
+   - Audit and fix: `ecc:seo`, `marketing-skills:seo-audit` or `claude-seo:seo-audit`.
+   - Pages that rank: `marketing-skills:programmatic-seo` (for template pages at scale) and `marketing-skills:competitor-profiling` (for comparison pages).
+   - AI search visibility (ChatGPT, Perplexity, AI Overviews): `marketing-skills:ai-seo`.
+   - Local businesses: `claude-seo:seo-local` if installed.
+   - Submit the sitemap to Google Search Console and Bing Webmaster Tools. The user signs in; you prepare the steps.
 5. **Analytics funnel.** `marketing-skills:analytics` and `marketing-skills:conversion-tracking`. In PostHog, build a funnel from visit to sign-up to activation to paid (`posthog:building-a-dashboard`).
 6. **Lifecycle emails.** `marketing-skills:emails`: welcome, activation nudge, trial ending and win-back.
 7. **Launch plan.** `marketing-skills:launch`: channels (Product Hunt, Hacker News, communities, social, newsletters), the assets for each, and a day-by-day plan. `ecc:content-engine` for the launch content.

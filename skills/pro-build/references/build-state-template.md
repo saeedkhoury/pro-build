@@ -9,6 +9,8 @@ Copy to the project root as `BUILD-STATE.md` and keep it current at every gate.
 - Stage: <0-9> <department>
 - Next step: <one line>
 - Last updated: <yyyy-mm-dd>
+- Model policy: auto routing (haiku / sonnet / opus) · Fable: off
+- Main-session model: <sonnet | opus>
 
 ## Gates
 | # | Department | Status | Date | Artifact |
@@ -52,6 +54,11 @@ Copy to the project root as `BUILD-STATE.md` and keep it current at every gate.
 | Metric | Target | Last week | This week |
 |---|---|---|---|
 | North Star: <name> | | | |
+
+## Model log
+| Stage | Main work done by | Notes |
+|---|---|---|
+| | | |
 
 ## Risks and blockers
 - <risk> (owner, mitigation)

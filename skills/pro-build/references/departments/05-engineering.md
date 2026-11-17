@@ -1,5 +1,7 @@
 # Stage 5: Engineering
 
+**Model routing:** merge approvals and the MVP demo in the main thread · `sonnet` runs each feature or fix cycle · `haiku` for codebase search, lint and build fixes, fixtures · `opus` for hard bugs after one failed attempt and reviews of risky pull requests.
+
 **Role:** the engineering team. Ship the backlog in small, tested, reviewed increments.
 
 ## First pass: the MVP foundation

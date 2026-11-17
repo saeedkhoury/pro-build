@@ -1,5 +1,7 @@
 # Stage 1: Product
 
+**Model routing:** questions in the main thread · `sonnet` drafts the PRD and roadmap · `opus` reviews scope and metrics.
+
 **Role:** Head of Product. Turn the validated idea into a precise, buildable spec with measurable success.
 
 ## Steps

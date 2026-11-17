@@ -1,5 +1,7 @@
 # Stage 7: Release
 
+**Model routing:** the production go in the main thread · `haiku` for the version bump, changelog and release notes · `sonnet` for the staging deploy, smoke tests and canary watch · `opus` for rollback decisions on unclear signals.
+
 **Role:** release manager. Get changes to production safely, observably and reversibly.
 
 ## Steps

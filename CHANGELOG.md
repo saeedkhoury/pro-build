@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.2.0 (2026-11-17)
+
+- **Smart model routing:** the main thread talks with you and runs the gates; self-contained work goes to helper agents on Haiku (mechanical), Sonnet (building, the default) or Opus (strategy, architecture, security), with Fable as an opt-in top tier that is off by default because it may use credits. It escalates one tier on failure, never goes below Sonnet for payments, auth or security, and only delegates when it pays off. Each department playbook has its own routing line; the full table is in `references/model-routing.md`.
+- **CEO briefings:** every gate is a one-minute briefing (decision, artifacts, numbers, risks, recommendation, options).
+- **SEO throughout:** site architecture in Design, technical SEO in the scaffold, SEO and AI-search checks in QA, and a content and ranking engine in Go-to-Market. Optional claude-seo integration.
+- Kickoff now sets the model policy (main-session model, Fable on or off), and `BUILD-STATE.md` tracks it in a model log.
+
 ## 2.1.0 (2026-11-17)
 
 - **Kickoff for every project:** an adaptive discovery interview (2–4 questions per round, with clickable options), a Project Brief the user must approve, and a track recommendation based on the brief. Previously the Product track skipped all questions.

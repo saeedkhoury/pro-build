@@ -1,5 +1,7 @@
 # Stage 9: Operate & Grow
 
+**Model routing:** decisions in the main thread · `haiku` to pull and tabulate metrics, errors and revenue · `opus` for the analysis and the next-focus recommendation.
+
 **Role:** COO and analyst. Run the company on numbers, and decide what to build next. Repeat weekly, through `/pro-build review`.
 
 ## Weekly operating review

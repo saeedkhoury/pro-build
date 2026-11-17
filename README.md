@@ -6,13 +6,13 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square)](https://code.claude.com/docs/en/plugins)
-[![Version](https://img.shields.io/badge/version-2.1.0-7c3aed?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.2.0-7c3aed?style=flat-square)](CHANGELOG.md)
 [![Powered by ECC](https://img.shields.io/badge/powered%20by-ECC-0ea5e9?style=flat-square)](https://github.com/affaan-m/ECC)
 
 **Run every project like a real software company.**<br>
 Describe your idea. pro-build interviews you until it understands it, writes the docs, builds the MVP, then ships and grows it, with you as CEO approving every gate.
 
-[Quick start](#-quick-start) · [The flow](#-the-flow) · [The company](#-the-company) · [How it works](#-how-it-works) · [Tracks](#-tracks) · [Usage](#-usage) · [Toolkit](#-toolkit) · [FAQ](#-faq)
+[Quick start](#-quick-start) · [The flow](#-the-flow) · [The company](#-the-company) · [How it works](#-how-it-works) · [Tracks](#-tracks) · [Model routing](#-smart-model-routing) · [Usage](#-usage) · [Toolkit](#-toolkit) · [FAQ](#-faq)
 
 </div>
 
@@ -31,6 +31,8 @@ AI agents can write a lot of code fast. Real products also need everything aroun
 - 🏭 **Builds the factory first.** Repository, CI, preview, staging and production environments, error monitoring, analytics and payments are wired up *before* the first feature.
 - 🧪 **Ships safely.** Test-driven features through pull requests, QA and security gates, staged releases, rollback plans and canary monitoring.
 - 💰 **Launches to earn.** Positioning, landing-page conversion, pricing and paywall, SEO, a funnel, lifecycle emails and a live-payments checklist.
+- 🧠 **Routes every task to the right model.** Haiku for mechanical work, Sonnet for building, Opus for strategy and security, and Fable (opt-in) for the hardest reviews. Top quality where it matters, fewer tokens everywhere else.
+- 🔎 **SEO from day one.** Site structure in Design, technical SEO in the scaffold, an SEO and AI-search audit in QA, and a content and ranking engine at launch.
 - 📈 **Runs on numbers.** Weekly operating reviews of metrics, revenue and errors, which decide what to build next.
 - 🛡️ **Keeps you in charge.** Live payments, production deploys, purchases and publishing always stay with you.
 
@@ -155,6 +157,10 @@ flowchart LR
 
 Every department ends at a gate: Claude shows the artifacts, the checklist and the risks, then asks you to **approve, revise or stop**.
 
+### CEO briefings
+
+Every gate is presented as a one-minute CEO briefing: **decision needed · what we produced · key numbers · top risks · recommendation · approve / revise / stop.**
+
 ### What stays with you (the CEO)
 
 pro-build prepares these and explains each one, but never does them for you:
@@ -177,6 +183,24 @@ Not every project needs the whole company. Pick a track at the start:
 | 🧰 **Product** | Internal tools, portfolio projects, non-commercial apps | 1 → 7, then 9 |
 | 🌐 **Client site** | Professional websites for businesses and people | Brief → 1 → 3 → 4 → 5 → 6 → 7 → SEO and conversion |
 | 🏗️ **Existing project** | A codebase that already exists | Audit, then join at Engineering or Operate & Grow |
+
+---
+
+## 🧠 Smart model routing
+
+The main conversation (your `/model`) talks with you and runs the gates. Self-contained work is handed to helper agents on the **cheapest model that does it well**:
+
+| Model | Gets | Examples |
+|:--|:--|:--|
+| ⚡ **Haiku** | Mechanical, low-risk work | Codebase search, summaries, formatting, boilerplate, changelogs, status reports, meta tags |
+| 🛠️ **Sonnet** (default) | Building and writing | Features, tests, refactors, CI/CD, PRD drafts, copy, SEO implementation |
+| 🧠 **Opus** | Decisions where mistakes are expensive | Strategy, pricing, architecture, security review, hard bugs, risky reviews |
+| 💎 **Fable** (opt-in) | The hardest reasoning | Independent plan review, major-release review. Off by default, because it may use paid credits |
+
+Rules: start cheap and escalate one tier on failure; never below Sonnet for payments, auth, security or data migrations; delegate only big chunks (each helper has a start-up cost); and run the main session on Sonnet day to day. That last one is the biggest saving. Full table per department: [`references/model-routing.md`](skills/pro-build/references/model-routing.md).
+
+> [!NOTE]
+> Verified in a live test: given a mechanical task, a fresh session handed it to a helper agent, and Claude Code's usage report showed it ran on Haiku.
 
 ---
 
@@ -267,6 +291,7 @@ pro-build orchestrates other tools; it doesn't reinvent them.
 | **Errors** | [Sentry](https://github.com/getsentry/plugin-claude) |
 | **Analytics and experiments** | [PostHog](https://github.com/PostHog/ai-plugin) |
 | **Security scanning** | [Semgrep](https://github.com/semgrep/mcp-marketplace) |
+| **SEO** (optional) | [claude-seo](https://github.com/AgriciDaniel/claude-seo): audits, technical, local, clusters and AI search |
 | **Growth** | [marketingskills](https://github.com/coreyhaines31/marketingskills): 53 skills for conversion, pricing, launch, SEO and retention |
 | **Design taste** | [taste-skill](https://github.com/Leonxlnx/taste-skill) |
 | **Independent review** | [claudex-loop](https://github.com/chaseai-yt/claudex-loop) (Claude ⇄ Codex) |

@@ -84,6 +84,17 @@ Record the track in `BUILD-STATE.md`. Never drop a stage silently: say which one
 8. **Evidence over claims.** A stage is done when its proof exists: tests pass, a URL responds, a metric is recorded. Say plainly what was not verified.
 9. **Protect context.** One feature per session in stage 5. At the end of a long session, offer `ecc:save-session`; when context runs high, run `ecc:context-budget`.
 10. **Honesty about money.** No workflow guarantees revenue. Stage 0 exists to test demand before building, and stage 9 measures it after launch. Report results as they are.
+11. **Model routing: right model, fewest tokens.** Follow `references/model-routing.md`. Even if that file can't be read, these rules apply:
+   - The main thread (the user's `/model`) does the conversation, gates and coordination. Hand self-contained work to subagents with the **Agent tool**, setting `model`:
+     - `haiku` for mechanical work (search, summaries, formatting, boilerplate, changelogs, status updates);
+     - `sonnet` for implementation, tests and drafts (the default);
+     - `opus` for strategy, architecture, security, hard bugs and risky reviews.
+   - `fable` is **opt-in only**: it can need usage credits. Use it only if `BUILD-STATE.md` says `Fable: on`; otherwise use `opus`.
+   - Start at the cheapest tier that fits and escalate one tier on failure. Never go below `sonnet` for security, payments, auth or data migrations.
+   - **Delegate only when it pays off.** Every subagent has a fixed start-up cost, because it loads the whole tool and skill context. Delegate big chunks of work: roughly 10+ tool calls, many files, or long outputs. Batch small tasks together. Do anything that takes a few tool calls directly in the main thread.
+   - **The biggest saving is the main-session model.** Run the main session on Sonnet day to day, and switch to Opus only for deep-thinking stages.
+   - At Kickoff, recommend running the main session on Sonnet (`/model sonnet`), and on Opus for stages 0–2 of big projects. Ask once whether to enable Fable, defaulting to off.
+12. **CEO briefings at every gate.** Present each gate as a short briefing: **Decision needed** (one line) · **What we produced** (links) · **Key numbers** (cost, scope, metrics) · **Risks** (top 3) · **Recommendation** · **Options** (approve / revise / stop). The user is the CEO; keep briefings readable in under a minute.
 
 ## Artifact layout
 

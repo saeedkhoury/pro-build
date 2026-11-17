@@ -61,8 +61,17 @@ Revise until the user approves it. Save it as `docs/company/00-brief.md`.
 
 Based on the brief, recommend **one** track from `SKILL.md`, list the stages it runs and the ones it skips, and ask the user to confirm. Then create `BUILD-STATE.md` from `references/build-state-template.md`, record the track, and start the first stage.
 
+## 5. Model policy
+
+In the same message as the track recommendation, set the model policy (see `references/model-routing.md`):
+
+- Recommend the main-session model: Sonnet for most projects (`/model sonnet`), Opus for Kickoff and stages 0–2 of large or high-stakes ones.
+- Ask once: **"Enable Fable for the hardest reviews? It may use paid usage credits."** The default is **off**.
+- Record `Model policy` and `Fable: on/off` in `BUILD-STATE.md`.
+
 ## Gate K: brief approved
 
 - [ ] The purpose, goal, users and v1 core value are clear
 - [ ] Assumptions and open questions are written down
 - [ ] The user approved the brief and the track
+- [ ] The model policy is recorded (Fable on/off)

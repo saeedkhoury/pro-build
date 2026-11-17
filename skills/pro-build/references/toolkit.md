@@ -30,6 +30,7 @@ These plugins connect to hosted services; each needs the user to sign in once (r
 |:--|:--|:--|
 | marketingskills (53 growth skills) | 0, 8, 9 | `/plugin marketplace add coreyhaines31/marketingskills` then `/plugin install marketing-skills@marketingskills` |
 | taste-skill (design taste) | 3 | `/plugin marketplace add Leonxlnx/taste-skill` then `/plugin install taste-skill@taste-skill` |
+| claude-seo (SEO suite: audits, technical, local, clusters, AI search) | 4, 6, 8 | `/plugin marketplace add AgriciDaniel/claude-seo` then `/plugin install claude-seo@agricidaniel-claude-seo` |
 | claudex-loop (cross-model plan review) | 2, 5 | `/plugin marketplace add chaseai-yt/claudex-loop` then `/plugin install claudex-loop@claudex-loop` (also needs the Codex CLI) |
 
 ## Fallbacks
@@ -39,6 +40,8 @@ These plugins connect to hosted services; each needs the user to sign in once (r
 | claudex-loop or Codex | `ecc:council` or `ecc:santa-loop` for the independent review |
 | taste-skill | `ecc:frontend-design-direction` alone, plus a strict "no generic AI look" self-check |
 | marketingskills | `ecc:seo`, `ecc:brand-voice`, `ecc:content-engine` and `ecc:market-research` |
+| claude-seo | `ecc:seo` and the marketingskills SEO skills |
+| Fable off or unavailable | `opus` (see `references/model-routing.md`) |
 | Vercel | Cloudflare (`cloudflare:wrangler`), or document a manual deploy |
 | Supabase | Postgres via `ecc:postgres-patterns` and `ecc:database-migrations` |
 | PostHog or Sentry not signed in | Add the SDKs with environment-variable placeholders; mark the gate check "blocked: sign-in needed" |
