@@ -14,10 +14,14 @@
 4. **Security and privacy by design.** Data classification, auth model, secrets handling, personal-data handling and backups. Use `ecc:security-review` on the design itself.
 5. **Independent plan review.** Run `claudex-loop:claudex-loop` with `mode=review` on the PRD and architecture so Codex challenges them. Without Codex, run `ecc:council`. Log each finding as accepted or rejected, with the reason.
 6. **Cost estimate.** The monthly cost at 0, 100 and 1,000 users across hosting, database, email and monitoring.
+7. **Implementation plan.** Use `ecc:plan` with the PRD and architecture to write `docs/company/02-plan.md`:
+   - **Milestones.** M1 is the MVP: the smallest end-to-end version that delivers the core value from the brief. Then M2, M3, … from the roadmap.
+   - For each milestone: its goal, the tasks (each small enough for one pull request), dependencies, acceptance criteria, risks, and the proof that it's done.
+   - A definition of done that applies to every task: tests pass, CI is green, it's reviewed, docs are updated.
 
 ## Output
 
-`docs/company/02-architecture.md` and `docs/company/adr/*.md`.
+`docs/company/02-architecture.md`, `docs/company/adr/*.md` and `docs/company/02-plan.md`. Add them to `docs/README.md`.
 
 ## Gate: architecture approved
 
@@ -26,3 +30,4 @@
 - [ ] There are decision records for the major choices
 - [ ] The plan review is done and findings are resolved
 - [ ] The cost estimate is accepted by the user
+- [ ] The implementation plan defines M1 (the MVP), with tasks and acceptance criteria

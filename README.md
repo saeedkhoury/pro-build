@@ -6,13 +6,13 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square)](https://code.claude.com/docs/en/plugins)
-[![Version](https://img.shields.io/badge/version-2.0.0-7c3aed?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.1.0-7c3aed?style=flat-square)](CHANGELOG.md)
 [![Powered by ECC](https://img.shields.io/badge/powered%20by-ECC-0ea5e9?style=flat-square)](https://github.com/affaan-m/ECC)
 
 **Run every project like a real software company.**<br>
-Ten departments, from validating the idea to deploys, payments, launch and growth, with you as CEO approving every gate.
+Describe your idea. pro-build interviews you until it understands it, writes the docs, builds the MVP, then ships and grows it, with you as CEO approving every gate.
 
-[Quick start](#-quick-start) · [The company](#-the-company) · [How it works](#-how-it-works) · [Tracks](#-tracks) · [Usage](#-usage) · [Toolkit](#-toolkit) · [FAQ](#-faq)
+[Quick start](#-quick-start) · [The flow](#-the-flow) · [The company](#-the-company) · [How it works](#-how-it-works) · [Tracks](#-tracks) · [Usage](#-usage) · [Toolkit](#-toolkit) · [FAQ](#-faq)
 
 </div>
 
@@ -24,6 +24,7 @@ AI agents can write a lot of code fast. Real products also need everything aroun
 
 **pro-build gives Claude Code the structure of a startup.** Each department has a playbook, uses best-in-class tools, produces real artifacts and ends at a gate that only you can approve.
 
+- 🎤 **Understands before it builds.** It interviews you in short rounds (with clickable options) about purpose, goal, users, scope and constraints, then writes a Project Brief for you to approve.
 - 🧭 **Validates first.** Founder Office interviews you, researches the market and competitors, and recommends **go, pivot or stop** before any code is written.
 - 📐 **Plans like a product team.** A PRD with success metrics, an architecture with decision records, and an independent review of the plan by a second model.
 - 🎨 **Designs with taste.** A visual direction and design system that don't look AI-generated.
@@ -73,16 +74,50 @@ AI agents can write a lot of code fast. Real products also need everything aroun
 
 ---
 
+## 🧭 The flow
+
+```text
+You:  /pro-build:pro-build "an app that helps gyms manage memberships"
+
+1. Kickoff        → asks 2–4 questions per round: purpose, goal, users, must-haves,
+                    platform, business model, data, constraints, references
+                  → "Here's what I understood" → a Project Brief you approve
+                  → recommends a track (Startup / Product / Client site / Existing)
+2. Documents      → validation · PRD · roadmap · architecture · decision records
+                    · implementation plan (M1 = MVP) · design system
+3. Factory        → repository · README · CLAUDE.md · .env.example · CI/CD
+                    · preview / staging / production · monitoring · analytics · payments
+4. MVP            → builds milestone M1 test-first, shows you the running app
+5. Ship           → QA and security gate → staged release → canary watch
+6. Sell and grow  → landing page, pricing, SEO, launch → weekly metrics reviews
+```
+
+### Every project gets
+
+| Docs | Engineering | Operations |
+|:--|:--|:--|
+| Project Brief | `README.md` | `BUILD-STATE.md` (the company's memory) |
+| Market validation | `CLAUDE.md` (rules for future AI sessions) | Platform runbook (deploy and rollback) |
+| PRD and roadmap | `.env.example` | Launch-readiness report |
+| Architecture and decision records | CI workflow and pull-request template | Release notes and `CHANGELOG.md` |
+| **Implementation plan (M1 = MVP)** | Test suite | Go-to-market plan |
+| Design system | | Weekly operating reviews |
+
+The full list, and which stage creates each file: [`references/project-kit.md`](skills/pro-build/references/project-kit.md).
+
+---
+
 ## 🏢 The company
 
 | # | Department | Role | What it delivers | Gate |
 |:--:|:--|:--|:--|:--|
+| K | **Kickoff** | Discovery lead | Adaptive interview, Project Brief, track recommendation | **Brief approved** |
 | 0 | **Founder Office** | Founder advisor | Customer interview, market and competitors, pricing hypothesis, risks, demand test | **Go / pivot / stop** |
 | 1 | **Product** | Head of Product | PRD, MVP scope, North Star and input metrics, roadmap and backlog | Spec approved |
-| 2 | **Engineering Leadership** | CTO | Stack, data and auth model, decision records, cost estimate, independent plan review | Architecture approved |
+| 2 | **Engineering Leadership** | CTO | Stack, data and auth model, decision records, cost estimate, independent plan review, implementation plan | Architecture and plan approved |
 | 3 | **Design** | Head of Design | Visual direction, design tokens, components, key screens | Design approved |
-| 4 | **Platform / DevOps** | Platform engineer | Repository, CI, preview, staging and production, Supabase, Sentry, PostHog, Stripe (test mode) | Pipeline green |
-| 5 | **Engineering** | Engineering team | Test-driven features, one pull request at a time, with review | Each merge |
+| 4 | **Platform / DevOps** | Platform engineer | Repository, README, CLAUDE.md, CI, preview, staging and production, Supabase, Sentry, PostHog, Stripe (test mode) | Pipeline green |
+| 5 | **Engineering** | Engineering team | MVP (milestone M1), then test-driven features, one pull request at a time | MVP demo, then each merge |
 | 6 | **QA & Security** | QA lead + security officer | End-to-end, browser, accessibility, security, performance, coverage, privacy | No blocking findings |
 | 7 | **Release** | Release manager | Versioning, release notes, staging smoke test, rollback plan, canary watch | **Production go** |
 | 8 | **Go-to-Market** | Head of Growth | Positioning, landing page, pricing and paywall, SEO, funnel, emails, launch plan, live payments | **Launch go** |
@@ -96,7 +131,10 @@ Each department has its own playbook in [`skills/pro-build/references/department
 
 ```mermaid
 flowchart LR
-    Idea([💡 Idea]) --> D0[0 · Founder Office]
+    Idea([💡 Idea]) --> K[K · Kickoff interview]
+    K --> GK{Brief OK?}
+    GK -- revise --> K
+    GK -- yes --> D0[0 · Founder Office]
     D0 --> G0{Go?}
     G0 -- stop --> X([Saved you months])
     G0 -- pivot --> D0
@@ -165,11 +203,25 @@ Or just ask: *"Let's build this like a real company."*
 ```text
 > /pro-build:pro-build "a booking app for independent barbers"
 
-Using pro-build v2. Stage 0: Founder Office.
-Track? I recommend Startup: you want barbers to pay a monthly fee.
+Using pro-build v2. Kickoff.
 
-Q1. Who exactly has this problem? A solo barber, a shop owner, or both?
+Round 1
+  1. Who uses it: solo barbers, shop owners, or both?        [Solo barbers ✓] [Shops] [Both]
+  2. What's the main goal in 3 months?                       [Paying users ✓] [Launch] [Portfolio]
+  3. Must-have for v1: booking only, or booking + payments?
+Round 2
+  4. Web app, mobile app, or both?
+  5. Any languages besides English?
 ...
+Here's what I understood (Project Brief):
+  One-liner: online booking with no-show deposits for solo barbers
+  Goal: 20 paying barbers in 3 months · Platform: mobile-first web app
+  Must-have: booking page, calendar, deposits, SMS reminders · Later: shop teams
+Is this right? → approved
+
+Recommended track: Startup (all departments). Confirm? → yes
+
+Stage 0: Founder Office.
 ✓ docs/company/00-validation.md
   Competitors: Booksy, Square Appointments, Fresha, plus WhatsApp and pen and paper
   Pricing hypothesis: $19/month per chair, with a free tier up to 30 bookings

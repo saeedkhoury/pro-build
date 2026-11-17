@@ -13,9 +13,10 @@ Copy to the project root as `BUILD-STATE.md` and keep it current at every gate.
 ## Gates
 | # | Department | Status | Date | Artifact |
 |---|---|---|---|---|
+| K | Kickoff | approved / pending | | docs/company/00-brief.md |
 | 0 | Founder Office | approved / pending / skipped (reason) | | docs/company/00-validation.md |
 | 1 | Product | | | docs/company/01-prd.md |
-| 2 | Engineering Leadership | | | docs/company/02-architecture.md |
+| 2 | Engineering Leadership | | | docs/company/02-architecture.md, 02-plan.md |
 | 3 | Design | | | docs/company/03-design/ |
 | 4 | Platform / DevOps | | | docs/company/04-platform.md |
 | 5 | Engineering | ongoing | | backlog below |

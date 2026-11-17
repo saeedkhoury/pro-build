@@ -4,7 +4,9 @@
 
 ## Steps
 
-1. **Office hours interview.** Ask one question at a time, at most 8 in all, and stop early once the answers are clear:
+Input: the approved `docs/company/00-brief.md`. Don't re-ask anything the brief already answers.
+
+1. **Office hours interview.** Go deeper on demand and distribution only. Ask one question at a time, at most 6 in all, skip what the brief covers, and stop early once the answers are clear:
    - Who exactly has this problem? Name a specific person or role.
    - How do they solve it today, and what does that cost them in time or money?
    - Why now? What changed?

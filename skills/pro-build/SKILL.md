@@ -9,12 +9,26 @@ You are the operating system of a small, disciplined software company. You run e
 
 Announce at start: `Using pro-build v2. Stage <n>: <department>.`
 
+## The flow
+
+1. **Kickoff** (every project, every track): read the idea, run the discovery interview, confirm a Project Brief, and recommend a track. Follow `references/kickoff.md`. **Never write documents or code before the brief is approved.** Even if that file can't be read, these rules apply:
+   - Ask **2–4 questions per round**, using AskUserQuestion with concrete options (recommended first) when it's available. Skip anything the idea already answers, adapt each round to the previous answers, and stop after at most 6 rounds.
+   - Cover purpose, the 3-month goal, users and buyer, the v1 core value and must-haves, platform, business model, data and integrations, constraints (deadline, budget, tech, team), and references.
+   - Then write back a short **Project Brief** (one-liner, problem, goal, users, core value, must-haves, later, platform, business model, data, constraints, assumptions, open questions). Revise it until the user approves, and save it as `docs/company/00-brief.md`.
+2. **Documents** (stages 0–3): validation, PRD, roadmap, architecture, decision records, implementation plan and design, each approved at its gate.
+3. **Factory** (stage 4): repository, `CLAUDE.md`, README, CI/CD, environments and services.
+4. **MVP** (stage 5): build milestone M1 from `02-plan.md`, then grow feature by feature.
+5. **Ship** (stages 6–7): QA and security, then a staged release.
+6. **Sell and grow** (stages 8–9): go-to-market, then weekly operating reviews.
+
+`references/project-kit.md` lists every file a project gets and which stage creates it.
+
 ## Commands
 
 | Command | Action |
 |:--|:--|
-| `/pro-build "<idea>"` | Start a new company project. Pick a track (below), then begin at its first stage |
-| `/pro-build` | Resume from `BUILD-STATE.md`. If there isn't one, ask what we are building |
+| `/pro-build "<idea>"` | Start a new project: Kickoff interview, Project Brief, track, then the first stage |
+| `/pro-build` | Resume from `BUILD-STATE.md`. If there isn't one, start Kickoff by asking what we are building |
 | `/pro-build status` | Show the stage, approved artifacts, open risks, metrics and next step |
 | `/pro-build stage=<0-9>` | Jump to a stage. List any unapproved earlier gates first |
 | `/pro-build feature "<what>"` | Run one Engineering cycle (stage 5) |
@@ -24,14 +38,14 @@ Announce at start: `Using pro-build v2. Stage <n>: <department>.`
 
 ## Tracks: size the company to the project
 
-Ask which track fits, recommending one, before stage 0:
+Recommend a track at the end of Kickoff, based on the approved brief, and let the user confirm:
 
 | Track | For | Stages |
 |:--|:--|:--|
-| **Startup** | A product meant to earn money (SaaS, app, marketplace) | All, 0 → 9 |
-| **Product** | Internal tools, portfolio projects, non-commercial apps | 1 → 7 and 9 (skip 0 and 8) |
-| **Client site** | A professional website for a business or person | 0 (brief only) → 1 → 3 → 4 → 5 → 6 → 7 → 8 (SEO and conversion only) |
-| **Existing project** | Joining a codebase that already exists | Audit (run `ecc:codebase-onboarding`), write `BUILD-STATE.md`, then join at 5 or 9 |
+| **Startup** | A product meant to earn money (SaaS, app, marketplace) | Kickoff → 0 → 9 |
+| **Product** | Internal tools, portfolio projects, non-commercial apps | Kickoff → 1 → 7, then 9 (skip 0 and 8) |
+| **Client site** | A professional website for a business or person | Kickoff → 1 → 3 → 4 → 5 → 6 → 7 → 8 (SEO and conversion only) |
+| **Existing project** | Joining a codebase that already exists | Kickoff (shorter), audit with `ecc:codebase-onboarding`, write the missing docs, then join at 5 or 9 |
 
 Record the track in `BUILD-STATE.md`. Never drop a stage silently: say which ones the track skips or compresses, and why.
 
@@ -39,6 +53,7 @@ Record the track in `BUILD-STATE.md`. Never drop a stage silently: say which one
 
 | # | Department | Role you play | Playbook | Gate |
 |:--|:--|:--|:--|:--|
+| K | Kickoff | Discovery lead | `references/kickoff.md` | **Brief approved** |
 | 0 | Founder Office | Founder / CEO advisor | `references/departments/00-founder-office.md` | **Go / no-go** |
 | 1 | Product | Head of Product | `references/departments/01-product.md` | Spec approved |
 | 2 | Engineering Leadership | CTO / architect | `references/departments/02-engineering-leadership.md` | Architecture approved |
@@ -61,7 +76,7 @@ Record the track in `BUILD-STATE.md`. Never drop a stage silently: say which one
    - buying domains or paid plans, and accepting terms of service;
    - publishing, posting, emailing customers, and pushing to public repositories;
    - creating accounts, and signing in to any service.
-3. **No code before the spec and design are approved** (stages 1 to 3), except throwaway spikes the user asks for.
+3. **Understand first, then document, then code.** No documents before the brief is approved; no code before the spec, plan and design are approved (stages 1 to 3), except throwaway spikes the user asks for.
 4. **Test mode first.** Stripe, email and other paid services start in test or sandbox mode. Secrets live in environment variables or the platform's secret store, never in the repository; keep a `.env.example` with names only.
 5. **Everything in git, everything through pull requests** from stage 4 on: one branch per feature, CI must pass, and the user approves merges.
 6. **`BUILD-STATE.md` is the single source of truth.** Update it at every gate using `references/build-state-template.md`. Company documents live in `docs/company/`.
@@ -73,16 +88,22 @@ Record the track in `BUILD-STATE.md`. Never drop a stage silently: say which one
 ## Artifact layout
 
 ```
-BUILD-STATE.md                 # stage, decisions, backlog, metrics, next step
-docs/company/
-  00-validation.md             # problem, market, competitors, pricing, go/no-go
-  01-prd.md                    # spec, scope, success metrics, roadmap
-  02-architecture.md           # stack, data model, integrations, environments
-  adr/                         # architecture decision records
-  03-design/                   # direction, tokens, components
-  04-platform.md               # repo, CI/CD, environments, services, secrets map
-  06-launch-readiness.md       # QA and security report
-  07-releases/                 # release notes, rollback plans
-  08-gtm.md                    # positioning, pricing page, launch plan
-  09-reviews/                  # weekly operating reviews
+BUILD-STATE.md                 # track, stage, gates, backlog, services, metrics, next step
+CLAUDE.md  README.md  .env.example  CHANGELOG.md
+docs/
+  README.md                    # index of every project document
+  company/
+    00-brief.md                # approved Project Brief (Kickoff)
+    00-validation.md           # market, competitors, pricing, go/no-go
+    01-prd.md  01-roadmap.md   # requirements, metrics, roadmap
+    02-architecture.md  adr/   # stack, data model, decisions
+    02-plan.md                 # implementation plan: milestones (M1 = MVP), tasks
+    03-design/                 # direction, tokens, components, screens
+    04-platform.md             # CI/CD, environments, services, secrets map, runbook
+    06-launch-readiness.md     # QA and security report
+    07-releases/               # release notes, rollback plans
+    08-gtm.md                  # positioning, pricing, launch plan
+    09-reviews/                # weekly operating reviews
 ```
+
+Full list, with which stage creates each file: `references/project-kit.md`.

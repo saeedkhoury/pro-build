@@ -4,7 +4,7 @@
 
 ## First pass: the MVP foundation
 
-Use `ecc:orch-build-mvp` with the PRD, architecture and design system, on a feature branch, opening a pull request to `main`.
+Build **milestone M1** from `docs/company/02-plan.md`. Use `ecc:orch-build-mvp` with the PRD, architecture, plan and design system, on a feature branch, opening a pull request to `main`. When M1 is merged, show the user the running MVP (a preview URL, or local run steps) and confirm before moving on to M2 and the backlog.
 
 ## Each cycle: one backlog item, one branch, one pull request
 
@@ -19,7 +19,7 @@ Use `ecc:orch-build-mvp` with the PRD, architecture and design system, on a feat
 
 For each cycle:
 
-1. Pick the top backlog item, then restate its acceptance criteria.
+1. Pick the next task from the current milestone in `02-plan.md` (or the top of the backlog), then restate its acceptance criteria.
 2. Branch `feat/<slug>` or `fix/<slug>`.
 3. Run the workflow: tests first, then implementation, then review.
 4. Add analytics events and a feature flag (`posthog:instrument-feature-flags`) for risky features.
