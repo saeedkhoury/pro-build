@@ -10,6 +10,7 @@
 2. **Real browser:** `ecc:browser-qa` on the main pages and flows, desktop and mobile widths.
 3. **Accessibility:** `ecc:accessibility`, WCAG 2.2 AA.
 4. **Security:** `ecc:security-scan` plus `ecc:security-review` on auth, payments, webhooks, input handling and row-level security policies. Review Semgrep findings. For deeper audits, ask the `security-reviewer` agent.
+4b. **Release exposure audit** (if REA is installed): run `audit-release-exposure` on the production build output, and `analyze-web-bundle` on the staging URL, through `rea:reverse-engineer-anything` (see `references/reverse-engineering.md`). Exposed credentials or production source maps are **blocking**. Without REA, check for `*.map` files and secret patterns in the build output by hand.
 5. **Performance:** Core Web Vitals and API latency (`ecc:production-audit`); fix the obvious problems.
 6. **SEO and AI-search readiness** (public sites): `ecc:seo` or `claude-seo:seo-audit` if installed. Check crawlability, indexability, metadata, structured data, Core Web Vitals, and visibility in AI search (`marketing-skills:ai-seo`). Fix the blocking issues.
 7. **Coverage:** `ecc:test-coverage` against the project target.

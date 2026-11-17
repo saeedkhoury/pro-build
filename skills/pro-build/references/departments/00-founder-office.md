@@ -17,6 +17,7 @@ Input: the approved `docs/company/00-brief.md`. Don't re-ask anything the brief 
    - What is the user's unfair advantage: skills, audience, access, data?
 2. **Market and competitors.** Use `ecc:market-research` and `ecc:competitive-platform-analysis`. For the customer side, use `marketing-skills:customer-research` and `marketing-skills:competitors`. Cite sources and separate facts from assumptions.
 3. **Business model and pricing hypothesis.** Use `marketing-skills:pricing`: who pays, how much, how often, and why that number. Name a model (subscription, usage-based, one-off, marketplace fee).
+3b. **Competitor teardown** (optional, if REA is installed): pick the 1–2 competitor features that matter most and analyse their public web app or installed app with `rea:reverse-engineer-anything`, following the rules in `references/reverse-engineering.md`. Understand, don't copy.
 4. **Product-lens check.** Use `ecc:product-lens` to pressure-test the value proposition.
 5. **Risks.** The top three ways this fails (demand, distribution, technical, legal or compliance), each with how to test it cheaply.
 6. **Demand test (recommended for the Startup track):** propose the cheapest proof of demand before stage 1, such as a waitlist page, five customer conversations, or a pre-sale. The user decides whether to run it.

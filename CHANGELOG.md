@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.4.0 (2026-11-17)
+
+- **REA (Reverse Engineer Anything) integration**, optional with fallbacks:
+  - **Stage 0:** competitor teardowns of public web apps and installed apps (understand, never copy).
+  - **Stage 6:** a release exposure audit of your own production build. An exposed `text.credential_markers` or `javascript.source_map_sources` check blocks launch.
+  - **Stage 7:** a release diff with `compare-application-versions` or `compare-artifacts`.
+  - **Existing project track:** recovering understanding when the source is missing.
+- Clear analysis rules: own, authorised or legitimately obtained public targets only; no copying; no bypassing DRM, licences, auth or paywalls. Details are in `references/reverse-engineering.md`.
+
 ## 2.3.0 (2026-11-17)
 
 - **GitHub spec-kit integration:** an optional spec-kit mode for large features. Stage 4 runs `specify init --integration claude` and writes the constitution from `CLAUDE.md`; stage 5 runs specify → clarify → plan → tasks → analyze → implement → converge inside pro-build's branch, review and approval gates. See `references/spec-kit.md`.

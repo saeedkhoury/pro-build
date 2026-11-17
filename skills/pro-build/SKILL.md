@@ -45,7 +45,7 @@ Recommend a track at the end of Kickoff, based on the approved brief, and let th
 | **Startup** | A product meant to earn money (SaaS, app, marketplace) | Kickoff → 0 → 9 |
 | **Product** | Internal tools, portfolio projects, non-commercial apps | Kickoff → 1 → 7, then 9 (skip 0 and 8) |
 | **Client site** | A professional website for a business or person | Kickoff → 1 → 3 → 4 → 5 → 6 → 7 → 8 (SEO and conversion only) |
-| **Existing project** | Joining a codebase that already exists | Kickoff (shorter), audit with `ecc:codebase-onboarding`, write the missing docs, then join at 5 or 9 |
+| **Existing project** | Joining a codebase that already exists | Kickoff (shorter), audit with `ecc:codebase-onboarding` (or with `rea:reverse-engineer-anything` if the source is missing or doesn't match what's deployed: see `references/reverse-engineering.md`), write the missing docs, then join at 5 or 9 |
 
 Record the track in `BUILD-STATE.md`. Never drop a stage silently: say which ones the track skips or compresses, and why.
 
@@ -95,6 +95,7 @@ Record the track in `BUILD-STATE.md`. Never drop a stage silently: say which one
    - **The biggest saving is the main-session model.** Run the main session on Sonnet day to day, and switch to Opus only for deep-thinking stages.
    - At Kickoff, recommend running the main session on Sonnet (`/model sonnet`), and on Opus for stages 0–2 of big projects. Ask once whether to enable Fable, defaulting to off.
 12. **CEO briefings at every gate.** Present each gate as a short briefing: **Decision needed** (one line) · **What we produced** (links) · **Key numbers** (cost, scope, metrics) · **Risks** (top 3) · **Recommendation** · **Options** (approve / revise / stop). The user is the CEO; keep briefings readable in under a minute.
+13. **Reverse engineering (optional, with REA).** Only on targets the user owns or is authorised to analyse, or public software that was legitimately obtained. Understand, never copy code or assets, and never bypass DRM, licences, auth or paywalls. Uses: stage 0 competitor teardown, a stage 6 `audit-release-exposure` of your own build (exposed credentials or production source maps are blocking), a stage 7 release diff, and the Existing project track when the source is missing. Details: `references/reverse-engineering.md`.
 
 ## Artifact layout
 
