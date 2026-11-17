@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square)](https://code.claude.com/docs/en/plugins)
-[![Version](https://img.shields.io/badge/version-2.2.0-7c3aed?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.3.0-7c3aed?style=flat-square)](CHANGELOG.md)
 [![Powered by ECC](https://img.shields.io/badge/powered%20by-ECC-0ea5e9?style=flat-square)](https://github.com/affaan-m/ECC)
 
 **Run every project like a real software company.**<br>
@@ -32,6 +32,7 @@ AI agents can write a lot of code fast. Real products also need everything aroun
 - 🧪 **Ships safely.** Test-driven features through pull requests, QA and security gates, staged releases, rollback plans and canary monitoring.
 - 💰 **Launches to earn.** Positioning, landing-page conversion, pricing and paywall, SEO, a funnel, lifecycle emails and a live-payments checklist.
 - 🧠 **Routes every task to the right model.** Haiku for mechanical work, Sonnet for building, Opus for strategy and security, and Fable (opt-in) for the hardest reviews. Top quality where it matters, fewer tokens everywhere else.
+- 📏 **Spec-driven when it matters.** Every plan gets a consistency check (requirement → task traceability), every milestone runs until it converges with the spec, and large features can use [GitHub spec-kit](https://github.com/github/spec-kit) mode.
 - 🔎 **SEO from day one.** Site structure in Design, technical SEO in the scaffold, an SEO and AI-search audit in QA, and a content and ranking engine at launch.
 - 📈 **Runs on numbers.** Weekly operating reviews of metrics, revenue and errors, which decide what to build next.
 - 🛡️ **Keeps you in charge.** Live payments, production deploys, purchases and publishing always stay with you.
@@ -89,7 +90,8 @@ You:  /pro-build:pro-build "an app that helps gyms manage memberships"
                     · implementation plan (M1 = MVP) · design system
 3. Factory        → repository · README · CLAUDE.md · .env.example · CI/CD
                     · preview / staging / production · monitoring · analytics · payments
-4. MVP            → builds milestone M1 test-first, shows you the running app
+4. MVP            → builds milestone M1 test-first, checks it against the spec
+                    until nothing is missing ("converged"), then shows you the running app
 5. Ship           → QA and security gate → staged release → canary watch
 6. Sell and grow  → landing page, pricing, SEO, launch → weekly metrics reviews
 ```
@@ -204,6 +206,19 @@ Rules: start cheap and escalate one tier on failure; never below Sonnet for paym
 
 ---
 
+## 📏 Spec-kit mode
+
+For large features, pro-build can hand the feature-level work to [GitHub spec-kit](https://github.com/github/spec-kit), while keeping the company docs, branches and gates:
+
+```text
+feat/<name> branch → /speckit-specify (from the PRD) → /speckit-clarify → /speckit-plan (within the architecture)
+→ /speckit-tasks → /speckit-analyze → /speckit-implement ⇄ /speckit-converge → pull request → your approval
+```
+
+Turn it on during Platform setup (stage 4) if `specify` is installed (`uv tool install specify-cli`). Without it, pro-build runs the same checks natively. Details: [`references/spec-kit.md`](skills/pro-build/references/spec-kit.md).
+
+---
+
 ## 🕹️ Usage
 
 | Command | What it does |
@@ -294,6 +309,7 @@ pro-build orchestrates other tools; it doesn't reinvent them.
 | **SEO** (optional) | [claude-seo](https://github.com/AgriciDaniel/claude-seo): audits, technical, local, clusters and AI search |
 | **Growth** | [marketingskills](https://github.com/coreyhaines31/marketingskills): 53 skills for conversion, pricing, launch, SEO and retention |
 | **Design taste** | [taste-skill](https://github.com/Leonxlnx/taste-skill) |
+| **Spec-driven features** (optional) | [spec-kit](https://github.com/github/spec-kit) by GitHub: specify → clarify → plan → tasks → analyze → implement → converge |
 | **Independent review** | [claudex-loop](https://github.com/chaseai-yt/claudex-loop) (Claude ⇄ Codex) |
 
 Only ECC is required. For anything missing, pro-build names the install command and uses a fallback; see [`references/toolkit.md`](skills/pro-build/references/toolkit.md).
@@ -370,6 +386,7 @@ pro-build stands on the shoulders of:
 - [ECC (Everything Claude Code)](https://github.com/affaan-m/ECC) by Affaan Mustafa: the engine behind every department.
 - [marketingskills](https://github.com/coreyhaines31/marketingskills) by Corey Haines, [taste-skill](https://github.com/Leonxlnx/taste-skill), and [claudex-loop](https://github.com/chaseai-yt/claudex-loop) by Chase AI.
 - Official plugins from Stripe, Supabase, Vercel, Sentry, PostHog and Semgrep.
+- [spec-kit](https://github.com/github/spec-kit) by GitHub: spec-driven development for large features, and the inspiration for the consistency and convergence checks.
 - Ideas borrowed from [gstack](https://github.com/garrytan/gstack) (founder office hours, role-based reviews) and [BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD) (agile roles).
 
 ## 📄 License

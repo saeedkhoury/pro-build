@@ -20,6 +20,12 @@
    - **Milestones.** M1 is the MVP: the smallest end-to-end version that delivers the core value from the brief. Then M2, M3, … from the roadmap.
    - For each milestone: its goal, the tasks (each small enough for one pull request), dependencies, acceptance criteria, risks, and the proof that it's done.
    - A definition of done that applies to every task: tests pass, CI is green, it's reviewed, docs are updated.
+8. **Consistency check** (like spec-kit's `analyze`; it does not modify files). Before the gate, cross-check the PRD, architecture and plan, and add a **Traceability** table to `02-plan.md`:
+   - Every PRD requirement and acceptance criterion maps to at least one plan task, and every task maps back to a requirement. Flag orphans either way.
+   - Each data entity, API and integration the PRD needs exists in the architecture.
+   - Terms, names and numbers (limits, prices, roles) are the same in all three documents.
+   - Every acceptance criterion is testable, and every non-functional requirement (performance, security, accessibility) has a task.
+   Fix the gaps, or list them as open questions for the CEO briefing. Use `opus` for this check.
 
 ## Output
 
@@ -33,3 +39,4 @@
 - [ ] The plan review is done and findings are resolved
 - [ ] The cost estimate is accepted by the user
 - [ ] The implementation plan defines M1 (the MVP), with tasks and acceptance criteria
+- [ ] The consistency check passes: every requirement traces to tasks, with no orphans or contradictions

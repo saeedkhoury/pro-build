@@ -11,6 +11,7 @@ Copy to the project root as `BUILD-STATE.md` and keep it current at every gate.
 - Last updated: <yyyy-mm-dd>
 - Model policy: auto routing (haiku / sonnet / opus) · Fable: off
 - Main-session model: <sonnet | opus>
+- Spec mode: native | spec-kit
 
 ## Gates
 | # | Department | Status | Date | Artifact |

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.3.0 (2026-11-17)
+
+- **GitHub spec-kit integration:** an optional spec-kit mode for large features. Stage 4 runs `specify init --integration claude` and writes the constitution from `CLAUDE.md`; stage 5 runs specify → clarify → plan → tasks → analyze → implement → converge inside pro-build's branch, review and approval gates. See `references/spec-kit.md`.
+- **Consistency check (always on):** stage 2 traces every PRD requirement to plan tasks and back, checks entities and terms across documents, and adds a Traceability table to `02-plan.md` before the gate.
+- **Convergence check (always on):** stage 5 compares the code with every milestone requirement, adds missing work as tasks, and repeats until the milestone is "✅ converged" before the demo.
+- `BUILD-STATE.md` records `Spec mode: native | spec-kit`.
+
 ## 2.2.0 (2026-11-17)
 
 - **Smart model routing:** the main thread talks with you and runs the gates; self-contained work goes to helper agents on Haiku (mechanical), Sonnet (building, the default) or Opus (strategy, architecture, security), with Fable as an opt-in top tier that is off by default because it may use credits. It escalates one tier on failure, never goes below Sonnet for payments, auth or security, and only delegates when it pays off. Each department playbook has its own routing line; the full table is in `references/model-routing.md`.

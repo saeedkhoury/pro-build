@@ -6,7 +6,9 @@
 
 ## First pass: the MVP foundation
 
-Build **milestone M1** from `docs/company/02-plan.md`. Use `ecc:orch-build-mvp` with the PRD, architecture, plan and design system, on a feature branch, opening a pull request to `main`. When M1 is merged, show the user the running MVP (a preview URL, or local run steps) and confirm before moving on to M2 and the backlog.
+Build **milestone M1** from `docs/company/02-plan.md`. Use `ecc:orch-build-mvp` with the PRD, architecture, plan and design system, on a feature branch, opening a pull request to `main`. Before the demo, run a **convergence check** (like spec-kit's `converge`): compare the code with every M1 requirement and acceptance criterion in the PRD and `02-plan.md`. Add anything unbuilt, partly built or wrong as new M1 tasks, build them, and repeat until nothing remains. Then report **"✅ M1 converged"** with the evidence. Use `sonnet` for the check, and `opus` if it's disputed or unclear.
+
+When M1 is merged and converged, show the user the running MVP (a preview URL, or local run steps) and confirm before moving on to M2 and the backlog. Run the same convergence check at the end of every milestone.
 
 ## Each cycle: one backlog item, one branch, one pull request
 
@@ -18,6 +20,8 @@ Build **milestone M1** from `docs/company/02-plan.md`. Use `ecc:orch-build-mvp` 
 | Refactor | `ecc:orch-refine-code` |
 | Broken build | `ecc:build-fix` |
 | Production error | `sentry:sentry-debug-issue`, then `ecc:orch-fix-defect` |
+
+**Large features: spec-kit mode.** If `BUILD-STATE.md` says `Spec mode: spec-kit`, then any feature that is large (several components, multiple days of work, or unclear requirements) follows `references/spec-kit.md` instead of the cycle below: specify → clarify → plan → tasks → analyze → implement → converge, then the same pull-request and merge steps. Small features and fixes always use the normal cycle.
 
 For each cycle:
 

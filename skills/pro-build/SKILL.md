@@ -17,7 +17,7 @@ Announce at start: `Using pro-build v2. Stage <n>: <department>.`
    - Then write back a short **Project Brief** (one-liner, problem, goal, users, core value, must-haves, later, platform, business model, data, constraints, assumptions, open questions). Revise it until the user approves, and save it as `docs/company/00-brief.md`.
 2. **Documents** (stages 0–3): validation, PRD, roadmap, architecture, decision records, implementation plan and design, each approved at its gate.
 3. **Factory** (stage 4): repository, `CLAUDE.md`, README, CI/CD, environments and services.
-4. **MVP** (stage 5): build milestone M1 from `02-plan.md`, then grow feature by feature.
+4. **MVP** (stage 5): build milestone M1 from `02-plan.md`, run the convergence check until nothing in M1 is missing, demo it, then grow feature by feature. Large features can use **spec-kit mode** (`references/spec-kit.md`) when it's enabled. In Claude Code the spec-kit commands are hyphenated project skills: `/speckit-specify` → `/speckit-clarify` → `/speckit-plan` → `/speckit-tasks` → `/speckit-analyze` → `/speckit-implement` ⇄ `/speckit-converge`, all on a `feat/<name>` branch and still ending in a pull request and your approval.
 5. **Ship** (stages 6–7): QA and security, then a staged release.
 6. **Sell and grow** (stages 8–9): go-to-market, then weekly operating reviews.
 
@@ -31,7 +31,7 @@ Announce at start: `Using pro-build v2. Stage <n>: <department>.`
 | `/pro-build` | Resume from `BUILD-STATE.md`. If there isn't one, start Kickoff by asking what we are building |
 | `/pro-build status` | Show the stage, approved artifacts, open risks, metrics and next step |
 | `/pro-build stage=<0-9>` | Jump to a stage. List any unapproved earlier gates first |
-| `/pro-build feature "<what>"` | Run one Engineering cycle (stage 5) |
+| `/pro-build feature "<what>"` | Run one Engineering cycle (stage 5). Large features use spec-kit mode if it's enabled |
 | `/pro-build release` | Run Release (stage 7) for what is merged |
 | `/pro-build launch` | Run Go-to-Market (stage 8) |
 | `/pro-build review` | Run the weekly Operate & Grow review (stage 9) |
