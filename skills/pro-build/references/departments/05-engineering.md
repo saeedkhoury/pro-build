@@ -19,7 +19,7 @@ When M1 is merged and converged, show the user the running MVP (a preview URL, o
 | Bug | `ecc:orch-fix-defect` |
 | Refactor | `ecc:orch-refine-code` |
 | Broken build | `ecc:build-fix` |
-| Production error | `sentry:sentry-debug-issue`, then `ecc:orch-fix-defect` |
+| Production error | `sentry:sentry-debug-issue` (or the chosen alternative), then `ecc:orch-fix-defect`. If it's urgent, ship it as a **Hotfix** release (stage 7) and follow the incident runbook (stage 4) |
 
 **Large features: spec-kit mode.** If `BUILD-STATE.md` says `Spec mode: spec-kit`, then any feature that is large (several components, multiple days of work, or unclear requirements) follows `references/spec-kit.md` instead of the cycle below: specify → clarify → plan → tasks → analyze → implement → converge, then the same pull-request and merge steps. Small features and fixes always use the normal cycle.
 
@@ -28,10 +28,10 @@ For each cycle:
 1. Pick the next task from the current milestone in `02-plan.md` (or the top of the backlog), then restate its acceptance criteria.
 2. Branch `feat/<slug>` or `fix/<slug>`.
 3. Run the workflow: tests first, then implementation, then review.
-4. Add analytics events and a feature flag (`posthog:instrument-feature-flags`) for risky features.
+4. **If analytics applies** (stage 2's table): add the feature's analytics events with the chosen tool (PostHog by default), and a feature flag for risky features (`posthog:instrument-feature-flags` or the alternative). If analytics is N/A, skip this step and say so.
 5. Open a pull request with a summary, a test plan and screenshots for UI changes. CI must pass.
 6. Run `ecc:code-review`. For large or risky changes, also run `ecc:santa-loop` or `claudex-loop:codex-review`.
-7. The user approves the merge. Mark the item done in `BUILD-STATE.md`.
+7. **Merge (level B):** ask "Merge PR #<n>?" and merge only on an explicit yes for that pull request; log it in `BUILD-STATE.md` → Approvals. The merge deploys to **staging only**. Mark the item done. A merge that changes code or configuration invalidates any open release candidate (stage 7's invalidation policy).
 
 One feature per session. Offer `ecc:save-session` at the end.
 
@@ -39,5 +39,5 @@ One feature per session. Offer `ecc:save-session` at the end.
 
 - [ ] Acceptance criteria are met and shown (tests, screenshots or a preview URL)
 - [ ] CI is green and review findings are resolved
-- [ ] Analytics events exist for the feature's metric
-- [ ] The user approves the merge
+- [ ] Analytics events exist for the feature's metric, if analytics applies (stage 2's table); otherwise N/A
+- [ ] The user explicitly approved merging this pull request (level B, logged); it deployed to staging only

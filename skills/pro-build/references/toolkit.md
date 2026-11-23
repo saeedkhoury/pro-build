@@ -33,6 +33,8 @@ These plugins connect to hosted services; each needs the user to sign in once (r
 | claude-seo (SEO suite: audits, technical, local, clusters, AI search) | 4, 6, 8 | `/plugin marketplace add AgriciDaniel/claude-seo` then `/plugin install claude-seo@agricidaniel-claude-seo` |
 | spec-kit (spec-driven mode for large features) | 4, 5 | Not a plugin: `uv tool install specify-cli` in the terminal, then pro-build runs `specify init` in the project during stage 4 |
 | REA: reverse engineer anything (competitor teardown, release exposure audit, release diff, lost source) | 0, 6, 7, Existing | `/plugin marketplace add morluto/rea` then `/plugin install rea@rea` (needs Node 22.23.4+). Rules and commands: `references/reverse-engineering.md` |
+| Secret scanner: gitleaks, trufflehog, or Semgrep secrets | 4, 6 | `brew install gitleaks` or `brew install trufflehog`, or the semgrep plugin (free login). Ask before installing a new tool |
+| Mobile release: EAS (Expo) or fastlane | 7 | `npm i -g eas-cli` or `brew install fastlane`; store accounts are level C |
 | claudex-loop (cross-model plan review) | 2, 5 | `/plugin marketplace add chaseai-yt/claudex-loop` then `/plugin install claudex-loop@claudex-loop` (also needs the Codex CLI) |
 
 ## Fallbacks
@@ -48,7 +50,8 @@ These plugins connect to hosted services; each needs the user to sign in once (r
 | Fable off or unavailable | `opus` (see `references/model-routing.md`) |
 | Vercel | Cloudflare (`cloudflare:wrangler`), or document a manual deploy |
 | Supabase | Postgres via `ecc:postgres-patterns` and `ecc:database-migrations` |
-| PostHog or Sentry not signed in | Add the SDKs with environment-variable placeholders; mark the gate check "blocked: sign-in needed" |
+| PostHog or Sentry not wanted | Record an alternative (for example Plausible, GlitchTip, Better Stack) or N/A with a reason in stage 2's service applicability table; the stage 4 gate then checks that instead |
+| PostHog or Sentry wanted but not signed in yet | Add the SDKs with environment-variable placeholders; mark the check "blocked: sign-in needed" until the user signs in |
 
 ## Telemetry notes
 

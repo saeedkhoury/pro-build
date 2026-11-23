@@ -1,5 +1,30 @@
 # Changelog
 
+## 2.5.0 (2026-11-23)
+
+Fixes from an independent Codex (GPT-6 Astra) review of v2.4.0: 9 findings plus a mobile gap, all accepted.
+
+- **Authorization matrix** (`references/authorization.md`): levels A, B and C for every action, which win over the playbooks. It fixes contradictions about first deploys, migrations, publishing and rollback.
+- **Production protection:** merges deploy to staging only; production changes only by promoting a named staging build. Gate 4 verifies it.
+- **Release-bound evidence:** release candidates record the commit SHA and build ID; any merge invalidates them. Release classes (Major, Minor, Patch, Hotfix) each map to a QA profile.
+- **Required-evidence QA:** each check is pass, fail, blocked or N/A (with an accepted reason). A missing required check blocks the release, and "no findings" isn't a pass.
+- **The Client site track now runs a compact stage 2,** so stage 5 always has an approved M1 plan.
+- **Service applicability:** stage 2 records chosen, alternative or N/A for each capability, and gate 4 checks exactly that. Optional services are truly optional.
+- **Real secret scanning** (gitleaks, trufflehog or Semgrep secrets) of the history and build output, with redacted findings and user-run rotation.
+- **Backups and incidents:** recovery objectives (RPO and RTO), automated backups, restore tests every 90 days, and an incident runbook with severities and alert routes. Weekly reviews check them.
+- **Mobile release path:** signing, TestFlight or Play internal track, user-run store submission, phased rollout, backend compatibility.
+- **Skill evals:** `evals/check.py` (structural and contradiction checks, run in CI), 20 behavioural scenarios and an **isolated** runner. The runner loads only this checkout as a plugin, uses no MCP servers and read-only tools, and records the version and content hash it tested.
+
+Round 2 of the review (9 more findings, all accepted):
+- **Release ordering and records:** release content merges before the candidate is frozen. A single invalidation policy (stage 7): release records (`BUILD-STATE.md`, the QA report, release notes, reviews) don't invalidate a candidate; requirement and decision docs (PRD, architecture, ADRs, plan) invalidate the dependent evidence; code and configuration changes invalidate everything.
+- **No live effects in testing:** with build-time configuration, mutating tests run on a sandbox build of the same SHA, and the production-configured candidate gets only non-mutating checks. Store sandbox accounts isolate only payments, not the app's backend.
+- **Configuration strategy:** runtime configuration promotes the staging artifact; build-time configuration builds and tests a production-configured candidate. Evidence is bound to the SHA, artifact and configuration profile.
+- **Mobile:** builds and signs before QA, so the exact tested binaries are submitted; a phased-rollout halt replaces rollback.
+- **First launch:** a halt plan (maintenance page, disabling the alias) replaces the non-existent rollback target.
+- **QA:** an explicit "accepted risk" status, with eligible and never-eligible checks, scope, owner and expiry.
+- **Service applicability is authoritative** in stages 1, 5, 8 and 9 (no hidden PostHog or Sentry requirement).
+- **Approvals** come only from the user's words in the conversation; scenario S17 tests that file-only approvals are rejected.
+
 ## 2.4.0 (2026-11-17)
 
 - **REA (Reverse Engineer Anything) integration**, optional with fallbacks:

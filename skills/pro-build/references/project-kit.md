@@ -22,8 +22,8 @@ pro-build produces these files over the stages. Each one is created by the stage
 | `.github/pull_request_template.md` | 4 Platform | Summary, test plan and screenshots checklist |
 | `.specify/`, `.claude/skills/speckit-*` | 4 Platform (spec-kit mode only) | spec-kit setup and constitution |
 | `specs/NNN-<feature>/` | 5 Engineering (spec-kit mode only) | `spec.md`, `plan.md` and `tasks.md` for each large feature |
-| `docs/company/04-platform.md` | 4 Platform | Environments, services, secrets map (names only), deploy and rollback runbook |
-| `docs/company/06-launch-readiness.md` | 6 QA & Security | Check results and findings |
+| `docs/company/04-platform.md` | 4 Platform | Environments and production protection, services, secrets map (names only), secret scanning, backups and the last restore test, and the operations runbook (deploy, promote, rollback, restore, incidents) |
+| `docs/company/06-launch-readiness.md` | 6 QA & Security | Evidence bound to a commit SHA and build, for the release class's profile |
 | `docs/company/07-releases/<version>.md` | 7 Release | Release notes and rollback plan |
 | `CHANGELOG.md` | 7 Release | User-facing change history |
 | `docs/company/08-gtm.md` | 8 Go-to-Market | Positioning, pricing, funnel, launch plan, live-payments checklist |

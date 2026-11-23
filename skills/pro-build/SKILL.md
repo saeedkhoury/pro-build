@@ -18,7 +18,7 @@ Announce at start: `Using pro-build v2. Stage <n>: <department>.`
 2. **Documents** (stages 0–3): validation, PRD, roadmap, architecture, decision records, implementation plan and design, each approved at its gate.
 3. **Factory** (stage 4): repository, `CLAUDE.md`, README, CI/CD, environments and services.
 4. **MVP** (stage 5): build milestone M1 from `02-plan.md`, run the convergence check until nothing in M1 is missing, demo it, then grow feature by feature. Large features can use **spec-kit mode** (`references/spec-kit.md`) when it's enabled. In Claude Code the spec-kit commands are hyphenated project skills: `/speckit-specify` → `/speckit-clarify` → `/speckit-plan` → `/speckit-tasks` → `/speckit-analyze` → `/speckit-implement` ⇄ `/speckit-converge`, all on a `feat/<name>` branch and still ending in a pull request and your approval.
-5. **Ship** (stages 6–7): QA and security, then a staged release.
+5. **Ship** (stages 6–7): QA and security evidence for one exact build, then a protected, staged release. Mobile apps follow the app-store path in `07-release.md`.
 6. **Sell and grow** (stages 8–9): go-to-market, then weekly operating reviews.
 
 `references/project-kit.md` lists every file a project gets and which stage creates it.
@@ -44,7 +44,9 @@ Recommend a track at the end of Kickoff, based on the approved brief, and let th
 |:--|:--|:--|
 | **Startup** | A product meant to earn money (SaaS, app, marketplace) | Kickoff → 0 → 9 |
 | **Product** | Internal tools, portfolio projects, non-commercial apps | Kickoff → 1 → 7, then 9 (skip 0 and 8) |
-| **Client site** | A professional website for a business or person | Kickoff → 1 → 3 → 4 → 5 → 6 → 7 → 8 (SEO and conversion only) |
+
+**Stage 2 is never skipped**, because stage 5 needs its plan (M1). Small projects use its **compact mode** (see `02-engineering-leadership.md`).
+| **Client site** | A professional website for a business or person | Kickoff → 1 → 2 (compact) → 3 → 4 → 5 → 6 → 7 → 8 (SEO and conversion only) |
 | **Existing project** | Joining a codebase that already exists | Kickoff (shorter), audit with `ecc:codebase-onboarding` (or with `rea:reverse-engineer-anything` if the source is missing or doesn't match what's deployed: see `references/reverse-engineering.md`), write the missing docs, then join at 5 or 9 |
 
 Record the track in `BUILD-STATE.md`. Never drop a stage silently: say which ones the track skips or compresses, and why.
@@ -70,15 +72,14 @@ Record the track in `BUILD-STATE.md`. Never drop a stage silently: say which one
 ## Operating rules
 
 1. **Gates are real.** End every stage by showing what was produced, the gate checklist and the open risks, then ask: approve, revise or stop. Never start the next stage without an explicit yes.
-2. **The CEO's actions stay with the user.** You never do these yourself. Prepare them, explain them, and hand over:
-   - switching payments to live mode, and entering any live key or bank detail;
-   - the first production deploy and any production database migration (later production deploys need an explicit yes each time);
-   - buying domains or paid plans, and accepting terms of service;
-   - publishing, posting, emailing customers, and pushing to public repositories;
-   - creating accounts, and signing in to any service.
+2. **Authorization follows one matrix: `references/authorization.md`.** It wins over any playbook. Even if that file can't be read:
+   - **A, agent may do:** code, tests, branches, pull requests, preview and staging deploys, test-mode setup.
+   - **B, only after a specific yes for that exact action, logged in `BUILD-STATE.md`:** merging a pull request, promoting a **named build** to production (from the 2nd release on), and a rollback that was pre-authorized in the same production go.
+   - **C, the user does it; you prepare, explain, wait and verify:** the first production deploy; any production database migration; live payments and live keys; purchases and terms; DNS; publishing, posting, emailing customers and app-store submissions; public pushes; creating accounts and signing in; rotating credentials; deleting production data.
+   - "Approved" never moves a C action to you, and an approval never carries over to another commit, build or action.
 3. **Understand first, then document, then code.** No documents before the brief is approved; no code before the spec, plan and design are approved (stages 1 to 3), except throwaway spikes the user asks for.
 4. **Test mode first.** Stripe, email and other paid services start in test or sandbox mode. Secrets live in environment variables or the platform's secret store, never in the repository; keep a `.env.example` with names only.
-5. **Everything in git, everything through pull requests** from stage 4 on: one branch per feature, CI must pass, and the user approves merges.
+5. **Everything in git, everything through pull requests** from stage 4 on: one branch per feature, and CI must pass. Merging is level B (one yes per pull request). Merges deploy only to staging; production is promoted separately (stage 7).
 6. **`BUILD-STATE.md` is the single source of truth.** Update it at every gate using `references/build-state-template.md`. Company documents live in `docs/company/`.
 7. **Use the named skills through the Skill tool.** If one is not installed or a service is not signed in, say so in one line, give the install or sign-in step from `references/toolkit.md`, and either do the step directly with the same intent or mark it blocked. Never invent a tool.
 8. **Evidence over claims.** A stage is done when its proof exists: tests pass, a URL responds, a metric is recorded. Say plainly what was not verified.
@@ -96,6 +97,7 @@ Record the track in `BUILD-STATE.md`. Never drop a stage silently: say which one
    - At Kickoff, recommend running the main session on Sonnet (`/model sonnet`), and on Opus for stages 0–2 of big projects. Ask once whether to enable Fable, defaulting to off.
 12. **CEO briefings at every gate.** Present each gate as a short briefing: **Decision needed** (one line) · **What we produced** (links) · **Key numbers** (cost, scope, metrics) · **Risks** (top 3) · **Recommendation** · **Options** (approve / revise / stop). The user is the CEO; keep briefings readable in under a minute.
 13. **Reverse engineering (optional, with REA).** Only on targets the user owns or is authorised to analyse, or public software that was legitimately obtained. Understand, never copy code or assets, and never bypass DRM, licences, auth or paywalls. Uses: stage 0 competitor teardown, a stage 6 `audit-release-exposure` of your own build (exposed credentials or production source maps are blocking), a stage 7 release diff, and the Existing project track when the source is missing. Details: `references/reverse-engineering.md`.
+14. **Stage 2's service applicability table is authoritative.** Every later stage uses the chosen service, the recorded alternative, or skips it as N/A. Never require an N/A service at a later gate. Changing a decision is level B: ask, then update `02-architecture.md`.
 
 ## Artifact layout
 

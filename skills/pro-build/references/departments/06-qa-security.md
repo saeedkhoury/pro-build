@@ -1,27 +1,53 @@
 # Stage 6: QA & Security
 
-**Model routing:** the findings briefing in the main thread · `opus` for the security review · `sonnet` for end-to-end, browser, accessibility, SEO and performance checks · `haiku` to compile the report.
+**Model routing:** the findings briefing in the main thread · `opus` for the security review and triage of REA findings · `sonnet` for end-to-end, browser, accessibility, SEO and performance checks · `haiku` to compile the report.
 
-**Role:** QA lead and security officer. Prove the product works and is safe before real users touch it. Run this before the first production release, then before every major release.
+**Role:** QA lead and security officer. Prove that **one exact build** works and is safe. Stage 6 runs **for every release**, using the profile for its class (`07-release.md`). Results are bound to the commit SHA under test.
 
-## Checks
+## Evidence rules
 
-1. **End-to-end:** `ecc:e2e-testing` covering sign-up, the core value flow, payment and cancellation.
-2. **Real browser:** `ecc:browser-qa` on the main pages and flows, desktop and mobile widths.
-3. **Accessibility:** `ecc:accessibility`, WCAG 2.2 AA.
-4. **Security:** `ecc:security-scan` plus `ecc:security-review` on auth, payments, webhooks, input handling and row-level security policies. Review Semgrep findings. For deeper audits, ask the `security-reviewer` agent.
-4b. **Release exposure audit** (if REA is installed): run `audit-release-exposure` on the production build output, and `analyze-web-bundle` on the staging URL, through `rea:reverse-engineer-anything` (see `references/reverse-engineering.md`). Exposed credentials or production source maps are **blocking**. Without REA, check for `*.map` files and secret patterns in the build output by hand.
-5. **Performance:** Core Web Vitals and API latency (`ecc:production-audit`); fix the obvious problems.
-6. **SEO and AI-search readiness** (public sites): `ecc:seo` or `claude-seo:seo-audit` if installed. Check crawlability, indexability, metadata, structured data, Core Web Vitals, and visibility in AI search (`marketing-skills:ai-seo`). Fix the blocking issues.
-7. **Coverage:** `ecc:test-coverage` against the project target.
-8. **Privacy and legal basics:** a privacy policy, terms, cookie consent where required, data export and deletion if personal data is stored. Draft them; the user has them reviewed if needed.
-9. **Final review:** `ecc:santa-loop` (adversarial dual review) on the release candidate.
+- Each check ends with exactly one status:
+  - **pass:** run, with evidence attached (a command and its output, a report link, screenshots);
+  - **fail:** findings exist;
+  - **blocked:** it couldn't run (a missing tool, service or access);
+  - **N/A:** it doesn't apply to this product, with a written reason, accepted by the user at the gate;
+  - **accepted risk:** a required check that's blocked or failed, which the user knowingly accepts. The original status and findings stay in the report next to it.
+- **"No findings" isn't "pass".** A pass needs evidence that the check actually ran on this SHA.
+- **A required check that's blocked, failed or missing blocks the release,** unless it becomes **accepted risk**:
+  - **Eligible:** checks 3, 7, 8, 9, 10, 12 and 13 (browser, accessibility, performance, SEO, coverage, restore test, final review), and check 2 when the failing flow isn't payment, auth or data-loss related.
+  - **Never eligible:** check 1 (CI), 4 (security review) and 5 (secret scan); check 6 (exposure audit) and check 11 (privacy) for Major releases; and any open blocking security or payment finding.
+  - **How:** the user approves it in the conversation (level B), scoped to this check and this release SHA, with a reason, an owner and an expiry (at most 30 days, or the next release, whichever comes first). It's logged in `BUILD-STATE.md` → Approvals and in the report.
+- Unknown or not-assessed results from scanners stay in the report; they're never counted as passes.
+- **When results stop counting:** follow the **invalidation policy** in `07-release.md` (release records don't invalidate; requirement changes invalidate the dependent checks; code or configuration changes invalidate everything). Rerun at least the affected checks, and the full profile for Major releases.
+- **No live effects:** mutating tests (sign-ups, payments, data changes) never run against production services. For build-time configuration, they run on the sandbox build of the same SHA (see `07-release.md` → Configuration strategy).
+
+## Profiles
+
+| Check | Full (Major) | Standard (Minor) | Light (Patch, Hotfix) |
+|:--|:--:|:--:|:--:|
+| 1. CI green on the SHA (lint, types, tests, build) | Required | Required | Required |
+| 2. End-to-end core flows (`ecc:e2e-testing`): sign-up, core value, payment, cancellation | Required | Required for changed flows | Smoke only |
+| 3. Real browser (`ecc:browser-qa`), desktop and mobile widths | Required | Required for changed pages | Optional |
+| 4. Security review (`ecc:security-scan`, `ecc:security-review`), plus Semgrep findings, for auth, payments, webhooks, input handling, RLS | Required | Required if auth, payments or data access changed | Required if security-relevant |
+| 5. Secret scan of the repository and build output (see stage 4) | Required | Required | Required |
+| 6. Release exposure audit (REA `audit-release-exposure`; see `references/reverse-engineering.md`). Without REA: manual `*.map` and secret checks on the build output | Required | Required | Optional |
+| 7. Accessibility, WCAG 2.2 AA (`ecc:accessibility`) | Required (UI) | Changed UI | Optional |
+| 8. Performance: Core Web Vitals and API latency (`ecc:production-audit`) | Required | Optional | Optional |
+| 9. SEO and AI-search readiness (`ecc:seo`, `claude-seo:seo-audit`, `marketing-skills:ai-seo`) | Required (public sites) | Changed pages | Optional |
+| 10. Coverage at the project target (`ecc:test-coverage`) | Required | Required | Optional |
+| 11. Privacy and legal (policy, terms, cookies, data export and deletion), drafted for user review | Required when personal data or payments exist | If data use changed | Optional |
+| 12. Backups and restore (stateful products): last restore test within 90 days | Required | Optional | Optional |
+| 13. Final adversarial review (`ecc:santa-loop`) | Required | Optional | Optional |
+
+REA blocking rules: an exposed `text.credential_markers` or `javascript.source_map_sources` check is a **fail** for check 6.
 
 ## Output
 
-`docs/company/06-launch-readiness.md`: each check with pass, fail or not run, findings ranked as blocking or advisory, and evidence.
+`docs/company/06-launch-readiness.md`, headed with the **commit SHA**, the **artifact or build ID**, the **configuration profile** (see stage 7), the **requirements baseline** (the commit SHA of the latest change to `docs/company/01-*`, `02-*` and `adr/**`), the release class and the date. It's a record about the build, not part of it: writing or committing it doesn't invalidate the candidate (see stage 7's records policy). For each check: its status, evidence, and findings (blocking or advisory, with an owner), plus any N/A reasons and risk acceptances.
 
-## Gate: no blocking findings
+## Gate: release evidence complete
 
-- [ ] All blocking findings are fixed (through stage 5 cycles) and the failed checks were rerun
-- [ ] Advisory findings are logged with an owner or accepted by the user
+- [ ] The report names the exact SHA and build under release
+- [ ] Every required check for the class is **pass**, **N/A** (with a reason the user accepted), or **accepted risk** (eligible, scoped to this SHA, unexpired, logged with its original status)
+- [ ] No blocking findings are open, except those in an eligible accepted-risk check; fixed checks were rerun on the new SHA
+- [ ] Advisory findings have an owner, or the user accepted them

@@ -16,12 +16,12 @@
    - AI search visibility (ChatGPT, Perplexity, AI Overviews): `marketing-skills:ai-seo`.
    - Local businesses: `claude-seo:seo-local` if installed.
    - Submit the sitemap to Google Search Console and Bing Webmaster Tools. The user signs in; you prepare the steps.
-5. **Analytics funnel.** `marketing-skills:analytics` and `marketing-skills:conversion-tracking`. In PostHog, build a funnel from visit to sign-up to activation to paid (`posthog:building-a-dashboard`).
+5. **Analytics funnel, if analytics applies** (stage 2's table). `marketing-skills:analytics` and `marketing-skills:conversion-tracking`. With the chosen tool (PostHog: `posthog:building-a-dashboard`), build a funnel from visit to sign-up to activation to paid. If analytics is N/A, define the manual proxy you'll track instead (for example, enquiries or orders per week).
 6. **Lifecycle emails.** `marketing-skills:emails`: welcome, activation nudge, trial ending and win-back.
 7. **Launch plan.** `marketing-skills:launch`: channels (Product Hunt, Hacker News, communities, social, newsletters), the assets for each, and a day-by-day plan. `ecc:content-engine` for the launch content.
 8. **Go live with payments, CEO gate.** Checklist for switching Stripe to live mode: business details, tax settings, live keys in the production secret store, live webhook endpoint, and a real end-to-end payment with refund. **The user does this.** You prepare the checklist and verify afterwards.
 
-Publishing, posting and emailing are always done or approved by the user.
+Publishing, posting, emailing customers, directory and app-store submissions, DNS changes and going live with payments are **level C** (`references/authorization.md`). The agent drafts everything and gives copy-ready steps; the user does it; then the agent verifies the result. An approval of the content doesn't let the agent send or publish it.
 
 ## Output
 
@@ -30,6 +30,6 @@ Publishing, posting and emailing are always done or approved by the user.
 ## Gate: launch go
 
 - [ ] The landing page, pricing and sign-up flow are live and tracked
-- [ ] The funnel dashboard shows real events
+- [ ] The funnel shows real events (if analytics applies), or the manual proxy is defined (if N/A)
 - [ ] Live payments are verified with a real charge and refund (Startup track)
 - [ ] The user approves the launch plan

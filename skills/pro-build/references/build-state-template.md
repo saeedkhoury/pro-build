@@ -47,7 +47,9 @@ Copy to the project root as `BUILD-STATE.md` and keep it current at every gate.
 | GitHub repo | | |
 | Hosting (Vercel/Cloudflare) | | preview / staging / prod |
 | Supabase | | |
-| Stripe | test / live | |
+| Stripe | test / live / N/A | |
+
+The full list of services, with chosen, alternative and N/A decisions, lives in `docs/company/02-architecture.md` → Service applicability.
 | Sentry | | |
 | PostHog | | |
 
@@ -55,6 +57,25 @@ Copy to the project root as `BUILD-STATE.md` and keep it current at every gate.
 | Metric | Target | Last week | This week |
 |---|---|---|---|
 | North Star: <name> | | | |
+
+## Approvals log (level B, from `references/authorization.md`)
+| Date | Action | Scope (PR, commit SHA, build ID) | User's words |
+|---|---|---|---|
+| | | | |
+
+## Release candidate (stage 7)
+- Version: · Class: Major / Minor / Patch / Hotfix
+- Commit SHA: · Artifact or build ID: · Configuration profile: runtime / build-time production
+- Mobile: iOS build and checksum · Android build and checksum
+- Stage 6 report SHA: (must match) · Status: valid / invalidated by <change>
+- Rollback target (or first-launch halt plan): · Trigger: · Owner:
+- Production deployment ID (after release):
+- Hotfix follow-ups due: <checks and date>
+
+## Operations
+- Recovery objectives: RPO · RTO · Incident owner · Alert route
+- Backups: on/off · Last restore test: <date, duration, result>
+- Secret scanner: <tool> · Last scan: <date, result>
 
 ## Model log
 | Stage | Main work done by | Notes |

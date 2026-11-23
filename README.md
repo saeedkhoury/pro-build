@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square)](https://code.claude.com/docs/en/plugins)
-[![Version](https://img.shields.io/badge/version-2.4.0-7c3aed?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.5.0-7c3aed?style=flat-square)](CHANGELOG.md)
 [![Powered by ECC](https://img.shields.io/badge/powered%20by-ECC-0ea5e9?style=flat-square)](https://github.com/affaan-m/ECC)
 
 **Run every project like a real software company.**<br>
@@ -33,6 +33,7 @@ AI agents can write a lot of code fast. Real products also need everything aroun
 - 💰 **Launches to earn.** Positioning, landing-page conversion, pricing and paywall, SEO, a funnel, lifecycle emails and a live-payments checklist.
 - 🧠 **Routes every task to the right model.** Haiku for mechanical work, Sonnet for building, Opus for strategy and security, and Fable (opt-in) for the hardest reviews. Top quality where it matters, fewer tokens everywhere else.
 - 📏 **Spec-driven when it matters.** Every plan gets a consistency check (requirement → task traceability), every milestone runs until it converges with the spec, and large features can use [GitHub spec-kit](https://github.com/github/spec-kit) mode.
+- 🧯 **Production-grade safety.** One authorization matrix, protected production deploys, approvals tied to an exact build, required QA evidence per release class, real secret scanning with key rotation, tested backups, and an incident runbook.
 - 🔬 **Audits what you actually ship.** With [REA](https://github.com/morluto/rea), QA scans your production build for leaked secrets and source maps, Release diffs each build against the last, and Founder Office can study how competitors' public apps work (to learn, never to copy).
 - 🔎 **SEO from day one.** Site structure in Design, technical SEO in the scaffold, an SEO and AI-search audit in QA, and a content and ranking engine at launch.
 - 📈 **Runs on numbers.** Weekly operating reviews of metrics, revenue and errors, which decide what to build next.
@@ -164,6 +165,10 @@ Every department ends at a gate: Claude shows the artifacts, the checklist and t
 
 Every gate is presented as a one-minute CEO briefing: **decision needed · what we produced · key numbers · top risks · recommendation · approve / revise / stop.**
 
+### Who may do what
+
+One [authorization matrix](skills/pro-build/references/authorization.md) governs every stage. **A:** the agent may do it (code, tests, pull requests, preview and staging deploys). **B:** the agent may do it only after your specific yes for that exact action, which is logged (merging a pull request, promoting a named build to production, a pre-approved rollback). **C:** only you do it; the agent prepares the steps, waits and verifies (see below). Merges deploy to **staging only**, so nothing reaches production without a release-specific approval.
+
 ### What stays with you (the CEO)
 
 pro-build prepares these and explains each one, but never does them for you:
@@ -171,7 +176,8 @@ pro-build prepares these and explains each one, but never does them for you:
 - Switching payments to **live mode** or entering live keys
 - The **first production deploy** and production database migrations
 - **Buying** domains or plans, and accepting terms
-- **Publishing**, posting, emailing customers and pushing public repositories
+- **Publishing**, posting, emailing customers, app-store submissions and pushing public repositories
+- **DNS** changes, **rotating** leaked credentials, and deleting production data
 - **Creating accounts** and signing in to services
 
 ---
@@ -380,6 +386,16 @@ This copies the skill to `~/.claude/skills/pro-build`, and the command becomes `
 ## 🤝 Contributing
 
 Ideas, playbook improvements and bug reports are welcome. Please open an issue first. Keep each department in one playbook file, and make sure every skill it names exists in a published plugin.
+
+**Checks before a pull request:**
+
+```bash
+python3 evals/check.py                   # structure, references, contradiction rules (also runs in CI)
+python3 evals/check.py --refresh-known   # after adding a skill reference (needs the plugins installed)
+evals/run-behavioral.sh S05 S06 S07      # behavioural scenarios: isolated headless Claude Code (this checkout only, no plugins or MCP, read-only)
+```
+
+Grade the behavioural outputs against the **Expect** and **Never** columns in [`evals/scenarios.md`](evals/scenarios.md). Run all 20 scenarios before a release that changes `SKILL.md`, the authorization matrix or a gate.
 
 ## 🙏 Credits
 
