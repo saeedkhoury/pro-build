@@ -10,7 +10,19 @@
 [![Powered by ECC](https://img.shields.io/badge/powered%20by-ECC-0ea5e9?style=flat-square)](https://github.com/affaan-m/ECC)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-open%20standard-16a34a?style=flat-square)](#-works-with-your-ai-agent)
 
-**Works with** Claude Code · Codex · Kimi Code · Gemini CLI · Grok Build · OpenCode · Cursor
+**Works with**
+
+<table>
+  <tr>
+    <td align="center" width="96"><a href="https://code.claude.com"><img src="https://github.com/anthropics.png?size=96" width="48" height="48" alt="Claude Code logo"><br><sub><b>Claude Code</b></sub></a></td>
+    <td align="center" width="96"><a href="https://github.com/openai/codex"><img src="https://github.com/openai.png?size=96" width="48" height="48" alt="Codex logo"><br><sub><b>Codex</b></sub></a></td>
+    <td align="center" width="96"><a href="https://github.com/MoonshotAI/kimi-cli"><img src="https://github.com/MoonshotAI.png?size=96" width="48" height="48" alt="Kimi Code logo"><br><sub><b>Kimi Code</b></sub></a></td>
+    <td align="center" width="96"><a href="https://github.com/google-gemini/gemini-cli"><img src="https://github.com/google-gemini.png?size=96" width="48" height="48" alt="Gemini CLI logo"><br><sub><b>Gemini CLI</b></sub></a></td>
+    <td align="center" width="96"><a href="https://github.com/xai-org"><img src="https://github.com/xai-org.png?size=96" width="48" height="48" alt="Grok Build logo"><br><sub><b>Grok Build</b></sub></a></td>
+    <td align="center" width="96"><a href="https://github.com/anomalyco/opencode"><img src="https://cdn.simpleicons.org/opencode" width="48" height="48" alt="OpenCode logo"><br><sub><b>OpenCode</b></sub></a></td>
+    <td align="center" width="96"><a href="https://cursor.com"><img src="https://github.com/cursor.png?size=96" width="48" height="48" alt="Cursor logo"><br><sub><b>Cursor</b></sub></a></td>
+  </tr>
+</table>
 
 **Run every project like a real software company.**<br>
 Describe your idea. pro-build interviews you until it understands it, writes the docs, builds the MVP, then ships and grows it, with you as CEO approving every gate.
@@ -103,19 +115,19 @@ npx skills add saeedkhoury/pro-build -a codex        # or name one: claude-code,
 
 | Agent | Install | Start a project | Status |
 |:--|:--|:--|:--|
-| **Claude Code** | Plugin: `/plugin marketplace add saeedkhoury/pro-build` then `/plugin install pro-build@pro-build`, or `./install.sh claude` | `/pro-build:pro-build "idea"` (plugin) or `/pro-build "idea"` | ✅ **Tested**: full automation |
-| **Codex** (OpenAI) | `npx skills add saeedkhoury/pro-build -a codex`, or `./install.sh codex` (`~/.agents/skills`). A `.codex-plugin/plugin.json` is included for Codex plugin packaging | `$pro-build`, or "Use the pro-build skill: idea" | ✅ **Tested**: loads the skill and runs Kickoff |
-| **Kimi Code CLI** (Moonshot) | `npx skills add saeedkhoury/pro-build -a kimi-code-cli`, or `./install.sh kimi` (`~/.agents/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
-| **Gemini CLI** (Google) | `npx skills add saeedkhoury/pro-build -a gemini-cli`, or `./install.sh gemini` (`~/.gemini/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
-| **Grok Build** (xAI) | `npx skills add saeedkhoury/pro-build -a grok`, or `./install.sh grok` (`~/.grok/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
-| **OpenCode** | `npx skills add saeedkhoury/pro-build -a opencode`, or `./install.sh opencode` (`~/.config/opencode/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
-| **Cursor** | `npx skills add saeedkhoury/pro-build -a cursor`, or `./install.sh cursor` (`~/.cursor/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
+| <img src="https://github.com/anthropics.png?size=40" width="20" height="20" alt="Claude Code logo"> **Claude Code** | Plugin: `/plugin marketplace add saeedkhoury/pro-build` then `/plugin install pro-build@pro-build`, or `./install.sh claude` | `/pro-build:pro-build "idea"` (plugin) or `/pro-build "idea"` | ✅ **Tested**: full automation |
+| <img src="https://github.com/openai.png?size=40" width="20" height="20" alt="Codex logo"> **Codex** (OpenAI) | `npx skills add saeedkhoury/pro-build -a codex`, or `./install.sh codex` (`~/.agents/skills`). A `.codex-plugin/plugin.json` is included for Codex plugin packaging | `$pro-build`, or "Use the pro-build skill: idea" | ✅ **Tested**: loads the skill and runs Kickoff |
+| <img src="https://github.com/MoonshotAI.png?size=40" width="20" height="20" alt="Kimi Code logo"> **Kimi Code CLI** (Moonshot) | `npx skills add saeedkhoury/pro-build -a kimi-code-cli`, or `./install.sh kimi` (`~/.agents/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
+| <img src="https://github.com/google-gemini.png?size=40" width="20" height="20" alt="Gemini CLI logo"> **Gemini CLI** (Google) | `npx skills add saeedkhoury/pro-build -a gemini-cli`, or `./install.sh gemini` (`~/.gemini/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
+| <img src="https://github.com/xai-org.png?size=40" width="20" height="20" alt="Grok Build logo"> **Grok Build** (xAI) | `npx skills add saeedkhoury/pro-build -a grok`, or `./install.sh grok` (`~/.grok/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
+| <img src="https://cdn.simpleicons.org/opencode" width="20" height="20" alt="OpenCode logo"> **OpenCode** | `npx skills add saeedkhoury/pro-build -a opencode`, or `./install.sh opencode` (`~/.config/opencode/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
+| <img src="https://github.com/cursor.png?size=40" width="20" height="20" alt="Cursor logo"> **Cursor** | `npx skills add saeedkhoury/pro-build -a cursor`, or `./install.sh cursor` (`~/.cursor/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
 
 For a single project instead of every project, put the skill in the project's `.agents/skills/pro-build/` folder (or `.claude/skills/` for Claude Code, `.grok/skills/` for Grok).
 
 ### What's the same, and what adapts
 
-| | Claude Code | Other agents |
+| | <img src="https://github.com/anthropics.png?size=40" width="18" height="18" alt="Claude Code logo"> Claude Code | Other agents |
 |:--|:--|:--|
 | Deep Kickoff interview and critical questions | ✅ Clickable options | ✅ Numbered questions with lettered options |
 | Ten departments, gates and CEO briefings | ✅ | ✅ Identical |
