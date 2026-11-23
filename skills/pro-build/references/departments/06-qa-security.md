@@ -21,6 +21,29 @@
 - **When results stop counting:** follow the **invalidation policy** in `07-release.md` (release records don't invalidate; requirement changes invalidate the dependent checks; code or configuration changes invalidate everything). Rerun at least the affected checks, and the full profile for Major releases.
 - **No live effects:** mutating tests (sign-ups, payments, data changes) never run against production services. For build-time configuration, they run on the sandbox build of the same SHA (see `07-release.md` → Configuration strategy).
 
+**Type quality bars:** each item in a `references/project-types/*.md` quality bar is evidence for **one specific check** below, and inherits that check's release-class policy and waiver rules. Security and privacy items are never moved to a waivable check.
+
+| Type | Quality-bar item | Check | Evidence |
+|:--|:--|:--|:--|
+| Web | Core Web Vitals (LCP, INP, CLS) and JavaScript budget | 8 Performance | Lab and field measurements on the candidate |
+| Web | WCAG 2.2 AA, keyboard, focus, reduced motion | 7 Accessibility | Audit report |
+| Web | SEO items | 9 SEO | Audit report |
+| Web | OWASP basics, CSP, server-route auth, RLS, rate limits | 4 Security | Review findings |
+| Web | Internationalisation and right-to-left layouts | 3 Real browser | Screenshots per locale |
+| System | OpenAPI contract coverage and versioning | 2 End-to-end (contract tests) | Contract test run on the SHA |
+| System | Timeouts, retry safety, reconciliation, health checks | 2 End-to-end (failure-injection tests) | Test run on the SHA |
+| System | p95 latency at 2× peak | 8 Performance | Load test report |
+| System | Least privilege, authorization, input validation, rate limits, audit logs | 4 Security | Review findings |
+| System | Migrations, backups and restores, retention | 12 Backups and restore, plus 11 Privacy (retention) | Restore record; retention check |
+| System | Logs, metrics, traces, SLOs | 2 End-to-end (observability smoke) | Traces and logs visible for a test request |
+| App | Cold start, 60fps, size | 8 Performance | Device measurements on the candidate binaries |
+| App | Crash-free sessions ≥ 99.5% in beta | 2 End-to-end | Crash reporting for **the candidate binaries' build numbers only** (not earlier builds), with the session count stated |
+| App | Offline and poor network | 2 End-to-end | Test notes per flow |
+| App | Accessibility (screen readers, font scaling, targets) | 7 Accessibility | Audit report |
+| App | Permission prompts, account deletion, privacy labels, data safety, purchase rules | 11 Privacy and legal (non-waivable for Major) | Checklist with screenshots |
+| App | OS compatibility and backend support for the oldest app version | 2 End-to-end | Test on the minimum OS; API compatibility test |
+| Desktop | Install, update from previous, uninstall, OS signature trust | 2 End-to-end | Per-OS test notes on the exact installers |
+
 ## Profiles
 
 | Check | Full (Major) | Standard (Minor) | Light (Patch, Hotfix) |
@@ -43,7 +66,7 @@ REA blocking rules: an exposed `text.credential_markers` or `javascript.source_m
 
 ## Output
 
-`docs/company/06-launch-readiness.md`, headed with the **commit SHA**, the **artifact or build ID**, the **configuration profile** (see stage 7), the **requirements baseline** (the commit SHA of the latest change to `docs/company/01-*`, `02-*` and `adr/**`), the release class and the date. It's a record about the build, not part of it: writing or committing it doesn't invalidate the candidate (see stage 7's records policy). For each check: its status, evidence, and findings (blocking or advisory, with an owner), plus any N/A reasons and risk acceptances.
+`docs/company/06-launch-readiness.md`, headed with the **commit SHA**, the **artifact or build ID**, the **configuration profile** (see stage 7), the **requirements baseline** (the commit SHA of the latest change to `docs/company/00-brief.md`, `01-*`, `02-*`, `adr/**`, or a requirement-changing entry in `BUILD-STATE.md` → Decisions), the release class and the date. It's a record about the build, not part of it: writing or committing it doesn't invalidate the candidate (see stage 7's records policy). For each check: its status, evidence, and findings (blocking or advisory, with an owner), plus any N/A reasons and risk acceptances.
 
 ## Gate: release evidence complete
 

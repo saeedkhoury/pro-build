@@ -6,7 +6,7 @@ pro-build produces these files over the stages. Each one is created by the stage
 |:--|:--|:--|
 | `BUILD-STATE.md` | Kickoff | The company's memory: track, stage, gates, backlog, services, metrics, risks |
 | `docs/README.md` | Kickoff | An index of every project document, with one line about each |
-| `docs/company/00-brief.md` | Kickoff | The approved Project Brief |
+| `docs/company/00-brief.md` | Kickoff | The approved Project Brief, with project type(s), assumptions and coverage |
 | `docs/company/00-validation.md` | 0 Founder Office | Market, competitors, pricing, go/no-go (Startup track) |
 | `docs/company/01-prd.md` | 1 Product | Product Requirements Document: users, flows, requirements, acceptance criteria, metrics |
 | `docs/company/01-roadmap.md` | 1 Product | Now / Next / Later roadmap |

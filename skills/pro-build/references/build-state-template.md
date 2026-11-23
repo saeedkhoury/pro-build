@@ -5,6 +5,7 @@ Copy to the project root as `BUILD-STATE.md` and keep it current at every gate.
 ```markdown
 # <Company / product name>
 
+- Project type(s): Web / System / App, with the shape (for example "Web: SaaS app + System: API")
 - Track: Startup | Product | Client site | Existing project
 - Stage: <0-9> <department>
 - Next step: <one line>

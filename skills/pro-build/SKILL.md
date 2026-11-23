@@ -12,9 +12,11 @@ Announce at start: `Using pro-build v2. Stage <n>: <department>.`
 ## The flow
 
 1. **Kickoff** (every project, every track): read the idea, run the discovery interview, confirm a Project Brief, and recommend a track. Follow `references/kickoff.md`. **Never write documents or code before the brief is approved.** Even if that file can't be read, these rules apply:
-   - Ask **2–4 questions per round**, using AskUserQuestion with concrete options (recommended first) when it's available. Skip anything the idea already answers, adapt each round to the previous answers, and stop after at most 6 rounds.
-   - Cover purpose, the 3-month goal, users and buyer, the v1 core value and must-haves, platform, business model, data and integrations, constraints (deadline, budget, tech, team), and references.
-   - Then write back a short **Project Brief** (one-liner, problem, goal, users, core value, must-haves, later, platform, business model, data, constraints, assumptions, open questions). Revise it until the user approves, and save it as `docs/company/00-brief.md`.
+   - **Ask a lot before starting.** Ask in rounds of **3–5 questions**, typically 5–8 rounds, using AskUserQuestion with concrete options (recommended first, plus "Other") when it's available. After each round, show "understood so far / still unknown". Probe vague answers, and turn wishes into numbers.
+   - First identify the **project type(s)**: **Web**, **System** or **App** (often more than one). Then ask the universal questions and the type's own questions from `references/project-types/<type>.md`, then risks, must-never-happen and a speed/quality/cost ranking.
+   - Track a **coverage checklist**. **Critical items must be answered by the user, never defaulted:** project type, problem, users and buyer, the 3-month goal as a number, the v1 core value and must-haves, out of scope, business model, data sensitivity, deadline and budget, who builds and maintains it, platforms, and the type's critical items. Non-critical items may become recorded assumptions.
+   - If the user says "just start", use the **fast lane**: only the critical items, asked as **explicit questions** in about two rounds with one-click options, and everything else defaulted and listed as assumptions. Never skip the critical items, and **never pre-fill them in a draft brief for blanket approval**.
+   - Then teach it back as a **Project Brief** (type, problem, goal, users, core value, must-haves, out of scope, business, data, platforms, constraints, priorities, risks, assumptions, open questions, coverage). Revise it until the user approves, and save it as `docs/company/00-brief.md`.
 2. **Documents** (stages 0–3): validation, PRD, roadmap, architecture, decision records, implementation plan and design, each approved at its gate.
 3. **Factory** (stage 4): repository, `CLAUDE.md`, README, CI/CD, environments and services.
 4. **MVP** (stage 5): build milestone M1 from `02-plan.md`, run the convergence check until nothing in M1 is missing, demo it, then grow feature by feature. Large features can use **spec-kit mode** (`references/spec-kit.md`) when it's enabled. In Claude Code the spec-kit commands are hyphenated project skills: `/speckit-specify` → `/speckit-clarify` → `/speckit-plan` → `/speckit-tasks` → `/speckit-analyze` → `/speckit-implement` ⇄ `/speckit-converge`, all on a `feat/<name>` branch and still ending in a pull request and your approval.
@@ -35,6 +37,16 @@ Announce at start: `Using pro-build v2. Stage <n>: <department>.`
 | `/pro-build release` | Run Release (stage 7) for what is merged |
 | `/pro-build launch` | Run Go-to-Market (stage 8) |
 | `/pro-build review` | Run the weekly Operate & Grow review (stage 9) |
+
+## Project types: the best way to build each kind of thing
+
+Kickoff identifies the type(s); stages 2–7 follow the matching playbook for the stack, tools, quality bar and questions:
+
+| Type | For | Playbook |
+|:--|:--|:--|
+| **Web** | Websites, landing pages, e-commerce, SaaS web apps, portals, PWAs | `references/project-types/web.md` |
+| **System** | APIs, backends, services, workers, data pipelines, integrations, bots, CLIs | `references/project-types/system.md` |
+| **App** | iOS, Android, cross-platform mobile, desktop | `references/project-types/app.md` |
 
 ## Tracks: size the company to the project
 
@@ -99,6 +111,7 @@ Record the track in `BUILD-STATE.md`. Never drop a stage silently: say which one
 13. **Reverse engineering (optional, with REA).** Only on targets the user owns or is authorised to analyse, or public software that was legitimately obtained. Understand, never copy code or assets, and never bypass DRM, licences, auth or paywalls. Uses: stage 0 competitor teardown, a stage 6 `audit-release-exposure` of your own build (exposed credentials or production source maps are blocking), a stage 7 release diff, and the Existing project track when the source is missing. Details: `references/reverse-engineering.md`.
 14. **Stage 2's service applicability table is authoritative.** Every later stage uses the chosen service, the recorded alternative, or skips it as N/A. Never require an N/A service at a later gate. Changing a decision is level B: ask, then update `02-architecture.md`.
 15. **Automation never changes production unattended.** Scheduled checks, workflows and AI routines are read-only: they watch, report and page. Production changes always go through a person, as level B or C (`references/devops.md`, `references/authorization.md`).
+16. **Ask before assuming, at every stage.** When something material is unclear (a requirement, an edge case, a trade-off, a missing number), stop and ask, with a recommended answer, instead of guessing. Write each answer into the **authoritative document** (brief, PRD, architecture or plan); `BUILD-STATE.md` → Decisions only logs it. A changed requirement follows stage 7's invalidation policy.
 
 ## Artifact layout
 

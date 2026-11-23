@@ -24,6 +24,7 @@ This is the **single source of truth** for actions in every stage. When a playbo
 | Rerun failed CI, retry a deploy of the **same** approved build | B (same approval) | Within the scope already approved |
 | First-launch **halt plan** (maintenance page, disable the public alias) | B, pre-authorized | Same rule as rollback: approved together with the first launch, with its trigger. DNS steps stay level C |
 | **Pause a mobile phased rollout** | C, or B if pre-authorized | Pre-authorizable together with the store submission, with a crash-rate trigger |
+| **Publish desktop installers or an update manifest**; pull back an update manifest | C (pull-back: B if pre-authorized with the release) | The agent prepares the signed artifacts and the steps |
 | Commit release records in a docs-only pull request | B (merge) | Whether a change invalidates a release candidate is decided **only** by the invalidation policy in `departments/07-release.md`. This matrix covers who may act, not what invalidates evidence |
 | **First production deploy** | C | The user promotes or deploys it; the agent prepares the steps and verifies afterwards |
 | **Any production database migration** | C | The agent prepares the migration, the backup and a rollback; the user runs it |

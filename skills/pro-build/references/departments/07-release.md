@@ -21,11 +21,11 @@ This is the single rule for when release evidence stops counting. Stages 5 and 6
 
 | Change after the candidate is frozen | Effect |
 |:--|:--|
-| **Release records only:** `BUILD-STATE.md`, `docs/company/06-launch-readiness.md`, `docs/company/07-releases/**`, `docs/company/09-reviews/**` | **No effect.** These are bookkeeping about the release, not part of what ships. Write them during the release and commit them afterwards in a docs-only pull request (`docs: record release v<version>`) |
-| **Requirements or decisions:** the PRD, roadmap, architecture, ADRs, plan, service applicability or operations profile (`docs/company/01-*`, `02-*`, `adr/**`) | **Invalidates the evidence that depends on them.** Re-evaluate the affected checks against the new baseline, and freeze a new candidate if any code or configuration has to change |
+| **Release records only:** the bookkeeping sections of `BUILD-STATE.md` (stage, gates, approvals, release candidate, deploy and incident logs, metrics, model log), `docs/company/06-launch-readiness.md`, `docs/company/07-releases/**`, `docs/company/09-reviews/**` | **No effect.** These are bookkeeping about the release, not part of what ships. Write them during the release and commit them afterwards in a docs-only pull request (`docs: record release v<version>`) |
+| **Requirements or decisions:** the brief, PRD, roadmap, architecture, ADRs, plan, service applicability or operations profile (`docs/company/00-brief.md`, `01-*`, `02-*`, `adr/**`), **and any requirement-changing decision wherever it's written, including `BUILD-STATE.md` → Decisions** | **Invalidates the evidence that depends on them.** Re-evaluate the affected checks against the new baseline, and freeze a new candidate if any code or configuration has to change |
 | **Code, dependencies, build or deploy configuration, environment variables, feature-flag defaults** | **Invalidates** the candidate and its stage 6 evidence. Start again at step 1 |
 
-The stage 6 report records the **requirements baseline** it tested against: the commit SHA of the latest change to `docs/company/01-*`, `02-*` and `adr/**`.
+The stage 6 report records the **requirements baseline** it tested against: the commit SHA of the latest change to `docs/company/00-brief.md`, `01-*`, `02-*`, `adr/**`, or a requirement-changing entry in `BUILD-STATE.md` → Decisions.
 
 ## Configuration strategy
 
@@ -83,6 +83,29 @@ Store releases replace steps 2–10 above with this path. Step 1 (release conten
 7. **Backend compatibility:** older app versions stay in use for weeks. Keep APIs backward-compatible, and use a minimum-supported-version check or force-update for breaking changes.
 8. Watch crash reporting (if it applies). Add one deploy-log row **per platform** when its phased rollout starts (a `D-…` ID, the included pull requests, and an outcome: healthy, halted or hotfixed). Then tag the release and commit the records.
 
+## Desktop apps (Windows, macOS, Linux)
+
+Desktop releases replace steps 2–10 with this path. Step 1 (release content first) still applies.
+
+**Choose each OS's distribution channel before building.** Each channel has its own signing, packaging, update and halt procedure, and its own candidate artifacts:
+
+| Channel | Signing and packaging | Updates | Halt |
+|:--|:--|:--|:--|
+| **Direct download, macOS** | Developer ID certificate + **notarization** (DMG or .app) | Your updater (for example the Tauri updater) | Pull the update manifest back |
+| **Direct download, Windows** | Authenticode (OV, EV or Azure Trusted Signing); MSI or NSIS installer | Your updater | Pull the update manifest back |
+| **Direct download, Linux** | Checksums, plus a repository signature if you use one; AppImage, deb or rpm | Your updater or the repository | Pull back the manifest or repository entry |
+| **Mac App Store** | **Apple Distribution** certificate, a Mac App Store **provisioning profile**, **App Sandbox entitlements**, a signed .pkg (built separately from the direct-download app) | The store; no custom updater | Pause the phased release or remove the version (level C) |
+| **Microsoft Store** | MSIX package; the store signs it | The store; no custom updater | Remove or replace the submission (level C) |
+
+1. **Build and sign first.** From the release SHA, CI builds each channel's artifacts (for example with Tauri's bundler or electron-builder). **The channel table above is the only authority for signing and packaging:** for example, Developer ID and notarization apply only to direct macOS downloads, and Mac App Store builds use Apple Distribution signing with sandbox entitlements.
+
+   Certificates and keys live in the CI secret store. Record the **checksum of every candidate artifact**, per channel: installers, store packages and update bundles.
+2. **QA on those exact artifacts, per channel:** install, first launch, the core flow, **update from the previous version** (through the updater for direct channels, or a store test track such as TestFlight for Mac or a Microsoft Store flight), and uninstall, on each target OS. Check that the OS trusts the signature. Mutating tests use a sandbox-configured build of the same SHA when the app talks to production services.
+3. **Updater artifacts (direct-download channels only).** The updater verifies the **update bundles**, not just the manifest. For Tauri: build the update bundles (`createUpdaterArtifacts`), sign **each bundle** with the updater's private key (kept in the secret store), and put each bundle's signature into the update manifest (for example `latest.json`), next to its URL. On macOS, the update bundle (`.app.tar.gz`) is a different file from the DMG installer, so record both checksums. Before publishing, **verify a real update**: install the previous version, point it at the new manifest on a staging channel, and confirm the signed update installs. Plan a staged rollout if the updater supports it.
+4. **Production go and publication (level C).** After the CEO briefing, the user publishes **the same verified artifacts**, per channel: a GitHub release or the website download page plus the update manifest (direct), or a submission in App Store Connect or Partner Center (stores).
+5. **Halt plan, per channel** (see the table): pull back the update manifest (direct; level C, or B if pre-authorized with the release), or pause or remove the store version (level C). Then ship a fix; users who already updated need the fixed version.
+6. **Record:** one deploy-log row per OS when the release is published, then tag the release and commit the records.
+
 ## Gate: production go
 
 **Web and server releases:**
@@ -93,6 +116,11 @@ Store releases replace steps 2–10 above with this path. Step 1 (release conten
 - [ ] There's a rollback target and trigger (later releases) or a halt plan with owner and trigger (first launch); migrations are backward-compatible; there's a fresh backup (stateful products)
 - [ ] The user executed (level C) or approved (level B) this exact promotion, and it's logged
 - [ ] No new error spike after deploy, or the rollback or halt was done and reported
+
+**Desktop releases:**
+- [ ] Each OS's channel was chosen before building; the artifacts were built and signed for that channel (notarized for macOS direct, sandboxed and distribution-signed for the Mac App Store) before QA; checksums of installers, store packages and update bundles are recorded
+- [ ] Stage 6 evidence names those exact artifacts, including a **real signed update** from the previous version (direct channels) and the OS trust checks
+- [ ] The user published those same artifacts per channel (level C); there's a halt plan for each channel
 
 **Mobile releases:**
 - [ ] The store binaries were built and signed before QA; their build numbers and checksums are recorded

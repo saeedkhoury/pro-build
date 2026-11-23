@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.7.0 (2026-11-23)
+
+- **Deep Kickoff interview:** rounds of 3–5 questions (typically 5–8 rounds, no fixed cap), a progress note after each round, probing vague answers, turning wishes into numbers, then risk, must-never-happen and speed/quality/cost questions. A **coverage checklist** requires that every critical item is answered by the user (never defaulted). A **fast lane** for "just start" asks only the critical items. A richer Project Brief, with type, out of scope, priorities, risks and coverage.
+- **Project-type playbooks:** `references/project-types/web.md`, `system.md` and `app.md`, each with the shapes, the best default stack and decision rules, the tools for each stage, a quality bar (Core Web Vitals; contract tests and p95 latency; cold start and crash-free rate) and 12 type-specific Kickoff questions. Stage 2 picks the shape and stack from them; stage 6 checks their quality bars.
+- **Rule 16:** ask before assuming at every stage.
+- **Fast lane hardening:** critical items are asked as explicit questions, and are never pre-filled in a draft brief for blanket approval.
+- **Decisions update the authoritative document** (brief, PRD, architecture or plan), and requirement-changing decisions, including those in BUILD-STATE → Decisions, invalidate dependent QA evidence.
+- **System retry safety:** automatic retries only for reads, idempotent operations or writes the downstream deduplicates; bounded, with backoff and jitter; reconciliation for ambiguous writes; idempotent webhook and job processing.
+- **App release branches:** mobile, **desktop** (a new stage 7 desktop path: per-OS channel table, Developer ID and notarization for direct macOS downloads, Mac App Store and Microsoft Store channels, signed update bundles, verifying a real update, user-run publication, halt per channel) and PWA (the web path).
+- **QA mapping:** every type quality-bar item maps to one stage 6 check and inherits its waiver rules (app privacy and store items under non-waivable check 11 for Major).
+- **Evals:** the runner supports **multi-turn** scenarios (` >> `, continued with `--resume`), and setup `none` is now an empty folder. S01 and S24–S27 are first-turn only; new multi-turn S28 (a completed deep interview) and S30 (incomplete: must stay at Kickoff); S29 refuses defaults for critical items. Checker rules for the coverage checklist, critical items, the playbooks and the pre-fill ban.
+- **Reviewed by Codex** (GPT-6 Astra) in a fresh session: 4 rounds, 9 findings fixed, then APPROVED.
+
 ## 2.6.0 (2026-11-23)
 
 **DevOps depth** (`references/devops.md`), sized to each project:

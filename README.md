@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square)](https://code.claude.com/docs/en/plugins)
-[![Version](https://img.shields.io/badge/version-2.6.0-7c3aed?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.7.0-7c3aed?style=flat-square)](CHANGELOG.md)
 [![Powered by ECC](https://img.shields.io/badge/powered%20by-ECC-0ea5e9?style=flat-square)](https://github.com/affaan-m/ECC)
 
 **Run every project like a real software company.**<br>
@@ -24,7 +24,7 @@ AI agents can write a lot of code fast. Real products also need everything aroun
 
 **pro-build gives Claude Code the structure of a startup.** Each department has a playbook, uses best-in-class tools, produces real artifacts and ends at a gate that only you can approve.
 
-- 🎤 **Understands before it builds.** It interviews you in short rounds (with clickable options) about purpose, goal, users, scope and constraints, then writes a Project Brief for you to approve.
+- 🎤 **Understands before it builds, and asks a lot.** A deep Kickoff interview: rounds of 3–5 clickable questions (typically 5–8 rounds), covering purpose, users, a measurable goal, scope, money, data, constraints, risks and trade-offs, plus questions specific to web, system or app projects. A coverage checklist makes sure every critical answer comes from **you**, never a guess. In a hurry? The fast lane asks only the critical items.
 - 🧭 **Validates first.** Founder Office interviews you, researches the market and competitors, and recommends **go, pivot or stop** before any code is written.
 - 📐 **Plans like a product team.** A PRD with success metrics, an architecture with decision records, and an independent review of the plan by a second model.
 - 🎨 **Designs with taste.** A visual direction and design system that don't look AI-generated.
@@ -111,6 +111,18 @@ You:  /pro-build:pro-build "an app that helps gyms manage memberships"
 | Design system | | Weekly operating reviews |
 
 The full list, and which stage creates each file: [`references/project-kit.md`](skills/pro-build/references/project-kit.md).
+
+---
+
+## 🧩 Built for every kind of project
+
+Kickoff identifies what you're building, and every later stage follows the matching playbook: the best default stack, how to choose alternatives, the tools for each stage, a quality bar, and its own Kickoff questions.
+
+| Type | Best default | Playbook |
+|:--|:--|:--|
+| 🌐 **Web**: sites, e-commerce, SaaS, portals | Astro for content sites · Next.js + Supabase + Stripe on Vercel for apps · Shopify for standard stores | [`web.md`](skills/pro-build/references/project-types/web.md) |
+| ⚙️ **System**: APIs, backends, workers, data, integrations | Contract-first TypeScript or FastAPI + Postgres; a modular monolith first; Go for high throughput | [`system.md`](skills/pro-build/references/project-types/system.md) |
+| 📱 **App**: iOS, Android, desktop | Expo (React Native) cross-platform; SwiftUI or Kotlin/Compose when native features demand it; Tauri for desktop | [`app.md`](skills/pro-build/references/project-types/app.md) |
 
 ---
 
@@ -397,7 +409,7 @@ python3 evals/check.py --refresh-known   # after adding a skill reference (needs
 evals/run-behavioral.sh S05 S06 S07      # behavioural scenarios: isolated headless Claude Code (this checkout only, no plugins or MCP, read-only)
 ```
 
-Grade the behavioural outputs against the **Expect** and **Never** columns in [`evals/scenarios.md`](evals/scenarios.md). Scenarios that need a realistic project use the fixtures in [`evals/fixtures/`](evals/fixtures) (`fixture:<name>` in the Setup column). Run all 23 scenarios before a release that changes `SKILL.md`, the authorization matrix or a gate.
+Grade the behavioural outputs against the **Expect** and **Never** columns in [`evals/scenarios.md`](evals/scenarios.md). Scenarios that need a realistic project use the fixtures in [`evals/fixtures/`](evals/fixtures) (`fixture:<name>` in the Setup column). Run all 30 scenarios before a release that changes `SKILL.md`, the authorization matrix or a gate.
 
 ## 🙏 Credits
 

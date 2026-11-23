@@ -30,6 +30,8 @@ FORBIDDEN = [
     ('git log -p | grep', "use a real secret scanner (stage 4, step 11)"),
     ("The user approves the merge.", "merging is level B: an explicit yes per pull request, logged"),
     ("docs/company/**`) in a docs-only", "invalidation is decided only by stage 7's policy, not a blanket docs exemption (PB-R4-02)"),
+    ("Approve this draft brief with my recommended critical answers", "critical items can't be pre-filled for blanket approval (v2.7.0, S27)"),
+    ("stop after at most 6 rounds", "Kickoff has no fixed round cap; it ends when coverage is complete (v2.7.0)"),
     ("or with store sandbox accounts", "store sandbox accounts isolate payments only, not the app backend (PB-R4-01)"),
 ]
 # Files that must reference the authorization matrix.
@@ -146,7 +148,16 @@ def main():
                                 ("never changes production unattended", (SKILL_DIR / "references/devops.md").read_text(), "devops"),
                                 ("Scheduled jobs or agents taking **any** production action | Never",
                                  (SKILL_DIR / "references/authorization.md").read_text(), "authorization"),
-                                ("Deploy log", rel7, "07")]:
+                                ("Deploy log", rel7, "07"),
+                                # Deep Kickoff and project types (v2.7.0)
+                                ("Coverage checklist", (SKILL_DIR / "references/kickoff.md").read_text(), "kickoff"),
+                                ("Critical items must be answered by the user", (SKILL_DIR / "references/kickoff.md").read_text(), "kickoff"),
+                                ("Ask a lot before starting", skill, "SKILL"),
+                                ("never pre-fill them in a draft brief", skill, "SKILL"),
+                                ("Never pre-fill critical items", (SKILL_DIR / "references/kickoff.md").read_text(), "kickoff"),
+                                ("references/project-types/web.md", skill, "SKILL"),
+                                ("references/project-types/system.md", skill, "SKILL"),
+                                ("references/project-types/app.md", skill, "SKILL")]:
         if needle not in where:
             errors.append(f"{name}: missing required rule text: {needle!r}")
 
