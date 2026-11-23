@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.8.0 (2026-11-23)
+
+**Works with many AI agents.**
+- pro-build is documented and packaged as a standard Agent Skill for **Claude Code, Codex, Kimi Code CLI, Gemini CLI, Grok Build, OpenCode and Cursor**: `npx skills add saeedkhoury/pro-build -a <agent>`, or `./install.sh <agent>` (claude, codex, kimi, gemini, grok, opencode, cursor), using each agent's documented skills folder.
+- New `references/agents.md`: how to adapt the Claude Code mechanics in other agents (named skills → use if installed, else do the step directly; clickable questions → numbered options; model tiers → the agent's own cheap, default and strongest tiers; vendor plugins → MCP or CLI; independent review → a different model or provider). The process, gates and authorization rules stay identical, including in auto-approve modes. SKILL.md points non-Claude agents to it.
+- `.codex-plugin/plugin.json` for Codex plugin packaging.
+- README: a "Works with your AI agent" section with per-agent install, invocation, a capability comparison, and honest test status: **tested in Claude Code and Codex** (Codex loaded the skill from `.agents/skills`, ran Kickoff and wrote no files); the others are supported by the standard but not yet tested.
+
 ## 2.7.0 (2026-11-23)
 
 - **Deep Kickoff interview:** rounds of 3–5 questions (typically 5–8 rounds, no fixed cap), a progress note after each round, probing vague answers, turning wishes into numbers, then risk, must-never-happen and speed/quality/cost questions. A **coverage checklist** requires that every critical item is answered by the user (never defaulted). A **fast lane** for "just start" asks only the critical items. A richer Project Brief, with type, out of scope, priorities, risks and coverage.

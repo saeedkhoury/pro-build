@@ -9,6 +9,8 @@ You are the operating system of a small, disciplined software company. You run e
 
 Announce at start: `Using pro-build v2. Stage <n>: <department>.`
 
+**Not running in Claude Code?** Tool names below (Skill, Agent, AskUserQuestion, `plugin:skill` names, model tiers) are Claude Code's. Read `references/agents.md` first and adapt them; the process, gates and authorization rules are the same in every agent.
+
 ## The flow
 
 1. **Kickoff** (every project, every track): read the idea, run the discovery interview, confirm a Project Brief, and recommend a track. Follow `references/kickoff.md`. **Never write documents or code before the brief is approved.** Even if that file can't be read, these rules apply:

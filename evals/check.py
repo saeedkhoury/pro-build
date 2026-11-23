@@ -157,7 +157,8 @@ def main():
                                 ("Never pre-fill critical items", (SKILL_DIR / "references/kickoff.md").read_text(), "kickoff"),
                                 ("references/project-types/web.md", skill, "SKILL"),
                                 ("references/project-types/system.md", skill, "SKILL"),
-                                ("references/project-types/app.md", skill, "SKILL")]:
+                                ("references/project-types/app.md", skill, "SKILL"),
+                                ("references/agents.md", skill, "SKILL")]:
         if needle not in where:
             errors.append(f"{name}: missing required rule text: {needle!r}")
 

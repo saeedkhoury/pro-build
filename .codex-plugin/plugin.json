@@ -1,0 +1,55 @@
+{
+  "name": "pro-build",
+  "description": "Your AI software company for Claude Code: ten departments, from idea validation to deploys, payments, launch and growth, with your approval at every gate. Powered by ECC.",
+  "author": {
+    "name": "Saeed Khoury",
+    "url": "https://github.com/saeedkhoury"
+  },
+  "homepage": "https://github.com/saeedkhoury/pro-build",
+  "repository": "https://github.com/saeedkhoury/pro-build",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "api",
+    "ci-cd",
+    "codex",
+    "deployment",
+    "devops",
+    "dora",
+    "ecc",
+    "gemini",
+    "grok",
+    "growth",
+    "kimi",
+    "mobile",
+    "observability",
+    "product",
+    "requirements",
+    "saas",
+    "skills",
+    "slo",
+    "sre",
+    "startup",
+    "terraform",
+    "web",
+    "workflow"
+  ],
+  "version": "2.8.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "pro-build",
+    "shortDescription": "Your AI software company: from idea to paying users",
+    "longDescription": "Ten departments with approval gates: a deep Kickoff interview, PRD, architecture, design, CI/CD, test-first engineering, QA and security, protected releases, go-to-market and weekly SLO/DORA reviews, for web, systems and apps.",
+    "developerName": "Saeed Khoury",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/saeedkhoury/pro-build",
+    "defaultPrompt": [
+      "Use pro-build to start a new project: <describe your idea>"
+    ]
+  }
+}

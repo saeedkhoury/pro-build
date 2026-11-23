@@ -6,13 +6,16 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square)](https://code.claude.com/docs/en/plugins)
-[![Version](https://img.shields.io/badge/version-2.7.0-7c3aed?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.8.0-7c3aed?style=flat-square)](CHANGELOG.md)
 [![Powered by ECC](https://img.shields.io/badge/powered%20by-ECC-0ea5e9?style=flat-square)](https://github.com/affaan-m/ECC)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-open%20standard-16a34a?style=flat-square)](#-works-with-your-ai-agent)
+
+**Works with** Claude Code · Codex · Kimi Code · Gemini CLI · Grok Build · OpenCode · Cursor
 
 **Run every project like a real software company.**<br>
 Describe your idea. pro-build interviews you until it understands it, writes the docs, builds the MVP, then ships and grows it, with you as CEO approving every gate.
 
-[Quick start](#-quick-start) · [The flow](#-the-flow) · [The company](#-the-company) · [How it works](#-how-it-works) · [Tracks](#-tracks) · [Model routing](#-smart-model-routing) · [Usage](#-usage) · [Toolkit](#-toolkit) · [FAQ](#-faq)
+[Quick start](#-quick-start) · [Your AI agent](#-works-with-your-ai-agent) · [The flow](#-the-flow) · [The company](#-the-company) · [How it works](#-how-it-works) · [Tracks](#-tracks) · [Model routing](#-smart-model-routing) · [Usage](#-usage) · [Toolkit](#-toolkit) · [FAQ](#-faq)
 
 </div>
 
@@ -44,7 +47,9 @@ AI agents can write a lot of code fast. Real products also need everything aroun
 
 ## 🚀 Quick start
 
-**1. Install ECC** (required). Inside Claude Code:
+> Using **Codex, Kimi, Gemini, Grok, OpenCode or Cursor**? Jump to [Works with your AI agent](#-works-with-your-ai-agent). The steps below are for **Claude Code**, where pro-build has the most automation.
+
+**1. Install ECC** (required in Claude Code). Inside Claude Code:
 
 ```text
 /plugin marketplace add affaan-m/ECC
@@ -77,6 +82,52 @@ AI agents can write a lot of code fast. Real products also need everything aroun
 
 > [!TIP]
 > Services such as Stripe and Vercel need a one-time sign-in through `/mcp`. pro-build tells you when a stage needs one, and works around anything that isn't connected yet.
+
+---
+
+## 🤖 Works with your AI agent
+
+pro-build is a standard **[Agent Skill](https://agentskills.io)**: one `SKILL.md` folder that any agent supporting the open standard can load. Its process (the deep Kickoff interview, ten departments, gates, authorization matrix, evidence rules and playbooks) is plain Markdown and works the same in every agent. Only some mechanics differ, and pro-build adapts them itself ([`references/agents.md`](skills/pro-build/references/agents.md)).
+
+### Install in one command (any agent)
+
+```bash
+npx skills add saeedkhoury/pro-build                 # pick your agent(s) interactively
+npx skills add saeedkhoury/pro-build -a codex        # or name one: claude-code, codex, kimi-code-cli,
+                                                     # gemini-cli, grok, opencode, cursor, …
+```
+
+[`skills`](https://github.com/vercel-labs/skills) installs into the right folder for 80+ agents. Or clone this repository and run `./install.sh <agent>`.
+
+### Agent by agent
+
+| Agent | Install | Start a project | Status |
+|:--|:--|:--|:--|
+| **Claude Code** | Plugin: `/plugin marketplace add saeedkhoury/pro-build` then `/plugin install pro-build@pro-build`, or `./install.sh claude` | `/pro-build:pro-build "idea"` (plugin) or `/pro-build "idea"` | ✅ **Tested**: full automation |
+| **Codex** (OpenAI) | `npx skills add saeedkhoury/pro-build -a codex`, or `./install.sh codex` (`~/.agents/skills`). A `.codex-plugin/plugin.json` is included for Codex plugin packaging | `$pro-build`, or "Use the pro-build skill: idea" | ✅ **Tested**: loads the skill and runs Kickoff |
+| **Kimi Code CLI** (Moonshot) | `npx skills add saeedkhoury/pro-build -a kimi-code-cli`, or `./install.sh kimi` (`~/.agents/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
+| **Gemini CLI** (Google) | `npx skills add saeedkhoury/pro-build -a gemini-cli`, or `./install.sh gemini` (`~/.gemini/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
+| **Grok Build** (xAI) | `npx skills add saeedkhoury/pro-build -a grok`, or `./install.sh grok` (`~/.grok/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
+| **OpenCode** | `npx skills add saeedkhoury/pro-build -a opencode`, or `./install.sh opencode` (`~/.config/opencode/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
+| **Cursor** | `npx skills add saeedkhoury/pro-build -a cursor`, or `./install.sh cursor` (`~/.cursor/skills`) | "Use the pro-build skill: idea" | 📘 Supported by the standard; not yet tested |
+
+For a single project instead of every project, put the skill in the project's `.agents/skills/pro-build/` folder (or `.claude/skills/` for Claude Code, `.grok/skills/` for Grok).
+
+### What's the same, and what adapts
+
+| | Claude Code | Other agents |
+|:--|:--|:--|
+| Deep Kickoff interview and critical questions | ✅ Clickable options | ✅ Numbered questions with lettered options |
+| Ten departments, gates and CEO briefings | ✅ | ✅ Identical |
+| Authorization matrix (what only you may do) | ✅ | ✅ Identical, even in auto-approve modes |
+| `BUILD-STATE.md` and `docs/company/**` | ✅ | ✅ Identical, so you can switch agents mid-project |
+| Named workflow skills (ECC and others) | ✅ Through plugins | Used when installed for your agent; otherwise the step is done directly |
+| Model routing | ✅ Haiku, Sonnet, Opus, Fable (opt-in) | Mapped to your agent's own cheap, default and strongest tiers |
+| Stripe, Supabase, Vercel, Sentry, PostHog | ✅ Official plugins | Through the vendor's MCP server or CLI if configured |
+| Independent plan review | ✅ Codex reviews via claudex-loop | A different model or provider if available |
+
+> [!NOTE]
+> "Tested" means a fresh session found pro-build in the agent's skills folder, ran the Kickoff interview and wrote no files before the brief was approved. Kimi, Gemini, Grok, OpenCode and Cursor follow the same Agent Skills standard and folder conventions; reports from users of those agents are welcome.
 
 ---
 
@@ -386,14 +437,20 @@ Yes. Each department is one readable Markdown playbook. Fork the repo, edit <a h
 
 Update with `/plugin marketplace update pro-build`. Remove with `/plugin uninstall pro-build@pro-build`.
 
+### Any agent (`skills` CLI)
+
+```bash
+npx skills add saeedkhoury/pro-build -a <agent>
+```
+
 ### Manual install
 
 ```bash
 git clone https://github.com/saeedkhoury/pro-build.git
-cd pro-build && ./install.sh
+cd pro-build && ./install.sh <agent>     # claude (default), codex, kimi, gemini, grok, opencode, cursor
 ```
 
-This copies the skill to `~/.claude/skills/pro-build`, and the command becomes `/pro-build`. Use the plugin **or** the manual install, not both.
+This copies the skill into that agent's global skills folder. In Claude Code the command becomes `/pro-build`; use the plugin **or** the manual install, not both.
 
 ---
 
