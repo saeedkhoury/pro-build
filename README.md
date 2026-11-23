@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square)](https://code.claude.com/docs/en/plugins)
-[![Version](https://img.shields.io/badge/version-2.5.0-7c3aed?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.5.1-7c3aed?style=flat-square)](CHANGELOG.md)
 [![Powered by ECC](https://img.shields.io/badge/powered%20by-ECC-0ea5e9?style=flat-square)](https://github.com/affaan-m/ECC)
 
 **Run every project like a real software company.**<br>
@@ -395,7 +395,7 @@ python3 evals/check.py --refresh-known   # after adding a skill reference (needs
 evals/run-behavioral.sh S05 S06 S07      # behavioural scenarios: isolated headless Claude Code (this checkout only, no plugins or MCP, read-only)
 ```
 
-Grade the behavioural outputs against the **Expect** and **Never** columns in [`evals/scenarios.md`](evals/scenarios.md). Run all 20 scenarios before a release that changes `SKILL.md`, the authorization matrix or a gate.
+Grade the behavioural outputs against the **Expect** and **Never** columns in [`evals/scenarios.md`](evals/scenarios.md). Scenarios that need a realistic project use the fixtures in [`evals/fixtures/`](evals/fixtures) (`fixture:<name>` in the Setup column). Run all 20 scenarios before a release that changes `SKILL.md`, the authorization matrix or a gate.
 
 ## 🙏 Credits
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.1 (2026-11-23)
+
+Evals only; the skill itself is unchanged.
+- **Realistic fixtures** (`evals/fixtures/`): an approved SaaS at stage 5, a client site after stage 1, and an Expo app at stage 7. Scenarios opt in with `fixture:<name>`, and the runner copies the fixture into the isolated workspace.
+- S02, S13, S14 and S15 now use fixtures, so they test the deeper behaviour: the compact stage 2 with analytics N/A, payment and security model routing, the mobile build-first and sandbox-only testing path, and resuming a real backlog. All 20 scenarios have been run and pass.
+
 ## 2.5.0 (2026-11-23)
 
 Fixes from an independent Codex (GPT-6 Astra) review of v2.4.0: 9 findings plus a mobile gap, all accepted.

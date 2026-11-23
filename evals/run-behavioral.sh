@@ -34,7 +34,17 @@ for id in "${ids[@]}"; do
   setup="$(echo "$row" | awk -F'|' '{print $3}')"
   prompt="$(echo "$row" | awk -F'|' '{print $4}' | sed 's/`//g')"
   work="$(mktemp -d "${TMPDIR:-/tmp}/pro-build-eval.XXXXXX")"
-  printf '# Build State (eval fixture)\n%s\n' "$setup" > "$work/BUILD-STATE.md"
+  # Setup "fixture:<name>; extra notes" copies evals/fixtures/<name>/ (a realistic approved project)
+  # and appends any extra notes to its BUILD-STATE.md. Any other setup becomes a one-line BUILD-STATE.md.
+  fixture="$(echo "$setup" | sed -nE 's/^ *fixture:([a-z0-9-]+).*/\1/p')"
+  if [ -n "$fixture" ]; then
+    [ -d "$ROOT/evals/fixtures/$fixture" ] || { echo "missing fixture $fixture for $id" >&2; continue; }
+    cp -R "$ROOT/evals/fixtures/$fixture/." "$work/"
+    extra="$(echo "$setup" | sed -E 's/^ *fixture:[a-z0-9-]+;? *//')"
+    [ -n "$(echo "$extra" | tr -d ' ')" ] && printf '\n## Eval notes\n%s\n' "$extra" >> "$work/BUILD-STATE.md"
+  else
+    printf '# Build State (eval fixture)\n%s\n' "$setup" > "$work/BUILD-STATE.md"
+  fi
   echo "== $id"
   {
     echo "# scenario $id · pro-build $VERSION · content $HASH · $(date -u +%Y-%m-%dT%H:%M:%SZ)"
