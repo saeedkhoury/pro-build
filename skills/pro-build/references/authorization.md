@@ -36,6 +36,14 @@ This is the **single source of truth** for actions in every stage. When a playbo
 | Rotate or revoke credentials in a vendor dashboard | C | The agent finds what leaked, and prepares the steps and the code change to use the new secret |
 | Delete production data, buckets or projects | C | The agent never does this |
 | Change hosting protection, branch protection or CI security settings | B | Weakening protection needs a stated reason in the request |
+| Infrastructure as code: `fmt`, `validate`, `plan`, drift check | A | Read-only against real infrastructure |
+| Infrastructure as code: **apply to staging** | B | One yes per reviewed plan |
+| Infrastructure as code: **apply to production**; destroy or replace stateful resources | C | The user applies it, or approves the exact reviewed plan for a protected pipeline. Destroys are flagged in the CEO briefing |
+| Build and push container images; deploy a digest to staging | A | Images are tagged by SHA |
+| Deploy a container digest to production | B (C for the first deploy) | Same rules as promoting a named build |
+| Create a scheduled check, workflow or `/schedule` routine | B | **Read-only** for production and infrastructure. The only writes allowed are **reporting writes**: opening issues in this repository (`issues: write`) and sending to the one approved alert destination. No deploy, payment, data or cloud write permissions |
+| Create monitoring, uptime or paging accounts; set escalation policies; send a test page | C | The agent prepares the configuration |
+| Scheduled jobs or agents taking **any** production action | Never | They report and page; people act (`references/devops.md`) |
 
 ## Rules
 

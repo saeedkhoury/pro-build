@@ -47,7 +47,7 @@ Recorded in stage 2's operations profile and set up in stage 4:
 2. **Build and freeze the candidate.** Build it from that `main` SHA, following the configuration strategy. Record it in `BUILD-STATE.md` → Release candidate:
    - the version and class;
    - the **commit SHA**;
-   - the **artifact or build ID** (a deployment ID, image digest or file checksum);
+   - the **artifact or build ID** (a deployment ID, a file checksum, or an **image digest** for containers; with build-time configuration, both the sandbox and the production-configured digests);
    - the **configuration profile** (runtime, or build-time production);
    - the merged pull requests.
 
@@ -66,9 +66,9 @@ Recorded in stage 2's operations profile and set up in stage 4:
 7. **Production go: CEO briefing.** Show the candidate (SHA, artifact ID, configuration profile, class), the evidence summary, the risks, and the rollback target or halt plan with its trigger. Then:
    - **First production deploy (level C):** the user promotes or deploys the exact artifact. Give copy-ready steps (for example, Vercel → Deployments → the candidate deployment → Promote to Production, or the exact CLI command).
    - **Later releases (level B):** ask "Promote artifact `<id>` (`<sha>`) to production, with rollback to `<target>` pre-authorized on `<trigger>`?" Only an explicit yes for that artifact counts. Log it.
-8. **Promote** the exact candidate artifact. Never rebuild at this point.
+8. **Promote** the exact candidate artifact (for containers, deploy the same image digest). Never rebuild at this point. Infrastructure changes for the release follow `references/devops.md` §3: production `apply` is level C.
 9. **Watch.** `ecc:canary-watch` for the first hour: errors, key events and uptime, for the services that apply. If the trigger fires, run the pre-authorized rollback (or the halt plan, if its steps are level A or B) and tell the user immediately. Anything outside the pre-authorized scope goes back to the user.
-10. **Tag and record.** Tag `v<version>` on the release SHA once it's healthy, record the production deployment ID, then commit the release records in a docs-only pull request.
+10. **Tag and record.** Tag `v<version>` on the release SHA once it's healthy, record the production deployment ID, and append a row to `BUILD-STATE.md` → **Deploy log** (a `D-…` ID, version, SHA, the included pull requests with their merge times, exposure time, class, outcome) for the DORA metrics (`references/devops.md` §2). A rollback or halt is recorded as that row's outcome; never drop the row. Then commit the release records in a docs-only pull request.
 
 ## Mobile apps (iOS and Android)
 
@@ -81,7 +81,7 @@ Store releases replace steps 2–10 above with this path. Step 1 (release conten
 5. **Phased rollout:** start small (for example, 1–10%) and widen while crash-free sessions stay healthy.
 6. **Halt plan instead of rollback:** you can't roll back store releases. Pause the phased rollout (Play: halt rollout; App Store: pause phased release), then ship a fixed build or a server-side flag. Pausing is level C unless the user pre-authorized it with this release.
 7. **Backend compatibility:** older app versions stay in use for weeks. Keep APIs backward-compatible, and use a minimum-supported-version check or force-update for breaking changes.
-8. Watch crash reporting (if it applies), then tag the release and commit the records.
+8. Watch crash reporting (if it applies). Add one deploy-log row **per platform** when its phased rollout starts (a `D-…` ID, the included pull requests, and an outcome: healthy, halted or hotfixed). Then tag the release and commit the records.
 
 ## Gate: production go
 

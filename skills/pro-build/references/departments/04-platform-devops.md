@@ -33,7 +33,11 @@
     - the alert route, so alerts reach the owner;
     - first steps per severity (acknowledge, roll back or mitigate, communicate, fix);
     - a status-update template for users;
-    - a short post-incident review, recorded in `docs/company/09-reviews/`.
+    - a short post-incident review, recorded in `docs/company/09-reviews/`. It gives the incident an ID (`I-…`), links the causing deployment (`D-…`, or "not deploy-related"), and updates that deployment's outcome in the deploy log (`references/devops.md` §2).
+
+14. **Infrastructure approach** (from stage 2; see `references/devops.md` §3). For infrastructure as code: set up `infra/` with Terraform or Pulumi, remote locked state per environment, `fmt`, `validate` and a security scan, and a `plan` posted on every pull request; apply to staging only with a yes (level B); production applies are level C. For containers: Dockerfiles (`ecc:docker-patterns`), plus Kubernetes manifests only if chosen (`ecc:kubernetes-patterns`); images built once in CI, scanned, tagged by SHA and promoted by digest; health checks and resource limits.
+15. **Always-on watching** (`references/devops.md` §4). Set up the chosen layers: an external uptime monitor (the user creates the account), a scheduled GitHub Actions check that runs read-only production smoke tests and an infrastructure drift plan, and on failure opens an issue and sends an alert (reporting writes only, as `references/devops.md` §4 specifies), and optionally a read-only `/schedule` routine for a daily AI health report. **Nothing scheduled may change production.**
+16. **On-call paging** (`references/devops.md` §5). Configure the SEV1 route (PagerDuty, incident.io, Opsgenie or Better Stack; level C setup), link the runbook from every alert, and have the user send a test page.
 
 Each service needs the user to sign in or create an account (level C). Prepare the exact step, then hand over.
 
@@ -51,3 +55,7 @@ Each service needs the user to sign in or create an account (level C). Prepare t
 - [ ] The secret scan of the history and working tree has no unresolved findings; any real exposure was rotated by the user
 - [ ] Backups are on and a restore test succeeded within the RTO (stateful products), or N/A with a reason
 - [ ] The operations runbook exists, with an alert route reaching the incident owner
+- [ ] The infrastructure approach is in place: platform settings documented; or infrastructure as code with remote state and plan-on-PR; or containers built once, scanned and promoted by digest
+- [ ] The chosen watch layers are live (uptime monitor checks, scheduled CI check); production and infrastructure access is read-only, and the only writes are reporting writes (issues in this repository and the approved alert destination); any AI watch routine has no deploy or write tools
+- [ ] Every watch layer, paging and SLO item is set up **or marked N/A in stage 2's operations profile with a reason**. N/A items aren't required here
+- [ ] A test page reached the incident owner (if paging applies), or N/A with a reason

@@ -140,7 +140,13 @@ def main():
                                 ("## Configuration strategy", rel7, "07"), ("halt plan", rel7, "07"),
                                 ("Build and sign first", rel7, "07"), ("accepted risk", qa, "06"),
                                 ("Never eligible", qa, "06"),
-                                ("service applicability table is authoritative", skill, "SKILL")]:
+                                ("service applicability table is authoritative", skill, "SKILL"),
+                                # DevOps depth (v2.6.0)
+                                ("Automation never changes production unattended", skill, "SKILL"),
+                                ("never changes production unattended", (SKILL_DIR / "references/devops.md").read_text(), "devops"),
+                                ("Scheduled jobs or agents taking **any** production action | Never",
+                                 (SKILL_DIR / "references/authorization.md").read_text(), "authorization"),
+                                ("Deploy log", rel7, "07")]:
         if needle not in where:
             errors.append(f"{name}: missing required rule text: {needle!r}")
 

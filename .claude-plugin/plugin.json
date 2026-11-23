@@ -1,6 +1,6 @@
 {
   "name": "pro-build",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "description": "Your AI software company for Claude Code: ten departments, from idea validation to deploys, payments, launch and growth, with your approval at every gate. Powered by ECC.",
   "author": {
     "name": "Saeed Khoury",
@@ -10,15 +10,20 @@
   "repository": "https://github.com/saeedkhoury/pro-build",
   "license": "MIT",
   "keywords": [
-    "workflow",
-    "startup",
-    "devops",
-    "saas",
-    "product",
     "ci-cd",
     "deployment",
-    "growth",
+    "devops",
+    "dora",
     "ecc",
-    "skills"
+    "growth",
+    "observability",
+    "product",
+    "saas",
+    "skills",
+    "slo",
+    "sre",
+    "startup",
+    "terraform",
+    "workflow"
   ]
 }

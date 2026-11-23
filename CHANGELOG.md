@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.6.0 (2026-11-23)
+
+**DevOps depth** (`references/devops.md`), sized to each project:
+- **Reliability targets:** 1–3 SLOs per product with error budgets and a policy for when the budget is spent (stage 2), reviewed weekly (stage 9).
+- **DORA metrics:** each release appends a deploy-log row (stage 7); the weekly review computes deployment frequency, lead time, change failure rate and time to restore.
+- **Infrastructure approach:** platform-managed (default), infrastructure as code (Terraform or Pulumi: remote locked state, plan on every PR, staging apply level B, production apply level C, drift checks), or containers (built once, scanned, promoted by digest; Kubernetes only when needed).
+- **Always-on watching:** an external uptime monitor, scheduled read-only CI checks (smoke tests and drift, opening an issue on failure), and an optional daily read-only AI health report via `/schedule`.
+- **On-call paging:** a SEV1 route (PagerDuty, incident.io, Opsgenie, Better Stack), user-run setup, and a test page.
+- **New rule 15:** automation never changes production unattended. New authorization rows cover infrastructure as code, containers, scheduled jobs and paging.
+- Evals: 3 new scenarios (S21 auto-rollback job refused, S22 production Terraform apply is level C, S23 DORA and SLO review from a deploy log) and new checker rules.
+
 ## 2.5.1 (2026-11-23)
 
 Evals only; the skill itself is unchanged.

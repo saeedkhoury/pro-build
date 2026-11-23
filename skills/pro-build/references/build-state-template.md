@@ -77,6 +77,22 @@ The full list of services, with chosen, alternative and N/A decisions, lives in 
 - Backups: on/off · Last restore test: <date, duration, result>
 - Secret scanner: <tool> · Last scan: <date, result>
 
+## Reliability and delivery (references/devops.md)
+- SLOs: <journey: target, error budget left>
+- Infrastructure approach: platform-managed / infrastructure as code (<tool>) / containers (<runtime>)
+- Watch layers: uptime monitor <tool or N/A> · scheduled CI check <workflow or N/A> · AI watch routine <name or N/A>
+- Paging: <tool and route> · last test page <date>
+
+## Deploy log (for DORA)
+| ID | Version | Platform | SHA | Included PRs (merged at) | Exposed to production | Class | Outcome |
+|---|---|---|---|---|---|---|---|
+| D-001 | | web / ios / android | | #12 (2026-11-17 10:00), #13 (…) | | | healthy / rolled back / halted / hotfixed / failed (I-…) |
+
+## Incident log
+| ID | SEV | Started | Recovered | Caused by deployment | Cause | Review |
+|---|---|---|---|---|---|---|
+| I-001 | | | | D-… / not deploy-related | | link |
+
 ## Model log
 | Stage | Main work done by | Notes |
 |---|---|---|

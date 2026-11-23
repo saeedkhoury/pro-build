@@ -35,6 +35,10 @@ These plugins connect to hosted services; each needs the user to sign in once (r
 | REA: reverse engineer anything (competitor teardown, release exposure audit, release diff, lost source) | 0, 6, 7, Existing | `/plugin marketplace add morluto/rea` then `/plugin install rea@rea` (needs Node 22.23.4+). Rules and commands: `references/reverse-engineering.md` |
 | Secret scanner: gitleaks, trufflehog, or Semgrep secrets | 4, 6 | `brew install gitleaks` or `brew install trufflehog`, or the semgrep plugin (free login). Ask before installing a new tool |
 | Mobile release: EAS (Expo) or fastlane | 7 | `npm i -g eas-cli` or `brew install fastlane`; store accounts are level C |
+| Terraform (infrastructure as code) | 2, 4, 7 | `/plugin install terraform@claude-plugins-official`; or Pulumi. See `references/devops.md` §3 |
+| PagerDuty or incident.io (paging and on-call) | 4, 9 | `/plugin install pagerduty@claude-plugins-official` or `incident-io@claude-plugins-official`; accounts are level C |
+| Datadog or Grafana (observability, optional) | 4, 9 | `/plugin install datadog@claude-plugins-official` or `grafana-cloud-mcp@claude-plugins-official` |
+| Uptime monitor (Better Stack, UptimeRobot, Checkly) | 4, 9 | A web account (level C); no plugin needed |
 | claudex-loop (cross-model plan review) | 2, 5 | `/plugin marketplace add chaseai-yt/claudex-loop` then `/plugin install claudex-loop@claudex-loop` (also needs the Codex CLI) |
 
 ## Fallbacks

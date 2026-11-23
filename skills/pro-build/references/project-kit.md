@@ -23,6 +23,9 @@ pro-build produces these files over the stages. Each one is created by the stage
 | `.specify/`, `.claude/skills/speckit-*` | 4 Platform (spec-kit mode only) | spec-kit setup and constitution |
 | `specs/NNN-<feature>/` | 5 Engineering (spec-kit mode only) | `spec.md`, `plan.md` and `tasks.md` for each large feature |
 | `docs/company/04-platform.md` | 4 Platform | Environments and production protection, services, secrets map (names only), secret scanning, backups and the last restore test, and the operations runbook (deploy, promote, rollback, restore, incidents) |
+| `infra/` | 4 Platform (infrastructure as code only) | Terraform or Pulumi code; state lives in a remote backend, never in git |
+| `Dockerfile`, `k8s/` | 4 Platform (containers only) | Images built once and promoted by digest |
+| `.github/workflows/scheduled-check.yml` | 4 Platform | Read-only production smoke tests and a drift plan on a schedule; opens an issue on failure |
 | `docs/company/06-launch-readiness.md` | 6 QA & Security | Evidence bound to a commit SHA and build, for the release class's profile |
 | `docs/company/07-releases/<version>.md` | 7 Release | Release notes and rollback plan |
 | `CHANGELOG.md` | 7 Release | User-facing change history |

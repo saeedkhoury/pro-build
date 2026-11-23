@@ -29,6 +29,7 @@ ecc:docker-patterns
 ecc:e2e-testing
 ecc:frontend-design-direction
 ecc:github-ops
+ecc:kubernetes-patterns
 ecc:learn-eval
 ecc:market-research
 ecc:orch-add-feature

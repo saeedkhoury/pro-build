@@ -19,7 +19,7 @@ Announce at start: `Using pro-build v2. Stage <n>: <department>.`
 3. **Factory** (stage 4): repository, `CLAUDE.md`, README, CI/CD, environments and services.
 4. **MVP** (stage 5): build milestone M1 from `02-plan.md`, run the convergence check until nothing in M1 is missing, demo it, then grow feature by feature. Large features can use **spec-kit mode** (`references/spec-kit.md`) when it's enabled. In Claude Code the spec-kit commands are hyphenated project skills: `/speckit-specify` → `/speckit-clarify` → `/speckit-plan` → `/speckit-tasks` → `/speckit-analyze` → `/speckit-implement` ⇄ `/speckit-converge`, all on a `feat/<name>` branch and still ending in a pull request and your approval.
 5. **Ship** (stages 6–7): QA and security evidence for one exact build, then a protected, staged release. Mobile apps follow the app-store path in `07-release.md`.
-6. **Sell and grow** (stages 8–9): go-to-market, then weekly operating reviews.
+6. **Sell and grow** (stages 8–9): go-to-market, then weekly operating reviews with SLO and DORA metrics. DevOps depth (reliability targets, delivery metrics, infrastructure as code, containers, always-on watching, paging) is in `references/devops.md`.
 
 `references/project-kit.md` lists every file a project gets and which stage creates it.
 
@@ -98,6 +98,7 @@ Record the track in `BUILD-STATE.md`. Never drop a stage silently: say which one
 12. **CEO briefings at every gate.** Present each gate as a short briefing: **Decision needed** (one line) · **What we produced** (links) · **Key numbers** (cost, scope, metrics) · **Risks** (top 3) · **Recommendation** · **Options** (approve / revise / stop). The user is the CEO; keep briefings readable in under a minute.
 13. **Reverse engineering (optional, with REA).** Only on targets the user owns or is authorised to analyse, or public software that was legitimately obtained. Understand, never copy code or assets, and never bypass DRM, licences, auth or paywalls. Uses: stage 0 competitor teardown, a stage 6 `audit-release-exposure` of your own build (exposed credentials or production source maps are blocking), a stage 7 release diff, and the Existing project track when the source is missing. Details: `references/reverse-engineering.md`.
 14. **Stage 2's service applicability table is authoritative.** Every later stage uses the chosen service, the recorded alternative, or skips it as N/A. Never require an N/A service at a later gate. Changing a decision is level B: ask, then update `02-architecture.md`.
+15. **Automation never changes production unattended.** Scheduled checks, workflows and AI routines are read-only: they watch, report and page. Production changes always go through a person, as level B or C (`references/devops.md`, `references/authorization.md`).
 
 ## Artifact layout
 

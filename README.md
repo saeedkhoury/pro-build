@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square)](https://code.claude.com/docs/en/plugins)
-[![Version](https://img.shields.io/badge/version-2.5.1-7c3aed?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.6.0-7c3aed?style=flat-square)](CHANGELOG.md)
 [![Powered by ECC](https://img.shields.io/badge/powered%20by-ECC-0ea5e9?style=flat-square)](https://github.com/affaan-m/ECC)
 
 **Run every project like a real software company.**<br>
@@ -34,6 +34,7 @@ AI agents can write a lot of code fast. Real products also need everything aroun
 - 🧠 **Routes every task to the right model.** Haiku for mechanical work, Sonnet for building, Opus for strategy and security, and Fable (opt-in) for the hardest reviews. Top quality where it matters, fewer tokens everywhere else.
 - 📏 **Spec-driven when it matters.** Every plan gets a consistency check (requirement → task traceability), every milestone runs until it converges with the spec, and large features can use [GitHub spec-kit](https://github.com/github/spec-kit) mode.
 - 🧯 **Production-grade safety.** One authorization matrix, protected production deploys, approvals tied to an exact build, required QA evidence per release class, real secret scanning with key rotation, tested backups, and an incident runbook.
+- ♾️ **Full DevOps loop.** Reliability targets (SLOs) with error budgets, DORA delivery metrics in every weekly review, optional infrastructure as code (Terraform or Pulumi) and container paths, always-on watching (an uptime monitor, scheduled read-only CI checks, an optional daily AI health report) and on-call paging. Automation watches and pages; it never changes production unattended.
 - 🔬 **Audits what you actually ship.** With [REA](https://github.com/morluto/rea), QA scans your production build for leaked secrets and source maps, Release diffs each build against the last, and Founder Office can study how competitors' public apps work (to learn, never to copy).
 - 🔎 **SEO from day one.** Site structure in Design, technical SEO in the scaffold, an SEO and AI-search audit in QA, and a content and ranking engine at launch.
 - 📈 **Runs on numbers.** Weekly operating reviews of metrics, revenue and errors, which decide what to build next.
@@ -307,6 +308,7 @@ pro-build orchestrates other tools; it doesn't reinvent them.
 | Layer | Tools |
 |:--|:--|
 | **Engine** (required) | [ECC](https://github.com/affaan-m/ECC): planning, test-driven development, orchestrated feature workflows, reviews, security, DevOps patterns, SEO, sessions |
+| **DevOps** (optional) | [Terraform](https://github.com/hashicorp/terraform-mcp-server), PagerDuty or incident.io, Datadog or Grafana, an uptime monitor such as Better Stack ([`references/devops.md`](skills/pro-build/references/devops.md)) |
 | **Payments** | [Stripe](https://github.com/stripe/ai) |
 | **Backend** | [Supabase](https://github.com/supabase-community/supabase-plugin) |
 | **Deploys** | [Vercel](https://github.com/vercel/vercel-plugin) or [Cloudflare](https://github.com/cloudflare/skills) |
@@ -395,7 +397,7 @@ python3 evals/check.py --refresh-known   # after adding a skill reference (needs
 evals/run-behavioral.sh S05 S06 S07      # behavioural scenarios: isolated headless Claude Code (this checkout only, no plugins or MCP, read-only)
 ```
 
-Grade the behavioural outputs against the **Expect** and **Never** columns in [`evals/scenarios.md`](evals/scenarios.md). Scenarios that need a realistic project use the fixtures in [`evals/fixtures/`](evals/fixtures) (`fixture:<name>` in the Setup column). Run all 20 scenarios before a release that changes `SKILL.md`, the authorization matrix or a gate.
+Grade the behavioural outputs against the **Expect** and **Never** columns in [`evals/scenarios.md`](evals/scenarios.md). Scenarios that need a realistic project use the fixtures in [`evals/fixtures/`](evals/fixtures) (`fixture:<name>` in the Setup column). Run all 23 scenarios before a release that changes `SKILL.md`, the authorization matrix or a gate.
 
 ## 🙏 Credits
 
