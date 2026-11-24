@@ -43,7 +43,7 @@ Instead of explaining that process in every prompt, you install it once and star
 
 ## 📦 What's inside
 
-**Built in: 11 department agents, 1 skill with 23 playbooks, and 8 commands.** It drives 119 skills from 13 plugins, and ECC, installed from the same marketplace, adds 72 specialist agents, 328 skills and 99 commands.
+**72 agents · 328 skills · 99 commands** from ECC, installed from the same marketplace, plus pro-build's own **11 departments**, **119 skills wired into the workflow** and **8 commands**.
 
 | | 🤖 Agents | 🧩 Skills | ⌨️ Commands |
 |:--|--:|--:|--:|
@@ -55,14 +55,17 @@ Instead of explaining that process in every prompt, you install it once and star
 
 | Included | Count | What it gives you |
 |:--|--:|:--|
+| **Agents** (from ECC) | 72 | Specialist agents for planning, architecture, code review, security, build repair, testing and documentation ([ECC](https://github.com/affaan-m/ECC)) |
+| **Skills** (from ECC) | 328 | TDD, research, security, frontend, backend, data, DevOps, SEO, operations and more ([ECC](https://github.com/affaan-m/ECC)) |
+| **Commands** (from ECC) | 99 | Entry points such as `/plan`, `/code-review`, `/feature-dev`, `/quality-gate` and `/security-scan` ([ECC](https://github.com/affaan-m/ECC)) |
 | **Departments** (AI roles) | 11 | Kickoff plus 10 company departments. The AI plays each role in turn: discovery lead, founder advisor, Head of Product, CTO, Head of Design, platform engineer, engineering team, QA lead and security officer, release manager, Head of Growth, COO ([the company](#-the-company)) |
 | **Approval gates** | 11 | One per department. Four are CEO decisions: **Brief**, **Go / no-go**, **Production go**, **Launch go** |
 | **Helper agents** (model tiers) | 4 | Self-contained work goes to a helper agent on the cheapest model that does it well: Haiku, Sonnet, Opus, Fable (opt-in) ([model routing](#-smart-model-routing)) |
-| **Integrated skills** | 119 | From 13 plugins: ECC 68, marketing 22, Vercel 6, Claude SEO 5, PostHog 4, Sentry 3, Stripe, Supabase, Cloudflare and claudex-loop 2 each, Figma, REA and Taste 1 each. CI checks every name against the real skill list ([toolkit](#-toolkit)) |
+| **Skills wired into the workflow** | 119 | Named by pro-build's playbooks, from 13 plugins: ECC 68, marketing 22, Vercel 6, Claude SEO 5, PostHog 4, Sentry 3, Stripe, Supabase, Cloudflare and claudex-loop 2 each, Figma, REA and Taste 1 each. CI checks every name against the real skill list ([toolkit](#-toolkit)) |
+| **pro-build commands** | 8 | Start, resume, status, jump to a stage, feature, release, launch, review ([usage](#-usage)) |
 | **Playbooks** | 23 | 10 department playbooks, 3 project-type playbooks (web, system, app) and 10 shared guides: Kickoff, authorization, DevOps, model routing, toolkit, spec-kit, reverse engineering, project kit, build state, other agents |
 | **Project types** | 3 | 🌐 Web · ⚙️ System · 📱 App, each with its default stack, quality bar and its own Kickoff questions |
 | **Tracks** | 4 | Startup · Product · Client site · Existing project ([tracks](#-tracks)) |
-| **Commands** | 8 | Start, resume, status, jump to a stage, feature, release, launch, review ([usage](#-usage)) |
 | **Company documents** | up to 28 | Brief, validation, PRD, roadmap, architecture, decision records, plan, design, CI, runbook, launch readiness, release notes, go-to-market plan, weekly reviews… ([full list](skills/pro-build/references/project-kit.md)) |
 | **Operating rules** | 16 | Always on: real gates, evidence over claims, test mode first, ask before assuming, nothing changes production unattended… |
 | **Authorization levels** | 3 | **A** the agent may do it · **B** only after your yes for that exact action · **C** only you ([who may do what](#who-may-do-what)) |
