@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square)](https://code.claude.com/docs/en/plugins)
-[![Version](https://img.shields.io/badge/version-2.8.0-7c3aed?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.9.0-7c3aed?style=flat-square)](CHANGELOG.md)
 [![Powered by ECC](https://img.shields.io/badge/powered%20by-ECC-0ea5e9?style=flat-square)](https://github.com/affaan-m/ECC)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-open%20standard-16a34a?style=flat-square)](#-works-with-your-ai-agent)
 
@@ -43,15 +43,15 @@ Instead of explaining that process in every prompt, you install it once and star
 
 ## 📦 What's inside
 
-**Built in: 11 department agents, 1 skill with 23 playbooks, and 8 commands.** It drives 119 skills from 13 plugins, and ECC (required in Claude Code) adds 71 specialist agents, 314 skills and 98 commands.
+**Built in: 11 department agents, 1 skill with 23 playbooks, and 8 commands.** It drives 119 skills from 13 plugins, and ECC, installed from the same marketplace, adds 72 specialist agents, 328 skills and 99 commands.
 
 | | 🤖 Agents | 🧩 Skills | ⌨️ Commands |
 |:--|--:|--:|--:|
 | **Built into pro-build** | **11** department agents (Kickoff + 10 departments), plus helper agents on 4 model tiers | **1** skill (`pro-build`) with **23** playbooks | **8** |
 | **Used by the workflow** | Helper agents for self-contained work: search, builds, reviews, audits | **119** named skills from 13 plugins, each checked by CI | Spec-kit and plugin commands when enabled |
-| **Comes with ECC** (required in Claude Code) | **71** | **314** | **98** |
+| **Comes with ECC** (same marketplace, required in Claude Code) | **72** | **328** | **99** |
 
-<sub>ECC counts are from ECC 2.2.3; newer ECC versions may have more. The department agents are roles the AI plays in your main session, each with its own playbook and gate; self-contained work goes to helper agents (subagents) on the cheapest model that does it well.</sub>
+<sub>ECC counts are from the latest ECC at the time of writing; ECC is installed from its official repository, so you get whatever it has now. The department agents are roles the AI plays in your main session, each with its own playbook and gate; self-contained work goes to helper agents (subagents) on the cheapest model that does it well.</sub>
 
 | Included | Count | What it gives you |
 |:--|--:|:--|
@@ -99,21 +99,20 @@ AI agents can write a lot of code fast. Real products also need everything aroun
 
 > Using **Codex, Kimi, Gemini, Grok, OpenCode or Cursor**? Jump to [Works with your AI agent](#-works-with-your-ai-agent). The steps below are for **Claude Code**, where pro-build has the most automation.
 
-**1. Install ECC** (required in Claude Code). Inside Claude Code:
-
-```text
-/plugin marketplace add affaan-m/ECC
-/plugin install ecc@ecc
-```
-
-**2. Install pro-build:**
+**1. Add the pro-build marketplace and install both plugins.** Inside Claude Code:
 
 ```text
 /plugin marketplace add saeedkhoury/pro-build
+/plugin install ecc@pro-build
 /plugin install pro-build@pro-build
 ```
 
-**3. Add the company services you want** (recommended, from the official plugin directory):
+One marketplace gives you everything: **pro-build** plus **ECC** (72 agents, 328 skills, 99 commands, hooks and rules), which pro-build runs on. ECC is installed from [its official repository](https://github.com/affaan-m/ECC), so you always get the latest version, with its MIT license and its author's credit.
+
+> [!IMPORTANT]
+> Already have ECC from its own marketplace (`ecc@ecc`)? Skip `ecc@pro-build`: installing both gives you every ECC tool twice.
+
+**2. Add the company services you want** (recommended, from the official plugin directory):
 
 ```text
 /plugin install stripe@claude-plugins-official
@@ -124,7 +123,7 @@ AI agents can write a lot of code fast. Real products also need everything aroun
 /plugin install semgrep@claude-plugins-official
 ```
 
-**4. Open a new session and found your company:**
+**3. Open a new session and found your company:**
 
 ```text
 /pro-build:pro-build "a SaaS that turns meeting recordings into action items"
@@ -528,10 +527,11 @@ Yes. Each department is one readable Markdown playbook. Fork the repo, edit <a h
 
 ```text
 /plugin marketplace add saeedkhoury/pro-build
+/plugin install ecc@pro-build        # skip if you already have ecc@ecc
 /plugin install pro-build@pro-build
 ```
 
-Update with `/plugin marketplace update pro-build`. Remove with `/plugin uninstall pro-build@pro-build`.
+Update with `/plugin marketplace update pro-build`. Remove with `/plugin uninstall pro-build@pro-build` (and `/plugin uninstall ecc@pro-build`).
 
 ### Any agent (`skills` CLI)
 

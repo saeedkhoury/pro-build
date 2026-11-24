@@ -6,7 +6,7 @@ Every tool pro-build uses, by department. If a skill is missing, give the user i
 
 | Tool | Used in | Install (inside Claude Code) |
 |:--|:--|:--|
-| ECC: Everything Claude Code | Every stage | `/plugin marketplace add affaan-m/ECC` then `/plugin install ecc@ecc` |
+| ECC: Everything Claude Code | Every stage | `/plugin install ecc@pro-build` (from the pro-build marketplace), or `/plugin marketplace add affaan-m/ECC` then `/plugin install ecc@ecc`. Install only one of the two |
 | Git and the GitHub CLI (`gh`) | 4–9 | `brew install git gh`, then `gh auth login` (the user signs in) |
 
 ## Recommended: company services (official Claude plugin directory)

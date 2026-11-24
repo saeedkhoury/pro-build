@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.9.0 (2026-11-24)
+
+**ECC in the same marketplace.**
+- The pro-build marketplace now also lists **ECC**, installed from its official repository (`affaan-m/ECC`): `/plugin install ecc@pro-build`. One `/plugin marketplace add saeedkhoury/pro-build` gives you pro-build plus ECC's 72 agents, 328 skills and 99 commands, always at ECC's latest version, with its MIT license and credit. Nothing from ECC is copied into this repository, and its skills keep their `ecc:` names, so every pro-build reference keeps working. Tested in a clean config: both plugins install, and ECC's skills resolve.
+- `references/toolkit.md` gives both ECC install paths and says to install only one.
+- README: a Quick start that installs both plugins from one marketplace (with a warning not to install ECC twice), a "What's inside" table with built-in agent, skill and command counts, a step-by-step walkthrough, and an ECC-style banner.
+
 ## 2.8.0 (2026-11-23)
 
 **Works with many AI agents.**

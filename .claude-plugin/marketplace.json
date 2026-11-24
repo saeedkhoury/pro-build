@@ -1,6 +1,6 @@
 {
   "name": "pro-build",
-  "description": "pro-build: Your AI software company for Claude Code: ten departments, from idea validation to deploys, payments, launch and growth, with your approval at every gate. Powered by ECC.",
+  "description": "pro-build: Your AI software company for Claude Code: ten departments, from idea validation to deploys, payments, launch and growth, with your approval at every gate. Also lists ECC, which pro-build runs on.",
   "owner": {
     "name": "Saeed Khoury",
     "url": "https://github.com/saeedkhoury"
@@ -11,6 +11,17 @@
       "source": "./",
       "description": "Your AI software company for Claude Code: ten departments, from idea validation to deploys, payments, launch and growth, with your approval at every gate. Powered by ECC.",
       "category": "development"
+    },
+    {
+      "name": "ecc",
+      "source": {
+        "source": "github",
+        "repo": "affaan-m/ECC"
+      },
+      "description": "ECC by Affaan Mustafa (MIT), installed from its official repository: 70+ agents, 300+ skills, commands, hooks and rules. pro-build requires it in Claude Code. Skip this if you already installed ECC from its own marketplace.",
+      "homepage": "https://github.com/affaan-m/ECC",
+      "license": "MIT",
+      "category": "workflow"
     }
   ]
 }
