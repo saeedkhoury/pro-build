@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="t d">
 <title id="t">pro-build</title>
-<desc id="d">pro-build: run every project like a real software company. 72 agents from ECC, 119 integrated skills, 8 commands, 11 departments, for web, system and app projects.</desc>
+<desc id="d">pro-build: run every project like a real software company. 72 agents and 328 skills from ECC, 8 commands, 11 departments, 119 skills wired into the workflow, for web, system and app projects.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1020"/><stop offset="1" stop-color="#17123a"/></linearGradient><linearGradient id="ac" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7dd3fc"/><stop offset="1" stop-color="#c4b5fd"/></linearGradient></defs>
 <rect width="1200" height="600" rx="24" fill="url(#bg)"/>
 <rect x="36" y="28" width="44" height="44" rx="12" fill="#ffffff" fill-opacity="0.06" stroke="url(#ac)"/>
@@ -61,29 +61,29 @@
 <rect x="820" y="116" width="172" height="444" rx="14" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-opacity="0.09"/>
 <circle cx="836" cy="143" r="4" fill="#7dd3fc"/>
 <text x="848" y="148" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="700" letter-spacing="0.8" fill="#e2e8f0">SKILLS</text>
-<text x="978" y="150" text-anchor="end" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="url(#ac)">119</text>
+<text x="978" y="150" text-anchor="end" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="url(#ac)">328</text>
 <path d="M832 164H980" stroke="#ffffff" stroke-opacity="0.1" stroke-dasharray="2 3"/>
 <g opacity="1"><rect x="828" y="174" width="156" height="27" rx="6" fill="#7dd3fc" fill-opacity="0.1" stroke="#7dd3fc" stroke-opacity="0.6"/>
-<text x="838" y="192" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#bae6fd">ecc:security-review</text></g>
+<text x="838" y="192" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#bae6fd">security-review</text></g>
 <g opacity="1"><rect x="828" y="207" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="838" y="225" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">ecc:e2e-testing</text></g>
+<text x="838" y="225" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">tdd-workflow</text></g>
 <g opacity="1"><rect x="828" y="240" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="838" y="258" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">ecc:market-research</text></g>
+<text x="838" y="258" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">e2e-testing</text></g>
 <g opacity="1"><rect x="828" y="273" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="838" y="291" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">ecc:canary-watch</text></g>
+<text x="838" y="291" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">api-design</text></g>
 <g opacity="1"><rect x="828" y="306" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="838" y="324" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">stripe:stripe-docs</text></g>
+<text x="838" y="324" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">database-migrations</text></g>
 <g opacity="1"><rect x="828" y="339" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="838" y="357" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">supabase:supabase</text></g>
+<text x="838" y="357" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">deployment-patterns</text></g>
 <g opacity="1"><rect x="828" y="372" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="838" y="390" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">vercel:bootstrap</text></g>
+<text x="838" y="390" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">docker-patterns</text></g>
 <g opacity="1"><rect x="828" y="405" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="838" y="423" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">sentry:sentry-…</text></g>
+<text x="838" y="423" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">canary-watch</text></g>
 <g opacity="0.55"><rect x="828" y="438" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="838" y="456" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">claude-seo:seo-audit</text></g>
+<text x="838" y="456" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">market-research</text></g>
 <g opacity="0.3"><rect x="828" y="471" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="838" y="489" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">ecc:seo</text></g>
-<text x="906.0" y="546" text-anchor="middle" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#94a3b8">+ 109 more</text>
+<text x="838" y="489" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">codebase-onboarding</text></g>
+<text x="906.0" y="546" text-anchor="middle" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#94a3b8">+ 318 more · ECC</text>
 <rect x="1004" y="116" width="172" height="444" rx="14" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-opacity="0.09"/>
 <circle cx="1020" cy="143" r="4" fill="#7dd3fc"/>
 <text x="1032" y="148" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="700" letter-spacing="0.8" fill="#e2e8f0">COMMANDS</text>
@@ -109,10 +109,10 @@
 <path d="M40 532H600" stroke="#ffffff" stroke-opacity="0.08"/>
 <text x="40" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">11</text>
 <text x="82" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">DEPARTMENTS</text>
-<text x="215" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">3</text>
-<text x="240" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">TYPES</text>
-<text x="319" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">4</text>
-<text x="344" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">TRACKS</text>
-<text x="432" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">30</text>
-<text x="474" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">EVALS</text>
+<text x="215" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">119</text>
+<text x="274" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">WIRED IN</text>
+<text x="380" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">4</text>
+<text x="405" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">TRACKS</text>
+<text x="493" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">30</text>
+<text x="535" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">EVALS</text>
 </svg>
