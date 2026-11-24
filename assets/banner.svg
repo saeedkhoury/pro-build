@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="t d">
 <title id="t">pro-build</title>
-<desc id="d">pro-build: run every project like a real software company. 11 department agents, 119 integrated skills, 8 commands, for web, system and app projects.</desc>
+<desc id="d">pro-build: run every project like a real software company. 72 agents from ECC, 119 integrated skills, 8 commands, 11 departments, for web, system and app projects.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1020"/><stop offset="1" stop-color="#17123a"/></linearGradient><linearGradient id="ac" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7dd3fc"/><stop offset="1" stop-color="#c4b5fd"/></linearGradient></defs>
 <rect width="1200" height="600" rx="24" fill="url(#bg)"/>
 <rect x="36" y="28" width="44" height="44" rx="12" fill="#ffffff" fill-opacity="0.06" stroke="url(#ac)"/>
@@ -35,30 +35,29 @@
 <rect x="636" y="116" width="172" height="444" rx="14" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-opacity="0.09"/>
 <circle cx="652" cy="143" r="4" fill="#7dd3fc"/>
 <text x="664" y="148" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="700" letter-spacing="0.8" fill="#e2e8f0">AGENTS</text>
-<text x="794" y="150" text-anchor="end" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="url(#ac)">11</text>
+<text x="794" y="150" text-anchor="end" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="url(#ac)">72</text>
 <path d="M648 164H796" stroke="#ffffff" stroke-opacity="0.1" stroke-dasharray="2 3"/>
 <g opacity="1"><rect x="644" y="174" width="156" height="27" rx="6" fill="#7dd3fc" fill-opacity="0.1" stroke="#7dd3fc" stroke-opacity="0.6"/>
-<text x="654" y="192" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#bae6fd">K  Kickoff</text></g>
+<text x="654" y="192" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#bae6fd">planner</text></g>
 <g opacity="1"><rect x="644" y="207" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="654" y="225" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">0  Founder Office</text></g>
+<text x="654" y="225" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">architect</text></g>
 <g opacity="1"><rect x="644" y="240" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="654" y="258" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">1  Product</text></g>
+<text x="654" y="258" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">code-reviewer</text></g>
 <g opacity="1"><rect x="644" y="273" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="654" y="291" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">2  Eng Leadership</text></g>
+<text x="654" y="291" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">security-reviewer</text></g>
 <g opacity="1"><rect x="644" y="306" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="654" y="324" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">3  Design</text></g>
+<text x="654" y="324" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">tdd-guide</text></g>
 <g opacity="1"><rect x="644" y="339" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="654" y="357" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">4  Platform/DevOps</text></g>
+<text x="654" y="357" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">e2e-runner</text></g>
 <g opacity="1"><rect x="644" y="372" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="654" y="390" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">5  Engineering</text></g>
+<text x="654" y="390" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">build-error-resolver</text></g>
 <g opacity="1"><rect x="644" y="405" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="654" y="423" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">6  QA &amp; Security</text></g>
-<g opacity="1"><rect x="644" y="438" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="654" y="456" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">7  Release</text></g>
-<g opacity="1"><rect x="644" y="471" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="654" y="489" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">8  Go-to-Market</text></g>
-<g opacity="1"><rect x="644" y="504" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
-<text x="654" y="522" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">9  Operate &amp; Grow</text></g>
+<text x="654" y="423" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">database-reviewer</text></g>
+<g opacity="0.55"><rect x="644" y="438" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
+<text x="654" y="456" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">doc-updater</text></g>
+<g opacity="0.3"><rect x="644" y="471" width="156" height="27" rx="6" fill="#ffffff" fill-opacity="0.035" stroke="none" stroke-opacity="0.6"/>
+<text x="654" y="489" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">performance-optimizer</text></g>
+<text x="722.0" y="546" text-anchor="middle" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#94a3b8">+ 62 more · ECC</text>
 <rect x="820" y="116" width="172" height="444" rx="14" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-opacity="0.09"/>
 <circle cx="836" cy="143" r="4" fill="#7dd3fc"/>
 <text x="848" y="148" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="700" letter-spacing="0.8" fill="#e2e8f0">SKILLS</text>
@@ -108,12 +107,12 @@
 <text x="1022" y="423" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" fill="#cbd5e1">review</text></g>
 <text x="1090.0" y="546" text-anchor="middle" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#94a3b8">/pro-build …</text>
 <path d="M40 532H600" stroke="#ffffff" stroke-opacity="0.08"/>
-<text x="40" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">3</text>
-<text x="65" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">TYPES</text>
-<text x="144" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">4</text>
-<text x="169" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">TRACKS</text>
-<text x="257" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">16</text>
-<text x="299" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">RULES</text>
-<text x="378" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">30</text>
-<text x="420" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">EVALS</text>
+<text x="40" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">11</text>
+<text x="82" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">DEPARTMENTS</text>
+<text x="215" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">3</text>
+<text x="240" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">TYPES</text>
+<text x="319" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">4</text>
+<text x="344" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">TRACKS</text>
+<text x="432" y="570" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#f1f5f9">30</text>
+<text x="474" y="569" font-family="JetBrains Mono, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#64748b">EVALS</text>
 </svg>
