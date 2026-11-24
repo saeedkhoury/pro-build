@@ -1,6 +1,6 @@
 # Stage 2: Engineering Leadership
 
-**Model routing:** decisions in the main thread · `opus` for the architecture, data model, ADRs and implementation plan · `fable` (only if `Fable: on`) or `opus` for the independent plan review.
+**Model routing:** decisions in the main thread · `opus` for the architecture, data model, ADRs and implementation plan · the readiness review is done by **Codex** through claudex-loop; `fable` (only if `Fable: on`) or `opus` decides each of its findings.
 
 **Role:** CTO and architect. Choose a stack the team can ship and operate, and record the decisions.
 
@@ -14,7 +14,7 @@
    - Backend system: TypeScript or Python service, Postgres, Docker (`ecc:docker-patterns`).
 3. **Decision records.** Use `ecc:architecture-decision-records`: one record per major choice, in `docs/company/adr/`.
 4. **Security and privacy by design.** Data classification, auth model, secrets handling, personal-data handling and backups. Use `ecc:security-review` on the design itself.
-5. **Independent plan review.** Run `claudex-loop:claudex-loop` with `mode=review` on the PRD and architecture so Codex challenges them. Without Codex, run `ecc:council`. Log each finding as accepted or rejected, with the reason.
+5. **Independent review: once, at the end.** Don't review half a package. The independent review runs in step 11 on the complete package (PRD, roadmap, architecture and plan).
 6. **Cost estimate.** The monthly cost at 0, 100 and 1,000 users across hosting, database, email and monitoring.
 7. **Implementation plan.** Use `ecc:plan` with the PRD and architecture to write `docs/company/02-plan.md`:
    - **Milestones.** M1 is the MVP: the smallest end-to-end version that delivers the core value from the brief. Then M2, M3, … from the roadmap.
@@ -28,13 +28,14 @@
    - Terms, names and numbers (limits, prices, roles) are the same in all three documents.
    - Every acceptance criterion is testable, and every non-functional requirement (performance, security, accessibility) has a task.
    Fix the gaps, or list them as open questions for the CEO briefing. Use `opus` for this check.
+11. **Readiness review (Claude + Codex).** Follow `references/cross-review.md` §1: run `claudex-loop:claudex-loop` with `mode=review` on `02-plan.md` (which links the brief, PRD, roadmap, architecture and ADRs), decide every finding, and start the CEO briefing with the verdict: **READY TO BUILD**, **NOT READY**, **UNREVIEWED** (your override) or **REVIEW BLOCKED**. Record the verdict and the document hashes in `BUILD-STATE.md` → Approvals.
 
 ## Compact mode (Client site track, and small Product projects)
 
 Same purpose, roughly one page per document:
 - `02-architecture.md`: the stack and hosting, the page list, the form and data handling, the service applicability table, and the cost. Usually no ADRs, unless there's a real trade-off.
 - `02-plan.md`: M1 = the pages and features from the PRD as tasks, with acceptance criteria and a definition of done, plus the traceability table.
-- Steps 5 (independent review) and 6 (cost) can be brief. The service applicability table (step 8), the consistency check (step 10) and the gate always run.
+- Steps 6 (cost) and 11 (readiness review, 2 rounds) can be brief. The service applicability table (step 8), the consistency check (step 10) and the gate always run.
 
 ## Output
 
@@ -45,7 +46,7 @@ Same purpose, roughly one page per document:
 - [ ] The stack and hosting are chosen, with reasons
 - [ ] The data model and auth model are defined
 - [ ] There are decision records for the major choices
-- [ ] The plan review is done and findings are resolved
+- [ ] The readiness review verdict is **READY TO BUILD** (Codex APPROVED the final package, hashes recorded), or the user's override is recorded as **UNREVIEWED**
 - [ ] The cost estimate is accepted by the user
 - [ ] The implementation plan defines M1 (the MVP), with tasks and acceptance criteria
 - [ ] The consistency check passes: every requirement traces to tasks, with no orphans or contradictions

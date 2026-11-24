@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.11.0 (2026-11-24)
+
+**Claude + Codex check each other (claudex-loop).**
+- New `references/cross-review.md`.
+- **Readiness review** at the end of stage 2 (new step 11, after the consistency check): Codex reviews the *complete* package (PRD, roadmap, architecture and plan) through `claudex-loop:claudex-loop` in `mode=review`, for up to 3 rounds. Claude decides each finding. The CEO briefing opens with a plain verdict: **READY TO BUILD** (only on an APPROVED result), **NOT READY**, **UNREVIEWED** (a recorded override, never called approved) or **REVIEW BLOCKED**. The approval is bound to the SHA-256 of the four documents and re-checked before stage 5 and each milestone. This replaces the earlier review of the PRD and architecture alone, which ran before the plan existed.
+- **Dual code review** in stage 5: every pull request that changes code gets Claude's review (`ecc:code-review`, fresh context) and a fresh Codex inspection of the branch (claudex-loop `inspect`, against the branch base). Both go into one findings table. Accepted fixes are re-inspected on the new snapshot (at most 2 rounds), and the merge question shows both results. Without Codex, the pull request is labelled *single review*; risky changes (auth, payments, migrations, security) wait for Codex or an explicit, logged override. `Dual review: every PR | risky only` lives in BUILD-STATE.
+- Roles swap when the host is Codex (Claude reviews). A same-provider review is always labelled as such.
+- Checker rules and scenarios **S33** (readiness verdict) and **S34** (dual review before merge), both passing.
+
 ## 2.10.0 (2026-11-24)
 
 **Payments by country, and App Store and Google Play rules.**

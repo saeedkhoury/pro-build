@@ -4,7 +4,7 @@ claude-seo:seo-local
 claude-seo:seo-plan
 claude-seo:seo-technical
 claudex-loop:claudex-loop
-claudex-loop:codex-review
+claudex-loop:codex-build
 cloudflare:frameworks-on-cloudflare
 cloudflare:wrangler
 ecc:accessibility

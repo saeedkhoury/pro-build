@@ -39,7 +39,7 @@ These plugins connect to hosted services; each needs the user to sign in once (r
 | PagerDuty or incident.io (paging and on-call) | 4, 9 | `/plugin install pagerduty@claude-plugins-official` or `incident-io@claude-plugins-official`; accounts are level C |
 | Datadog or Grafana (observability, optional) | 4, 9 | `/plugin install datadog@claude-plugins-official` or `grafana-cloud-mcp@claude-plugins-official` |
 | Uptime monitor (Better Stack, UptimeRobot, Checkly) | 4, 9 | A web account (level C); no plugin needed |
-| claudex-loop (cross-model plan review) | 2, 5 | `/plugin marketplace add chaseai-yt/claudex-loop` then `/plugin install claudex-loop@claudex-loop` (also needs the Codex CLI) |
+| claudex-loop (readiness review of the plan; Codex inspection of every pull request) | 2, 5 | `/plugin marketplace add chaseai-yt/claudex-loop` then `/plugin install claudex-loop@claudex-loop` (also needs the Codex CLI) |
 
 ## Fallbacks
 

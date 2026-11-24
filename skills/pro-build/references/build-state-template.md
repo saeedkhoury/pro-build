@@ -13,6 +13,8 @@ Copy to the project root as `BUILD-STATE.md` and keep it current at every gate.
 - Model policy: auto routing (haiku / sonnet / opus) · Fable: off
 - Main-session model: <sonnet | opus>
 - Spec mode: native | spec-kit
+- Dual review: every PR | risky only   (Claude + Codex, `references/cross-review.md`)
+- Readiness: READY TO BUILD | NOT READY | UNREVIEWED (override) | BLOCKED · <date> · hashes of 01-prd, 01-roadmap, 02-architecture, 02-plan
 
 ## Gates
 | # | Department | Status | Date | Artifact |

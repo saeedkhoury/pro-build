@@ -25,19 +25,19 @@ When M1 is merged and converged, show the user the running MVP (a preview URL, o
 
 For each cycle:
 
-1. Pick the next task from the current milestone in `02-plan.md` (or the top of the backlog), then restate its acceptance criteria.
+1. Pick the next task from the current milestone in `02-plan.md` (or the top of the backlog), then restate its acceptance criteria. At the start of stage 5 and of each milestone, confirm the readiness approval is still valid (`references/cross-review.md` §1: the document hashes are unchanged); if not, the plan is NOT READY until it's re-reviewed.
 2. Branch `feat/<slug>` or `fix/<slug>`.
 3. Run the workflow: tests first, then implementation, then review.
 4. **If analytics applies** (stage 2's table): add the feature's analytics events with the chosen tool (PostHog by default), and a feature flag for risky features (`posthog:instrument-feature-flags` or the alternative). If analytics is N/A, skip this step and say so.
 5. Open a pull request with a summary, a test plan and screenshots for UI changes. CI must pass.
-6. Run `ecc:code-review`. For large or risky changes, also run `ecc:santa-loop` or `claudex-loop:codex-review`.
-7. **Merge (level B):** ask "Merge PR #<n>?" and merge only on an explicit yes for that pull request; log it in `BUILD-STATE.md` → Approvals. The merge deploys to **staging only**. Mark the item done. A merge that changes code or configuration invalidates any open release candidate (stage 7's invalidation policy).
+6. **Dual review (Claude + Codex):** follow `references/cross-review.md` §2. Claude reviews with `ecc:code-review` in a fresh context, and a fresh Codex session inspects the branch through claudex-loop (`Dual review: every PR` by default). Put both sets of findings in one table, fix the accepted ones, and re-inspect the new snapshot. If Codex isn't available, label the pull request **single review**; risky changes wait for Codex or your logged override.
+7. **Merge (level B):** show both review results, then ask "Merge PR #<n>?" and merge only on an explicit yes for that pull request; log it in `BUILD-STATE.md` → Approvals. The merge deploys to **staging only**. Mark the item done. A merge that changes code or configuration invalidates any open release candidate (stage 7's invalidation policy).
 
 One feature per session. Offer `ecc:save-session` at the end.
 
 ## Gate: per feature
 
 - [ ] Acceptance criteria are met and shown (tests, screenshots or a preview URL)
-- [ ] CI is green and review findings are resolved
+- [ ] CI is green; Claude's review and Codex's inspection of the final snapshot are done (or the pull request is labelled single review), and their findings are fixed or rejected with a reason
 - [ ] Analytics events exist for the feature's metric, if analytics applies (stage 2's table); otherwise N/A
 - [ ] The user explicitly approved merging this pull request (level B, logged); it deployed to staging only

@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square)](https://code.claude.com/docs/en/plugins)
-[![Version](https://img.shields.io/badge/version-2.10.0-7c3aed?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.11.0-7c3aed?style=flat-square)](CHANGELOG.md)
 [![Powered by ECC](https://img.shields.io/badge/powered%20by-ECC-0ea5e9?style=flat-square)](https://github.com/affaan-m/ECC)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-open%20standard-16a34a?style=flat-square)](#-works-with-your-ai-agent)
 
@@ -63,14 +63,14 @@ Instead of explaining that process in every prompt, you install it once and star
 | **Helper agents** (model tiers) | 4 | Self-contained work goes to a helper agent on the cheapest model that does it well: Haiku, Sonnet, Opus, Fable (opt-in) ([model routing](#-smart-model-routing)) |
 | **Skills wired into the workflow** | 119 | Named by pro-build's playbooks, from 13 plugins: ECC 68, marketing 22, Vercel 6, Claude SEO 5, PostHog 4, Sentry 3, Stripe, Supabase, Cloudflare and claudex-loop 2 each, Figma, REA and Taste 1 each. CI checks every name against the real skill list ([toolkit](#-toolkit)) |
 | **pro-build commands** | 8 | Start, resume, status, jump to a stage, feature, release, launch, review ([usage](#-usage)) |
-| **Playbooks** | 25 | 10 department playbooks, 3 project-type playbooks (web, system, app) and 12 shared guides: Kickoff, authorization, **payments by country**, **App Store and Google Play rules**, DevOps, model routing, toolkit, spec-kit, reverse engineering, project kit, build state, other agents |
+| **Playbooks** | 26 | 10 department playbooks, 3 project-type playbooks (web, system, app) and 13 shared guides: Kickoff, authorization, **Claude + Codex cross-review**, **payments by country**, **App Store and Google Play rules**, DevOps, model routing, toolkit, spec-kit, reverse engineering, project kit, build state, other agents |
 | **Project types** | 3 | 🌐 Web · ⚙️ System · 📱 App, each with its default stack, quality bar and its own Kickoff questions |
 | **Tracks** | 4 | Startup · Product · Client site · Existing project ([tracks](#-tracks)) |
 | **Company documents** | up to 28 | Brief, validation, PRD, roadmap, architecture, decision records, plan, design, CI, runbook, launch readiness, release notes, go-to-market plan, weekly reviews… ([full list](skills/pro-build/references/project-kit.md)) |
 | **Operating rules** | 16 | Always on: real gates, evidence over claims, test mode first, ask before assuming, nothing changes production unattended… |
 | **Authorization levels** | 3 | **A** the agent may do it · **B** only after your yes for that exact action · **C** only you ([who may do what](#who-may-do-what)) |
 | **AI agents supported** | 7 | Claude Code, Codex, Kimi Code, Gemini CLI, Grok Build, OpenCode, Cursor ([your AI agent](#-works-with-your-ai-agent)) |
-| **Eval scenarios** | 32 | Behavioural tests run in an isolated, read-only session, plus a structural checker on every push ([`evals/`](evals)) |
+| **Eval scenarios** | 34 | Behavioural tests run in an isolated, read-only session, plus a structural checker on every push ([`evals/`](evals)) |
 
 ---
 
@@ -82,7 +82,7 @@ AI agents can write a lot of code fast. Real products also need everything aroun
 
 - 🎤 **Understands before it builds, and asks a lot.** A deep Kickoff interview: rounds of 3–5 clickable questions (typically 5–8 rounds), covering purpose, users, a measurable goal, scope, money, data, constraints, risks and trade-offs, plus questions specific to web, system or app projects. A coverage checklist makes sure every critical answer comes from **you**, never a guess. In a hurry? The fast lane asks only the critical items.
 - 🧭 **Validates first.** Founder Office interviews you, researches the market and competitors, and recommends **go, pivot or stop** before any code is written.
-- 📐 **Plans like a product team.** A PRD with success metrics, an architecture with decision records, and an independent review of the plan by a second model.
+- 📐 **Plans like a product team.** A PRD with success metrics, an architecture with decision records, and a final **readiness review by Codex** that tells you plainly: **ready to build, or not**.
 - 🎨 **Designs with taste.** A visual direction and design system that don't look AI-generated.
 - 🏭 **Builds the factory first.** Repository, CI, preview, staging and production environments, error monitoring, analytics and payments are wired up *before* the first feature.
 - 🧪 **Ships safely.** Test-driven features through pull requests, QA and security gates, staged releases, rollback plans and canary monitoring.
@@ -171,10 +171,10 @@ pro-build:  I understand: an app for barbers and their customers. It looks like 
 |:--|:--|:--|:--|
 | **0 Founder Office** | Founder advisor | Market and competitors (Booksy, Fresha), pricing, risks: is it worth building? | ✅ **Go / no-go** |
 | **1 Product** | Head of Product | The **PRD**: R1 sign-up, R2 barber profile and services, R3 book a slot, R4 reminders, R5 payments, each with acceptance criteria; a milestone plan | ✅ Spec |
-| **2 Engineering Leadership** | CTO | **Architecture**: for example Expo (iOS and Android), Supabase (database and login), a payment provider for your country (Stripe where it's supported; in Israel a local provider with Bit), push notifications, hosting, monthly cost, and which services aren't needed | ✅ Architecture |
+| **2 Engineering Leadership** | CTO | **Architecture**: for example Expo (iOS and Android), Supabase (database and login), a payment provider for your country (Stripe where it's supported; in Israel a local provider with Bit), push notifications, hosting, monthly cost, and which services aren't needed. Then Codex reviews the whole package (PRD, roadmap, architecture, plan) and the briefing says **READY TO BUILD** or **NOT READY** | ✅ Architecture + readiness verdict |
 | **3 Design** | Head of Design | Screens: home, barber list, service, time, confirm, my bookings, barber dashboard; platform design rules and accessibility | ✅ Design |
 | **4 Platform / DevOps** | Platform engineer | GitHub repository, CI that tests every change, staging and production, secrets, error monitoring | ✅ Pipeline green |
-| **5 Engineering** | Engineering team | Feature by feature: tests first, then code, review, pull request | ✅ **Your yes for each merge** |
+| **5 Engineering** | Engineering team | Feature by feature: tests first, then code, then a **dual review** (Claude reviews, Codex inspects), pull request | ✅ **Your yes for each merge** |
 | **6 QA & Security** | QA lead + security officer | End-to-end tests, a double-booking test, security scan, secret scan, real devices | ✅ No blocking findings |
 | **7 Release** | Release manager | Builds and signs the app, runs QA on **those exact files**; **you** submit them to the stores; phased rollout and a halt plan | ✅ **Production go** |
 | **8 Go-to-Market** | Head of Growth | Store listing, screenshots, landing page, launch messages for barbershops | ✅ **Launch go** |
@@ -189,8 +189,8 @@ pro-build:  We're on stage 5, task T4 "Booking screen" (R3).
             Acceptance: a customer picks a service and a time, and can't double-book.
             Branch feat/booking: tests first, then the code.
             …
-            PR #7 is ready and all checks are green. Merging deploys to staging only.
-            Merge PR #7?
+            PR #7 is ready: CI ✅ · Claude review ✅ · Codex inspection ✅ (2 findings fixed).
+            Merging deploys to staging only. Merge PR #7?
 
 You:  yes, merge PR #7
 ```
@@ -250,7 +250,7 @@ For a single project instead of every project, put the skill in the project's `.
 | Named workflow skills (ECC and others) | ✅ Through plugins | Used when installed for your agent; otherwise the step is done directly |
 | Model routing | ✅ Haiku, Sonnet, Opus, Fable (opt-in) | Mapped to your agent's own cheap, default and strongest tiers |
 | Stripe, Supabase, Vercel, Sentry, PostHog | ✅ Official plugins | Through the vendor's MCP server or CLI if configured |
-| Independent plan review | ✅ Codex reviews via claudex-loop | A different model or provider if available |
+| Readiness review and dual code review | ✅ Codex reviews the plan and inspects every pull request (claudex-loop) | The other provider reviews (in Codex: Claude), if available; otherwise labelled same-provider |
 
 > [!NOTE]
 > "Tested" means a fresh session found pro-build in the agent's skills folder, ran the Kickoff interview and wrote no files before the brief was approved. Kimi, Gemini, Grok, OpenCode and Cursor follow the same Agent Skills standard and folder conventions; reports from users of those agents are welcome.
@@ -316,6 +316,17 @@ Stripe isn't available everywhere (for example, not for businesses registered in
 
 It records the choice, the alternative and the official page it checked, and every later stage uses it. Going live stays your action.
 
+### 🤝 Claude + Codex check each other
+
+With [claudex-loop](https://github.com/chaseai-yt/claudex-loop) and a signed-in Codex CLI, two AI providers review the work ([`cross-review.md`](skills/pro-build/references/cross-review.md)):
+
+| When | What happens | What you get |
+|:--|:--|:--|
+| **End of stage 2** | Codex reviews the complete package (PRD, roadmap, architecture and plan) for up to 3 rounds; Claude fixes or answers each finding | A plain verdict: ✅ **READY TO BUILD**, ⏳ **NOT READY** (with the open findings), ⚠️ **UNREVIEWED** (your override) or 🚫 **REVIEW BLOCKED**. The approval is tied to the exact documents: change one, and it must be re-checked before building |
+| **Every pull request** (stage 5) | Claude reviews the code (`ecc:code-review`), and a fresh Codex session inspects the same branch | One findings table, fixes, a fresh re-inspection, then the merge question with both results. Without Codex, the PR is labelled *single review*, and risky changes (auth, payments, migrations, security) wait for Codex or your explicit override |
+
+In Codex, the roles swap: Codex builds, and Claude reviews. Set `Dual review: risky only` in `BUILD-STATE.md` to save Codex credits.
+
 ### 📱 App Store and Google Play rules
 
 For mobile apps, [`app-stores.md`](skills/pro-build/references/app-stores.md) covers what gets apps rejected or blocked: developer accounts (personal or organization, D-U-N-S), Google's **12-tester, 14-day closed test** for new personal accounts, the current upload floors (**Xcode 26 and the iOS 26 SDK; target API 36**), in-app purchase rules, **account deletion**, Sign in with Apple, privacy labels and the Data safety form, user-generated content, and review notes with a demo account. Stage 6 runs its checklist, stage 7 prepares the store package, and you submit. Before each submission it re-checks the official pages, because the rules change every year.
@@ -329,7 +340,7 @@ For mobile apps, [`app-stores.md`](skills/pro-build/references/app-stores.md) co
 | K | **Kickoff** | Discovery lead | Adaptive interview, Project Brief, track recommendation | **Brief approved** |
 | 0 | **Founder Office** | Founder advisor | Customer interview, market and competitors, pricing hypothesis, risks, demand test | **Go / pivot / stop** |
 | 1 | **Product** | Head of Product | PRD, MVP scope, North Star and input metrics, roadmap and backlog | Spec approved |
-| 2 | **Engineering Leadership** | CTO | Stack, data and auth model, decision records, cost estimate, independent plan review, implementation plan | Architecture and plan approved |
+| 2 | **Engineering Leadership** | CTO | Stack, data and auth model, decision records, cost estimate, implementation plan, Codex **readiness review** (ready to build or not) | Architecture and plan approved |
 | 3 | **Design** | Head of Design | Visual direction, design tokens, components, key screens | Design approved |
 | 4 | **Platform / DevOps** | Platform engineer | Repository, README, CLAUDE.md, CI, preview, staging and production, Supabase, Sentry, PostHog, payments in test mode (provider chosen by country) | Pipeline green |
 | 5 | **Engineering** | Engineering team | MVP (milestone M1), then test-driven features, one pull request at a time | MVP demo, then each merge |
@@ -413,7 +424,7 @@ The main conversation (your `/model`) talks with you and runs the gates. Self-co
 | ⚡ **Haiku** | Mechanical, low-risk work | Codebase search, summaries, formatting, boilerplate, changelogs, status reports, meta tags |
 | 🛠️ **Sonnet** (default) | Building and writing | Features, tests, refactors, CI/CD, PRD drafts, copy, SEO implementation |
 | 🧠 **Opus** | Decisions where mistakes are expensive | Strategy, pricing, architecture, security review, hard bugs, risky reviews |
-| 💎 **Fable** (opt-in) | The hardest reasoning | Independent plan review, major-release review. Off by default, because it may use paid credits |
+| 💎 **Fable** (opt-in) | The hardest reasoning | Deciding the readiness review's findings, major-release review. Off by default, because it may use paid credits |
 
 Rules: start cheap and escalate one tier on failure; never below Sonnet for payments, auth, security or data migrations; delegate only big chunks (each helper has a start-up cost); and run the main session on Sonnet day to day. That last one is the biggest saving. Full table per department: [`references/model-routing.md`](skills/pro-build/references/model-routing.md).
 
@@ -500,7 +511,7 @@ pro-build orchestrates other tools; it doesn't reinvent them.
 | **Design taste** | [taste-skill](https://github.com/Leonxlnx/taste-skill) |
 | **Reverse engineering** (optional) | [REA](https://github.com/morluto/rea): competitor teardowns, a release exposure audit of your own build, release diffs, and projects with lost source |
 | **Spec-driven features** (optional) | [spec-kit](https://github.com/github/spec-kit) by GitHub: specify → clarify → plan → tasks → analyze → implement → converge |
-| **Independent review** | [claudex-loop](https://github.com/chaseai-yt/claudex-loop) (Claude ⇄ Codex) |
+| **Cross-review** | [claudex-loop](https://github.com/chaseai-yt/claudex-loop) (Claude ⇄ Codex): readiness review of the plan, and Codex inspection of every pull request ([`cross-review.md`](skills/pro-build/references/cross-review.md)) |
 
 Only ECC is required. For anything missing, pro-build names the install command and uses a fallback; see [`references/toolkit.md`](skills/pro-build/references/toolkit.md).
 

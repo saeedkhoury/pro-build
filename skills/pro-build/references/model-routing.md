@@ -31,7 +31,7 @@ Goal: top quality where it matters, and the fewest tokens everywhere else.
 | K Kickoff | Interview and Project Brief | haiku: read existing files or links the user gives |
 | 0 Founder Office | Office-hours questions, go/no-go briefing | opus: market, competitor and pricing analysis · haiku: collect and summarise sources |
 | 1 Product | Clarifying questions, approval | sonnet: PRD and roadmap drafts · opus: review of scope and metrics |
-| 2 Eng Leadership | Decisions with the user | opus: architecture, data model, ADRs, implementation plan · fable (if on) or opus: independent plan review |
+| 2 Eng Leadership | Decisions with the user | opus: architecture, data model, ADRs, implementation plan · Codex (claudex-loop): readiness review · fable (if on) or opus: deciding its findings |
 | 3 Design | Direction choices with the user | sonnet: design system, components, mockups · haiku: token and asset bookkeeping |
 | 4 Platform/DevOps | Sign-in hand-offs | sonnet: scaffold, CI, environments, service setup · haiku: `.env.example`, README, PR template, docs index |
 | 5 Engineering | Merge approvals, MVP demo | sonnet: each feature or fix cycle · haiku: codebase search, lint and build fixes, test fixtures · opus: hard bugs after one failed attempt, review of risky pull requests |

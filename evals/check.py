@@ -166,7 +166,13 @@ def main():
                                 ("Never assume Stripe", (SKILL_DIR / "references/payments.md").read_text(), "payments"),
                                 ("must **not** use IAP", (SKILL_DIR / "references/app-stores.md").read_text(), "app-stores"),
                                 ("references/payments.md", (SKILL_DIR / "references/kickoff.md").read_text(), "kickoff"),
-                                ("references/app-stores.md", (SKILL_DIR / "references/project-types/app.md").read_text(), "app")]:
+                                ("references/app-stores.md", (SKILL_DIR / "references/project-types/app.md").read_text(), "app"),
+                                # Claude + Codex cross-review (v2.11.0)
+                                ("references/cross-review.md", skill, "SKILL"),
+                                ("READY TO BUILD", (SKILL_DIR / "references/departments/02-engineering-leadership.md").read_text(), "02"),
+                                ("references/cross-review.md", (SKILL_DIR / "references/departments/05-engineering.md").read_text(), "05"),
+                                ("A completed run is not an approval", (SKILL_DIR / "references/cross-review.md").read_text(), "cross-review"),
+                                ("single review", (SKILL_DIR / "references/cross-review.md").read_text(), "cross-review")]:
         if needle not in where:
             errors.append(f"{name}: missing required rule text: {needle!r}")
 
