@@ -43,6 +43,16 @@ Instead of explaining that process in every prompt, you install it once and star
 
 ## 📦 What's inside
 
+**Built in: 11 department agents, 1 skill with 23 playbooks, and 8 commands.** It drives 119 skills from 13 plugins, and ECC (required in Claude Code) adds 71 specialist agents, 314 skills and 98 commands.
+
+| | 🤖 Agents | 🧩 Skills | ⌨️ Commands |
+|:--|--:|--:|--:|
+| **Built into pro-build** | **11** department agents (Kickoff + 10 departments), plus helper agents on 4 model tiers | **1** skill (`pro-build`) with **23** playbooks | **8** |
+| **Used by the workflow** | Helper agents for self-contained work: search, builds, reviews, audits | **119** named skills from 13 plugins, each checked by CI | Spec-kit and plugin commands when enabled |
+| **Comes with ECC** (required in Claude Code) | **71** | **314** | **98** |
+
+<sub>ECC counts are from ECC 2.2.3; newer ECC versions may have more. The department agents are roles the AI plays in your main session, each with its own playbook and gate; self-contained work goes to helper agents (subagents) on the cheapest model that does it well.</sub>
+
 | Included | Count | What it gives you |
 |:--|--:|:--|
 | **Departments** (AI roles) | 11 | Kickoff plus 10 company departments. The AI plays each role in turn: discovery lead, founder advisor, Head of Product, CTO, Head of Design, platform engineer, engineering team, QA lead and security officer, release manager, Head of Growth, COO ([the company](#-the-company)) |
