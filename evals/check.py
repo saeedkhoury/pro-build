@@ -158,7 +158,15 @@ def main():
                                 ("references/project-types/web.md", skill, "SKILL"),
                                 ("references/project-types/system.md", skill, "SKILL"),
                                 ("references/project-types/app.md", skill, "SKILL"),
-                                ("references/agents.md", skill, "SKILL")]:
+                                ("references/agents.md", skill, "SKILL"),
+                                # Country-based payments and store rules (v2.10.0)
+                                ("references/payments.md", skill, "SKILL"),
+                                ("references/app-stores.md", skill, "SKILL"),
+                                ("never assume Stripe", skill, "SKILL"),
+                                ("Never assume Stripe", (SKILL_DIR / "references/payments.md").read_text(), "payments"),
+                                ("must **not** use IAP", (SKILL_DIR / "references/app-stores.md").read_text(), "app-stores"),
+                                ("references/payments.md", (SKILL_DIR / "references/kickoff.md").read_text(), "kickoff"),
+                                ("references/app-stores.md", (SKILL_DIR / "references/project-types/app.md").read_text(), "app")]:
         if needle not in where:
             errors.append(f"{name}: missing required rule text: {needle!r}")
 

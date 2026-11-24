@@ -16,7 +16,7 @@ This is the **single source of truth** for actions in every stage. When a playbo
 |:--|:--:|:--|
 | Edit code and docs, run tests, create branches, open pull requests | A | Never push to `main` directly |
 | Deploy to **preview** or **staging** | A | Production deploys stay protected (stage 4) |
-| Set up test-mode or sandbox services (Stripe test, email sandbox) | A | After the user has signed in |
+| Set up test-mode or sandbox services (payment provider test mode, email sandbox) | A | After the user has signed in |
 | Install project dependencies, run local tools, run scans | A | Ask first for anything that downloads a tool the project doesn't already use |
 | **Merge a pull request to `main`** | B | One approval per pull request |
 | **Promote a specific build to production** (2nd release onwards) | B | Scope: one release candidate (commit SHA and build ID). Only after stage 6 evidence for that same SHA |

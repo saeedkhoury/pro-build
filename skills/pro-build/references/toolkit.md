@@ -15,7 +15,7 @@ These plugins connect to hosted services; each needs the user to sign in once (r
 
 | Plugin | Department | What it does | Account |
 |:--|:--|:--|:--|
-| `stripe` | 4, 8, 9 | Payments, subscriptions, billing best practices | Stripe (start in test mode) |
+| `stripe` | 4, 8, 9 | Payments, subscriptions, billing best practices, **only where Stripe supports the business's country** | The provider chosen with `references/payments.md` (Paddle, Polar, a local provider, PayPal), through its official docs and SDK, in test mode |
 | `supabase` | 2, 4 | Postgres, auth, storage, row-level security | Supabase |
 | `vercel` | 4, 7 | Deploys, previews, environments, Next.js | Vercel |
 | `sentry` | 4, 5, 7, 9 | Error monitoring, releases, alerts | Sentry |

@@ -40,7 +40,7 @@
 | App | Crash-free sessions ≥ 99.5% in beta | 2 End-to-end | Crash reporting for **the candidate binaries' build numbers only** (not earlier builds), with the session count stated |
 | App | Offline and poor network | 2 End-to-end | Test notes per flow |
 | App | Accessibility (screen readers, font scaling, targets) | 7 Accessibility | Audit report |
-| App | Permission prompts, account deletion, privacy labels, data safety, purchase rules | 11 Privacy and legal (non-waivable for Major) | Checklist with screenshots |
+| App | The store checklist in `references/app-stores.md` §5: SDK and target API floors, permission prompts, account deletion, privacy labels, data safety, purchase rules, demo account | 11 Privacy and legal (non-waivable for Major) | Checklist with screenshots |
 | App | OS compatibility and backend support for the oldest app version | 2 End-to-end | Test on the minimum OS; API compatibility test |
 | Desktop | Install, update from previous, uninstall, OS signature trust | 2 End-to-end | Per-OS test notes on the exact installers |
 

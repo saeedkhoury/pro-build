@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square)](https://code.claude.com/docs/en/plugins)
-[![Version](https://img.shields.io/badge/version-2.9.0-7c3aed?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.10.0-7c3aed?style=flat-square)](CHANGELOG.md)
 [![Powered by ECC](https://img.shields.io/badge/powered%20by-ECC-0ea5e9?style=flat-square)](https://github.com/affaan-m/ECC)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-open%20standard-16a34a?style=flat-square)](#-works-with-your-ai-agent)
 
@@ -63,14 +63,14 @@ Instead of explaining that process in every prompt, you install it once and star
 | **Helper agents** (model tiers) | 4 | Self-contained work goes to a helper agent on the cheapest model that does it well: Haiku, Sonnet, Opus, Fable (opt-in) ([model routing](#-smart-model-routing)) |
 | **Skills wired into the workflow** | 119 | Named by pro-build's playbooks, from 13 plugins: ECC 68, marketing 22, Vercel 6, Claude SEO 5, PostHog 4, Sentry 3, Stripe, Supabase, Cloudflare and claudex-loop 2 each, Figma, REA and Taste 1 each. CI checks every name against the real skill list ([toolkit](#-toolkit)) |
 | **pro-build commands** | 8 | Start, resume, status, jump to a stage, feature, release, launch, review ([usage](#-usage)) |
-| **Playbooks** | 23 | 10 department playbooks, 3 project-type playbooks (web, system, app) and 10 shared guides: Kickoff, authorization, DevOps, model routing, toolkit, spec-kit, reverse engineering, project kit, build state, other agents |
+| **Playbooks** | 25 | 10 department playbooks, 3 project-type playbooks (web, system, app) and 12 shared guides: Kickoff, authorization, **payments by country**, **App Store and Google Play rules**, DevOps, model routing, toolkit, spec-kit, reverse engineering, project kit, build state, other agents |
 | **Project types** | 3 | 🌐 Web · ⚙️ System · 📱 App, each with its default stack, quality bar and its own Kickoff questions |
 | **Tracks** | 4 | Startup · Product · Client site · Existing project ([tracks](#-tracks)) |
 | **Company documents** | up to 28 | Brief, validation, PRD, roadmap, architecture, decision records, plan, design, CI, runbook, launch readiness, release notes, go-to-market plan, weekly reviews… ([full list](skills/pro-build/references/project-kit.md)) |
 | **Operating rules** | 16 | Always on: real gates, evidence over claims, test mode first, ask before assuming, nothing changes production unattended… |
 | **Authorization levels** | 3 | **A** the agent may do it · **B** only after your yes for that exact action · **C** only you ([who may do what](#who-may-do-what)) |
 | **AI agents supported** | 7 | Claude Code, Codex, Kimi Code, Gemini CLI, Grok Build, OpenCode, Cursor ([your AI agent](#-works-with-your-ai-agent)) |
-| **Eval scenarios** | 30 | Behavioural tests run in an isolated, read-only session, plus a structural checker on every push ([`evals/`](evals)) |
+| **Eval scenarios** | 32 | Behavioural tests run in an isolated, read-only session, plus a structural checker on every push ([`evals/`](evals)) |
 
 ---
 
@@ -118,7 +118,7 @@ One marketplace gives you everything: **pro-build** plus **ECC** (72 agents, 328
 **2. Add the company services you want** (recommended, from the official plugin directory):
 
 ```text
-/plugin install stripe@claude-plugins-official
+/plugin install stripe@claude-plugins-official      # only if Stripe supports your business's country
 /plugin install supabase@claude-plugins-official
 /plugin install vercel@claude-plugins-official
 /plugin install sentry@claude-plugins-official
@@ -171,7 +171,7 @@ pro-build:  I understand: an app for barbers and their customers. It looks like 
 |:--|:--|:--|:--|
 | **0 Founder Office** | Founder advisor | Market and competitors (Booksy, Fresha), pricing, risks: is it worth building? | ✅ **Go / no-go** |
 | **1 Product** | Head of Product | The **PRD**: R1 sign-up, R2 barber profile and services, R3 book a slot, R4 reminders, R5 payments, each with acceptance criteria; a milestone plan | ✅ Spec |
-| **2 Engineering Leadership** | CTO | **Architecture**: for example Expo (iOS and Android), Supabase (database and login), Stripe, push notifications, hosting, monthly cost, and which services aren't needed | ✅ Architecture |
+| **2 Engineering Leadership** | CTO | **Architecture**: for example Expo (iOS and Android), Supabase (database and login), a payment provider for your country (Stripe where it's supported; in Israel a local provider with Bit), push notifications, hosting, monthly cost, and which services aren't needed | ✅ Architecture |
 | **3 Design** | Head of Design | Screens: home, barber list, service, time, confirm, my bookings, barber dashboard; platform design rules and accessibility | ✅ Design |
 | **4 Platform / DevOps** | Platform engineer | GitHub repository, CI that tests every change, staging and production, secrets, error monitoring | ✅ Pipeline green |
 | **5 Engineering** | Engineering team | Feature by feature: tests first, then code, review, pull request | ✅ **Your yes for each merge** |
@@ -297,9 +297,28 @@ Kickoff identifies what you're building, and every later stage follows the match
 
 | Type | Best default | Playbook |
 |:--|:--|:--|
-| 🌐 **Web**: sites, e-commerce, SaaS, portals | Astro for content sites · Next.js + Supabase + Stripe on Vercel for apps · Shopify for standard stores | [`web.md`](skills/pro-build/references/project-types/web.md) |
+| 🌐 **Web**: sites, e-commerce, SaaS, portals | Astro for content sites · Next.js + Supabase + a payment provider for your country on Vercel for apps · Shopify for standard stores | [`web.md`](skills/pro-build/references/project-types/web.md) |
 | ⚙️ **System**: APIs, backends, workers, data, integrations | Contract-first TypeScript or FastAPI + Postgres; a modular monolith first; Go for high throughput | [`system.md`](skills/pro-build/references/project-types/system.md) |
 | 📱 **App**: iOS, Android, desktop | Expo (React Native) cross-platform; SwiftUI or Kotlin/Compose when native features demand it; Tauri for desktop | [`app.md`](skills/pro-build/references/project-types/app.md) |
+
+
+### 💳 Payments that work in your country
+
+Stripe isn't available everywhere (for example, not for businesses registered in **Israel**). Kickoff asks **where the business is registered, where the customers are, and what you sell**, and stage 2 picks the provider ([`payments.md`](skills/pro-build/references/payments.md)):
+
+| You sell | pro-build recommends |
+|:--|:--|
+| Digital features inside a mobile app | **Apple In-App Purchase and Google Play Billing** (required by the stores), managed with RevenueCat |
+| Physical goods or real-world services (bookings, deliveries) | A normal payment provider. Never store in-app purchase |
+| Anything, from a country Stripe supports | **Stripe** |
+| SaaS or digital products, from a country Stripe doesn't support | A merchant of record such as **Paddle** or **Polar** (they also handle VAT) |
+| To local customers, from a country Stripe doesn't support | A **local provider**. In Israel: Tranzila, CardCom, PayPlus or Grow (Bit, Israeli cards, instalments, ILS, invoices) |
+
+It records the choice, the alternative and the official page it checked, and every later stage uses it. Going live stays your action.
+
+### 📱 App Store and Google Play rules
+
+For mobile apps, [`app-stores.md`](skills/pro-build/references/app-stores.md) covers what gets apps rejected or blocked: developer accounts (personal or organization, D-U-N-S), Google's **12-tester, 14-day closed test** for new personal accounts, the current upload floors (**Xcode 26 and the iOS 26 SDK; target API 36**), in-app purchase rules, **account deletion**, Sign in with Apple, privacy labels and the Data safety form, user-generated content, and review notes with a demo account. Stage 6 runs its checklist, stage 7 prepares the store package, and you submit. Before each submission it re-checks the official pages, because the rules change every year.
 
 ---
 
@@ -312,7 +331,7 @@ Kickoff identifies what you're building, and every later stage follows the match
 | 1 | **Product** | Head of Product | PRD, MVP scope, North Star and input metrics, roadmap and backlog | Spec approved |
 | 2 | **Engineering Leadership** | CTO | Stack, data and auth model, decision records, cost estimate, independent plan review, implementation plan | Architecture and plan approved |
 | 3 | **Design** | Head of Design | Visual direction, design tokens, components, key screens | Design approved |
-| 4 | **Platform / DevOps** | Platform engineer | Repository, README, CLAUDE.md, CI, preview, staging and production, Supabase, Sentry, PostHog, Stripe (test mode) | Pipeline green |
+| 4 | **Platform / DevOps** | Platform engineer | Repository, README, CLAUDE.md, CI, preview, staging and production, Supabase, Sentry, PostHog, payments in test mode (provider chosen by country) | Pipeline green |
 | 5 | **Engineering** | Engineering team | MVP (milestone M1), then test-driven features, one pull request at a time | MVP demo, then each merge |
 | 6 | **QA & Security** | QA lead + security officer | End-to-end, browser, accessibility, security, performance, coverage, privacy | No blocking findings |
 | 7 | **Release** | Release manager | Versioning, release notes, staging smoke test, rollback plan, canary watch | **Production go** |
@@ -470,7 +489,7 @@ pro-build orchestrates other tools; it doesn't reinvent them.
 |:--|:--|
 | **Engine** (required) | [ECC](https://github.com/affaan-m/ECC): planning, test-driven development, orchestrated feature workflows, reviews, security, DevOps patterns, SEO, sessions |
 | **DevOps** (optional) | [Terraform](https://github.com/hashicorp/terraform-mcp-server), PagerDuty or incident.io, Datadog or Grafana, an uptime monitor such as Better Stack ([`references/devops.md`](skills/pro-build/references/devops.md)) |
-| **Payments** | [Stripe](https://github.com/stripe/ai) |
+| **Payments** | [Stripe](https://github.com/stripe/ai) where it supports your country; otherwise Paddle or Polar (merchant of record), a local provider, or PayPal ([`payments.md`](skills/pro-build/references/payments.md)). Apple IAP and Google Play Billing for digital goods in mobile apps |
 | **Backend** | [Supabase](https://github.com/supabase-community/supabase-plugin) |
 | **Deploys** | [Vercel](https://github.com/vercel/vercel-plugin) or [Cloudflare](https://github.com/cloudflare/skills) |
 | **Errors** | [Sentry](https://github.com/getsentry/plugin-claude) |

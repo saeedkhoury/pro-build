@@ -35,7 +35,7 @@ Most products combine types (for example, an **App** plus its **System** backend
 | **Goal** | What success looks like in 3 months, as a number (users, revenue, orders, time saved, a launch date); what failure would look like |
 | **Core value** | The single thing a user must be able to do in v1 |
 | **Scope** | v1 must-haves; nice-to-haves; explicit out-of-scope |
-| **Business** | Will it make money? How (subscription, one-off, ads, client fee, none)? A price idea? |
+| **Business** | Will it make money? How (subscription, one-off, ads, client fee, none)? A price idea? Where is the business registered, and where are the customers (this decides the payment provider)? |
 | **Data** | What's stored; personal, payment, health or children's data; who owns it; how long it's kept |
 | **Constraints** | Deadline; monthly budget for hosting and services; preferred or forbidden tech; who builds and maintains it (just the user, a team, a client) |
 | **Existing assets** | Brand, domain, designs, content, code, accounts, data to migrate |
@@ -67,6 +67,7 @@ Track it visibly. Kickoff ends only when every row is ✅ answered or 🅰️ an
 | v1 core value and must-haves | **Yes** |
 | Out of scope | **Yes** |
 | Business model (or "none") | **Yes** |
+| If money moves: business country, customers' currency, digital or physical goods (`references/payments.md`) | **Yes** |
 | Data sensitivity | **Yes** |
 | Deadline and monthly budget | **Yes** |
 | Who builds and maintains it | **Yes** |

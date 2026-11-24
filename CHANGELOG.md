@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.10.0 (2026-11-24)
+
+**Payments by country, and App Store and Google Play rules.**
+- New `references/payments.md`: pro-build **never assumes Stripe**. Kickoff asks where the business is registered, where the customers are and what is sold (a new critical coverage item when money moves). Stage 2 chooses: store in-app purchase for digital goods in mobile apps (never for physical goods or real-world services); Stripe only where it supports the seller's country; otherwise a merchant of record (Paddle, Polar) for digital products, a local provider for local customers, or PayPal; a foreign company only as the user's legal decision. It includes an **Israel** section (Stripe unavailable; local providers with Bit, Israeli cards, instalments and ILS) and the same safety rules for every provider (sandbox first, verified webhooks, no stored card numbers, going live is level C).
+- New `references/app-stores.md`: developer accounts (personal or organization, D-U-N-S), Google's **12-tester, 14-day closed test** for new personal accounts, upload floors checked in November 2026 (**Xcode 26 and the iOS 26 SDK; target API 36, AAB, 16 KB pages**), the policies that shape the design (IAP versus physical goods, account deletion, Sign in with Apple, privacy labels and Data safety, user-generated content, quality), the submission package with review notes and a demo account, a pre-submission checklist, and the official sources to re-check before each submission.
+- Wired into SKILL.md (rule 4), Kickoff, stages 2, 4, 6, 7, 8 and 9, the web and app playbooks, the toolkit, BUILD-STATE and the authorization matrix. Stripe-only wording was replaced with "the provider chosen in stage 2".
+- Checker rules for the new guarantees, and scenarios **S31** (payments in Israel) and **S32** (store submission rules), both passing.
+
 ## 2.9.0 (2026-11-24)
 
 **ECC in the same marketplace.**

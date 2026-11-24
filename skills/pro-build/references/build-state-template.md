@@ -48,7 +48,7 @@ Copy to the project root as `BUILD-STATE.md` and keep it current at every gate.
 | GitHub repo | | |
 | Hosting (Vercel/Cloudflare) | | preview / staging / prod |
 | Supabase | | |
-| Stripe | test / live / N/A | |
+| Payments (<provider>) | test / live / N/A | |
 
 The full list of services, with chosen, alternative and N/A decisions, lives in `docs/company/02-architecture.md` → Service applicability.
 | Sentry | | |

@@ -26,11 +26,11 @@ Use it for iOS and Android apps, cross-platform mobile apps, tablet apps and des
 
 | Stage | Use |
 |:--|:--|
-| 2 Architecture | The stack above, the backend from `system.md`, offline and sync strategy, push notifications (APNs or FCM via Expo Notifications), deep links, in-app purchases (StoreKit or Play Billing, or RevenueCat), and an analytics and crash SDK |
+| 2 Architecture | The stack above, the backend from `system.md`, offline and sync strategy, push notifications (APNs or FCM via Expo Notifications), deep links, payments by the store rules (StoreKit or Play Billing, or RevenueCat, **only for digital goods**; physical goods and real-world services use the provider from `references/payments.md`), a design that meets `references/app-stores.md` §3, and an analytics and crash SDK |
 | 3 Design | Platform conventions (Apple HIG, Material 3), `ecc:design-system`, `ecc:accessibility` (Dynamic Type, screen readers, 44pt targets), dark mode, small and large screens |
-| 4 Platform | **Mobile:** EAS or fastlane; signing in the build service's secret store; sandbox and production build profiles; TestFlight and Play internal tracks; crash reporting. **Desktop:** a CI build matrix per OS (Tauri's bundler or electron-builder); code-signing certificates in the CI secret store; a signed update channel (for example, the Tauri updater with its own signing key) |
+| 4 Platform | **Mobile:** EAS or fastlane; signing in the build service's secret store; sandbox and production build profiles; TestFlight and Play internal and closed tracks (start the Google 12-tester, 14-day closed test early for new personal accounts); crash reporting. **Desktop:** a CI build matrix per OS (Tauri's bundler or electron-builder); code-signing certificates in the CI secret store; a signed update channel (for example, the Tauri updater with its own signing key) |
 | 5 Engineering | `ecc:orch-add-feature`; Expo development builds; Detox or Maestro end-to-end tests; the iOS Simulator and Android emulator |
-| 6 QA | **Mobile:** real-device smoke tests (an older and a newer phone), offline and poor-network tests, permission prompts, store-guideline checklist, privacy manifest and data-safety answers. **Desktop:** install, launch, update and uninstall on each target OS from the exact signed installers; check that the OS trusts the signature (no SmartScreen or Gatekeeper block) |
+| 6 QA | **Mobile:** real-device smoke tests (an older and a newer phone), offline and poor-network tests, permission prompts, the store checklist in `references/app-stores.md` §5, privacy manifest and data-safety answers. **Desktop:** install, launch, update and uninstall on each target OS from the exact signed installers; check that the OS trusts the signature (no SmartScreen or Gatekeeper block) |
 | 7 Release | **Mobile:** stage 7's mobile path. **Desktop:** stage 7's desktop path. **PWA:** the web path |
 
 ## Quality bar (stage 6 checks against it)
@@ -39,7 +39,7 @@ Use it for iOS and Android apps, cross-platform mobile apps, tablet apps and des
 - **Stability:** crash-free sessions of 99.5% or more in beta before release.
 - **Offline:** clear offline states; no data loss when the connection drops mid-action.
 - **Accessibility:** screen reader labels, Dynamic Type or font scaling, contrast, 44pt (iOS) or 48dp (Android) targets.
-- **Store compliance:** permission prompts that explain why; account deletion in the app if accounts exist; privacy labels that match real data use; purchases follow store rules.
+- **Store compliance:** everything in `references/app-stores.md` §5: current SDK and target API floors, permission prompts that explain why, account deletion in the app if accounts exist, privacy labels and data safety that match real data use, purchases that follow store rules, and a demo account for review.
 - **Compatibility:** the minimum OS versions are stated; the backend supports the oldest app version still in use.
 
 ## Kickoff questions for apps (on top of the universal ones)
@@ -49,10 +49,10 @@ Use it for iOS and Android apps, cross-platform mobile apps, tablet apps and des
 3. Which device features does it need: camera, location, notifications, Bluetooth, health data, contacts, background tasks?
 4. Must it work offline? What happens to changes made offline?
 5. Accounts: sign-in method (Apple, Google, email, phone)? Is account deletion handled?
-6. How does it make money: paid app, subscriptions, in-app purchases, ads, or none? (Stores take 15–30% on digital goods.)
+6. How does it make money: paid app, subscriptions, in-app purchases, ads, or none? Is it digital (must use store billing; stores take 15–30%) or physical goods and real-world services (must not)? Where is the business registered (`references/payments.md`)?
 7. Push notifications: what triggers them, and how often?
 8. Is there an existing backend, website or brand to match?
 9. The core screens: list them, even roughly.
-10. Who has the Apple Developer and Google Play accounts? (Creating them is your action.)
+10. Who has the Apple Developer and Google Play accounts: personal or organization (organizations need a D-U-N-S number), and in which country? (Creating them is your action; see `references/app-stores.md` §1.)
 11. Expected users at launch? Any regions or languages?
 12. Sensitive data (health, kids, finance), which triggers extra store review?

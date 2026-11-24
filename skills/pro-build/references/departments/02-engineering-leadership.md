@@ -8,7 +8,7 @@
 
 1. **Architecture.** First read the playbook for each project type in the brief (`references/project-types/web.md`, `system.md`, `app.md`): pick the **shape**, take its default stack unless the brief gives a reason not to, and adopt its **quality bar**. Then use `ecc:blueprint` with the PRD. Decide the stack, data model, API shape (`ecc:api-design`), authentication, integrations (payments, email, analytics, error monitoring), environments (local, preview, staging, production) and hosting.
 2. **Boring, proven defaults** unless the PRD demands otherwise. Recommend one option and say why:
-   - Web app or SaaS: Next.js + TypeScript, Supabase (Postgres, auth, storage), Stripe, hosted on Vercel or Cloudflare.
+   - Web app or SaaS: Next.js + TypeScript, Supabase (Postgres, auth, storage), a payment provider chosen by country with `references/payments.md` (Stripe where supported), hosted on Vercel or Cloudflare.
    - Marketing or client site: Astro or Next.js, static-first, a form handled by email or the CRM.
    - Mobile: Expo (React Native) with the same backend.
    - Backend system: TypeScript or Python service, Postgres, Docker (`ecc:docker-patterns`).
