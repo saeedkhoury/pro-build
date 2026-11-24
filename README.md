@@ -33,6 +33,34 @@ Describe your idea. pro-build interviews you until it understands it, writes the
 
 ---
 
+Your agent can write code. pro-build gives it a **company**: it asks before it builds, writes the documents a real team writes, builds test-first through pull requests, checks its work with evidence, ships with a rollback plan, and measures what happens after launch. You are the CEO and approve every gate.
+
+```text
+interview → brief → validate → spec → architecture → design → pipeline → MVP → QA → release → launch → grow
+```
+
+Instead of explaining that process in every prompt, you install it once and start every project with one line.
+
+## 📦 What's inside
+
+| Included | Count | What it gives you |
+|:--|--:|:--|
+| **Departments** (AI roles) | 11 | Kickoff plus 10 company departments. The AI plays each role in turn: discovery lead, founder advisor, Head of Product, CTO, Head of Design, platform engineer, engineering team, QA lead and security officer, release manager, Head of Growth, COO ([the company](#-the-company)) |
+| **Approval gates** | 11 | One per department. Four are CEO decisions: **Brief**, **Go / no-go**, **Production go**, **Launch go** |
+| **Helper agents** (model tiers) | 4 | Self-contained work goes to a helper agent on the cheapest model that does it well: Haiku, Sonnet, Opus, Fable (opt-in) ([model routing](#-smart-model-routing)) |
+| **Integrated skills** | 119 | From 13 plugins: ECC 68, marketing 22, Vercel 6, Claude SEO 5, PostHog 4, Sentry 3, Stripe, Supabase, Cloudflare and claudex-loop 2 each, Figma, REA and Taste 1 each. CI checks every name against the real skill list ([toolkit](#-toolkit)) |
+| **Playbooks** | 23 | 10 department playbooks, 3 project-type playbooks (web, system, app) and 10 shared guides: Kickoff, authorization, DevOps, model routing, toolkit, spec-kit, reverse engineering, project kit, build state, other agents |
+| **Project types** | 3 | 🌐 Web · ⚙️ System · 📱 App, each with its default stack, quality bar and its own Kickoff questions |
+| **Tracks** | 4 | Startup · Product · Client site · Existing project ([tracks](#-tracks)) |
+| **Commands** | 8 | Start, resume, status, jump to a stage, feature, release, launch, review ([usage](#-usage)) |
+| **Company documents** | up to 28 | Brief, validation, PRD, roadmap, architecture, decision records, plan, design, CI, runbook, launch readiness, release notes, go-to-market plan, weekly reviews… ([full list](skills/pro-build/references/project-kit.md)) |
+| **Operating rules** | 16 | Always on: real gates, evidence over claims, test mode first, ask before assuming, nothing changes production unattended… |
+| **Authorization levels** | 3 | **A** the agent may do it · **B** only after your yes for that exact action · **C** only you ([who may do what](#who-may-do-what)) |
+| **AI agents supported** | 7 | Claude Code, Codex, Kimi Code, Gemini CLI, Grok Build, OpenCode, Cursor ([your AI agent](#-works-with-your-ai-agent)) |
+| **Eval scenarios** | 30 | Behavioural tests run in an isolated, read-only session, plus a structural checker on every push ([`evals/`](evals)) |
+
+---
+
 ## ✨ Why pro-build?
 
 AI agents can write a lot of code fast. Real products also need everything around the code: checking the idea is worth building, a spec, an architecture, a design system, CI/CD, environments, monitoring, payments, a launch and a growth loop. That missing work is why most AI-built projects never earn a cent.
@@ -97,6 +125,80 @@ AI agents can write a lot of code fast. Real products also need everything aroun
 
 ---
 
+## 🎬 Walkthrough: from one sentence to a live app
+
+What actually happens after you type one line. The example is a barber booking app; websites and systems follow the same path with their own questions.
+
+### Step 1 · Kickoff: it asks before it builds anything
+
+```text
+You:  /pro-build:pro-build "I wanna build barber app"
+
+pro-build:  I understand: an app for barbers and their customers. It looks like an App (mobile)
+            plus a System (a backend for bookings).
+            Known: booking for barbers. Unknown: who it's for, how it earns money, which platforms.
+
+            1. Who is it for?   a) one barbershop  b) many shops (a platform)  c) customers looking for a barber
+            2. What's the goal, as a number?   (for example: 200 bookings a month within 3 months)
+            3. How does it earn money?   a) monthly subscription for shops  b) fee per booking  c) a client project
+            4. iPhone, Android or both? Through the app stores, or as a web app (PWA)?
+            5. Do customers pay in the app, or at the shop?
+
+            More rounds will follow. I'll write a Project Brief before any documents or code.
+```
+
+- **You answer.** A vague answer ("everyone", "not sure") gets a follow-up question with options. It is never taken as final.
+- **Rounds 2–4** cover the budget and deadline, who maintains the app, the data you store and how sensitive it is, languages, offline use, notifications, cancellation rules, and what is out of scope for version 1.
+- **Critical items are never defaulted**: the users, a numeric goal, the business model, budget and deadline, and who maintains it. Non-critical items can use the AI's recommendations, listed as **assumptions**.
+- The AI shows a one-page **Project Brief** with a coverage checklist. You reply `approved` → ✅ **Gate: Brief approved**.
+- It recommends a **track** (Startup for your own product, Client site for a client's website) and asks your **model policy**, including whether to allow Fable.
+
+### Step 2 · The company stages, one after another
+
+| Stage | AI plays | What it produces for the barber app | Your gate |
+|:--|:--|:--|:--|
+| **0 Founder Office** | Founder advisor | Market and competitors (Booksy, Fresha), pricing, risks: is it worth building? | ✅ **Go / no-go** |
+| **1 Product** | Head of Product | The **PRD**: R1 sign-up, R2 barber profile and services, R3 book a slot, R4 reminders, R5 payments, each with acceptance criteria; a milestone plan | ✅ Spec |
+| **2 Engineering Leadership** | CTO | **Architecture**: for example Expo (iOS and Android), Supabase (database and login), Stripe, push notifications, hosting, monthly cost, and which services aren't needed | ✅ Architecture |
+| **3 Design** | Head of Design | Screens: home, barber list, service, time, confirm, my bookings, barber dashboard; platform design rules and accessibility | ✅ Design |
+| **4 Platform / DevOps** | Platform engineer | GitHub repository, CI that tests every change, staging and production, secrets, error monitoring | ✅ Pipeline green |
+| **5 Engineering** | Engineering team | Feature by feature: tests first, then code, review, pull request | ✅ **Your yes for each merge** |
+| **6 QA & Security** | QA lead + security officer | End-to-end tests, a double-booking test, security scan, secret scan, real devices | ✅ No blocking findings |
+| **7 Release** | Release manager | Builds and signs the app, runs QA on **those exact files**; **you** submit them to the stores; phased rollout and a halt plan | ✅ **Production go** |
+| **8 Go-to-Market** | Head of Growth | Store listing, screenshots, landing page, launch messages for barbershops | ✅ **Launch go** |
+| **9 Operate & Grow** | COO / analyst | Weekly review: bookings, crashes, uptime, delivery metrics, the next thing to build | ✅ Next-cycle plan |
+
+### Step 3 · A normal working day (stage 5)
+
+```text
+You:  /pro-build:pro-build
+
+pro-build:  We're on stage 5, task T4 "Booking screen" (R3).
+            Acceptance: a customer picks a service and a time, and can't double-book.
+            Branch feat/booking: tests first, then the code.
+            …
+            PR #7 is ready and all checks are green. Merging deploys to staging only.
+            Merge PR #7?
+
+You:  yes, merge PR #7
+```
+
+A vague reply such as "looks good" is not enough: it asks you to confirm clearly.
+
+### Step 4 · What the AI never does by itself
+
+| Action | Who does it |
+|:--|:--|
+| Write code, tests and documents | The AI |
+| Merge a pull request | The AI, only after your clear yes for that pull request |
+| Deploy to production, submit to the stores, email users | **You**: the AI gives copy-ready steps, then verifies |
+| Spend money, rotate keys, accept terms, create accounts | **You** |
+| Change production automatically on a schedule | Nobody: automation only watches and pages |
+
+**In short:** you give the idea and answer the questions; the AI writes the documents and the code; you approve every gate and do the production steps yourself.
+
+---
+
 ## 🤖 Works with your AI agent
 
 pro-build is a standard **[Agent Skill](https://agentskills.io)**: one `SKILL.md` folder that any agent supporting the open standard can load. Its process (the deep Kickoff interview, ten departments, gates, authorization matrix, evidence rules and playbooks) is plain Markdown and works the same in every agent. Only some mechanics differ, and pro-build adapts them itself ([`references/agents.md`](skills/pro-build/references/agents.md)).
@@ -148,7 +250,7 @@ For a single project instead of every project, put the skill in the project's `.
 ```text
 You:  /pro-build:pro-build "an app that helps gyms manage memberships"
 
-1. Kickoff        → asks 2–4 questions per round: purpose, goal, users, must-haves,
+1. Kickoff        → asks 3–5 questions per round: purpose, goal, users, must-haves,
                     platform, business model, data, constraints, references
                   → "Here's what I understood" → a Project Brief you approve
                   → recommends a track (Startup / Product / Client site / Existing)
@@ -322,35 +424,7 @@ Or just ask: *"Let's build this like a real company."*
 
 ### Example
 
-```text
-> /pro-build:pro-build "a booking app for independent barbers"
-
-Using pro-build v2. Kickoff.
-
-Round 1
-  1. Who uses it: solo barbers, shop owners, or both?        [Solo barbers ✓] [Shops] [Both]
-  2. What's the main goal in 3 months?                       [Paying users ✓] [Launch] [Portfolio]
-  3. Must-have for v1: booking only, or booking + payments?
-Round 2
-  4. Web app, mobile app, or both?
-  5. Any languages besides English?
-...
-Here's what I understood (Project Brief):
-  One-liner: online booking with no-show deposits for solo barbers
-  Goal: 20 paying barbers in 3 months · Platform: mobile-first web app
-  Must-have: booking page, calendar, deposits, SMS reminders · Later: shop teams
-Is this right? → approved
-
-Recommended track: Startup (all departments). Confirm? → yes
-
-Stage 0: Founder Office.
-✓ docs/company/00-validation.md
-  Competitors: Booksy, Square Appointments, Fresha, plus WhatsApp and pen and paper
-  Pricing hypothesis: $19/month per chair, with a free tier up to 30 bookings
-  Recommendation: GO, with a narrow wedge (no-show deposits)
-
-Gate 0: go, pivot, or stop?
-```
+The full step-by-step example, from one sentence to a live app: [Walkthrough](#-walkthrough-from-one-sentence-to-a-live-app).
 
 ---
 
